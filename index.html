@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sujal Wagholikar's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .donation-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .upi-card {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+        .razorpay-card {
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+        }
+        .international-card {
+            background: linear-gradient(135deg, #ff7b00 0%, #ff4b01 100%);
+        }
+        .payment-modal {
+            display: none;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 smooth-scroll">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-indigo-600">Sujal Wagholikar</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#home" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="#achievements" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Achievements</a>
+                    <a href="#skills" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                    <a href="#support" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Support</a>
+                    <a href="#contact" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+        <div class="text-center fade-in">
+            <h2 class="text-5xl font-bold mb-4">Sujal Wagholikar's Portfolio</h2>
+            <p class="text-xl mb-6">Aspiring Developer from Sagroli | Class 12th Student</p>
+            <a href="#contact" class="bg-white text-indigo-600 px-6 py-3 rounded-full font-semibold hover:bg-indigo-100 transition">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2 fade-in">
+                    <img src="https://via.placeholder.com/200x200?text=Sujal" alt="Sujal Wagholikar" class="rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2 fade-in">
+                    <p class="text-lg text-gray-600">
+                        Hello, I'm Sujal Wagholikar, a dedicated Class 12th student from Sagroli. I am passionate about technology and innovation, with a keen interest in web development. Balancing academics with extracurricular activities, I strive to excel in both my studies and personal projects.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in">My Achievements</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6 fade-in">
+                    <h3 class="text-xl font-semibold mb-2">90% in Class 10th Board Exam</h3>
+                    <p class="text-gray-600">Achieved an outstanding 90% score in my Class 10th Board Examinations.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 fade-in">
+                    <h3 class="text-xl font-semibold mb-2">2nd in State Level Swimming Competition</h3>
+                    <p class="text-gray-600">Secured 2nd place in the State Level Swimming Competition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in">My Skills</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6 fade-in">
+                    <h3 class="text-xl font-semibold mb-2">Swimming</h3>
+                    <p class="text-gray-600">Competitive swimming with proven success at state level.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 fade-in">
+                    <h3 class="text-xl font-semibold mb-2">Academic Excellence</h3>
+                    <p class="text-gray-600">Demonstrated through high scores in board examinations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Us Section -->
+    <section id="support" class="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Support My Journey 🚀</h2>
+                <p class="text-xl text-gray-600">Your generous contribution helps me pursue my dreams in technology and education. Every amount makes a difference!</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- UPI Card -->
+                <div class="donation-card upi-card rounded-xl p-8 text-white text-center fade-in">
+                    <div class="mb-6">
+                        <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 110-12 6 6 0 010 12z"/>
+                        </svg>
+                        <h3 class="text-2xl font-bold mb-2">UPI India</h3>
+                        <p class="opacity-90">Quick & Secure Local Payments</p>
+                    </div>
+                    <div class="space-y-4">
+                        <img id="upiQrCode" src="" alt="UPI QR Code" class="mx-auto rounded-lg shadow-lg hidden">
+                        <p class="font-mono text-lg">anjaliwagholikar@ybl</p>
+                        <button onclick="fetchUpiQrCode()" class="bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition w-full">Generate QR & Donate</button>
+                    </div>
+                </div>
+
+                <!-- Razorpay Card -->
+                <div class="donation-card razorpay-card rounded-xl p-8 text-white text-center fade-in">
+                    <div class="mb-6">
+                        <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2L3 7v11a2 2 0 002 2h12a2 2 0 002-2V7l-7-5zM5 8h10v7H5V8z"/>
+                        </svg>
+                        <h3 class="text-2xl font-bold mb-2">Razorpay</h3>
+                        <p class="opacity-90">Cards, Wallets, UPI & Net Banking</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                            <p class="text-sm opacity-90">Supports INR & International Cards</p>
+                        </div>
+                        <button onclick="openRazorpayModal()" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition w-full">Donate Now</button>
+                    </div>
+                </div>
+
+                <!-- International Card -->
+                <div class="donation-card international-card rounded-xl p-8 text-white text-center fade-in">
+                    <div class="mb-6">
+                        <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                        </svg>
+                        <h3 class="text-2xl font-bold mb-2">Global Support</h3>
+                        <p class="opacity-90">PayPal & International</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                            <p class="text-sm opacity-90">Worldwide Donations Welcome</p>
+                        </div>
+                        <button onclick="openInternationalModal()" class="bg-white text-orange-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition w-full">Donate Globally</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UPI Modal -->
+    <div id="upiModal" class="payment-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('upiModal')">&times;</span>
+            <h3 class="text-2xl font-bold mb-4 text-center">UPI Donation</h3>
+            <div class="text-center mb-4">
+                <img id="upiModalQrCode" src="" alt="UPI QR" class="mx-auto rounded-lg shadow-md mb-4">
+                <p class="font-mono text-lg mb-2">anjaliwagholikar@ybl</p>
+                <p class="text-sm text-gray-500">Alternative: +91 7499970152</p>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Amount (INR)</label>
+                <select id="upiAmount" class="w-full p-2 border rounded-md">
+                    <option value="50">₹50</option>
+                    <option value="100">₹100</option>
+                    <option value="250">₹250</option>
+                    <option value="500">₹500</option>
+                    <option value="1000">₹1000</option>
+                    <option value="custom">Custom Amount</option>
+                </select>
+                <input id="customUpiAmount" type="number" placeholder="Enter custom amount" class="w-full p-2 border rounded-md mt-2 hidden">
+            </div>
+            <button onclick="initiateUpiPayment()" class="w-full bg-green-600 text-white py-3 rounded-md font-semibold hover:bg-green-700 transition">Pay with UPI</button>
+        </div>
+    </div>
+
+    <!-- Razorpay Modal -->
+    <div id="razorpayModal" class="payment-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('razorpayModal')">&times;</span>
+            <h3 class="text-2xl font-bold mb-4 text-center">Razorpay Donation</h3>
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Amount (₹)</label>
+                <select id="razorpayAmount" onchange="toggleCustomAmount('razorpay')" class="w-full p-2 border rounded-md">
+                    <option value="50">₹50</option>
+                    <option value="100">₹100</option>
+                    <option value="250">₹250</option>
+                    <option value="500">₹500</option>
+                    <option value="1000">₹1000</option>
+                    <option value="custom">Custom Amount</option>
+                </select>
+                <input id="customRazorpayAmount" type="number" placeholder="Enter custom amount (min ₹1)" class="w-full p-2 border rounded-md mt-2 hidden">
+            </div>
+            <button id="rzp-button" class="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition">Donate Now</button>
+            <p class="text-xs text-gray-500 text-center mt-2">Secure payment powered by Razorpay</p>
+        </div>
+    </div>
+
+    <!-- International Modal -->
+    <div id="internationalModal" class="payment-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('internationalModal')">&times;</span>
+            <h3 class="text-2xl font-bold mb-4 text-center">Global Donation</h3>
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Amount (USD)</label>
+                <select id="intlAmount" class="w-full p-2 border rounded-md">
+                    <option value="5">$5</option>
+                    <option value="10">$10</option>
+                    <option value="25">$25</option>
+                    <option value="50">$50</option>
+                    <option value="100">$100</option>
+                    <option value="custom">Custom Amount</option>
+                </select>
+                <input id="customIntlAmount" type="number" placeholder="Enter custom amount" class="w-full p-2 border rounded-md mt-2 hidden" step="0.01">
+            </div>
+            <button onclick="initiateInternationalPayment()" class="w-full bg-orange-600 text-white py-3 rounded-md font-semibold hover:bg-orange-700 transition">Donate via PayPal</button>
+            <p class="text-xs text-gray-500 text-center mt-2">Coming soon: Full international support</p>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in">Get in Touch</h2>
+            <div class="max-w-lg mx-auto fade-in">
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-lg text-gray-600"><strong>Email:</strong> <a href="mailto:sujalwagholikar25@gmail.com" class="text-indigo-600 hover:underline">sujalwagholikar25@gmail.com</a></p>
+                        <p class="text-lg text-gray-600"><strong>Phone:</strong> <a href="tel:+917499970152" class="text-indigo-600 hover:underline">+91 7499970152</a></p>
+                    </div>
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" id="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="message" rows="4" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+                    <div>
+                        <button onclick="submitContact()" class="w-full bg-indigo-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-indigo-700 transition">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 Sujal Wagholikar. All rights reserved. | Secure donations powered by Razorpay & UPI</p>
+        </div>
+    </footer>
+
+    <!-- Razorpay Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+        // Fade-in animation on scroll
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeInElements.forEach(element => observer.observe(element));
+
+        // Contact form submission (simulated)
+        function submitContact() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                alert('Message sent successfully!');
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+
+        // Modal functions
+        function openModal(modalId) { document.getElementById(modalId).style.display = 'block'; }
+        function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
+        function openUpiModal() { openModal('upiModal'); }
+        function openRazorpayModal() { openModal('razorpayModal'); }
+        function openInternationalModal() { openModal('internationalModal'); }
+
+        // Close modals on outside click
+        window.onclick = function(event) {
+            if (event.target.classList.contains('payment-modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Toggle custom amount inputs
+        function toggleCustomAmount(type) {
+            const select = document.getElementById(type + 'Amount');
+            const input = document.getElementById('custom' + type.charAt(0).toUpperCase() + type.slice(1) + 'Amount');
+            if (select.value === 'custom') {
+                input.classList.remove('hidden');
+                input.focus();
+            } else {
+                input.classList.add('hidden');
+            }
+        }
+
+        // UPI Payment & QR Code Fetch
+        function fetchUpiQrCode() {
+            const amount = prompt('Enter amount to donate (INR):', '100');
+            if (!amount || isNaN(amount) || amount <= 0) {
+                alert('Please enter a valid amount.');
+                return;
+            }
+            fetch('https://sujal-donation-backend.herokuapp.com/generate-qr?upi=anjaliwagholikar@ybl&amount=' + amount)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.qrCode) {
+                        document.getElementById('upiQrCode').src = data.qrCode;
+                        document.getElementById('upiQrCode').classList.remove('hidden');
+                        openUpiModal();
+                        document.getElementById('upiModalQrCode').src = data.qrCode;
+                    } else {
+                        alert('Failed to generate QR code. Try again.');
+                    }
+                })
+                .catch(err => {
+                    console.error('QR Code Fetch Error:', err);
+                    alert('Error fetching QR code. Please try again.');
+                });
+        }
+
+        function initiateUpiPayment() {
+            const amount = document.getElementById('upiAmount').value === 'custom' ? 
+                document.getElementById('customUpiAmount').value : document.getElementById('upiAmount').value;
+            if (!amount || amount <= 0) {
+                alert('Please select a valid amount.');
+                return;
+            }
+            const upiId = 'anjaliwagholikar@ybl';
+            const name = 'Sujal Wagholikar Support';
+            const upiDeepLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+            window.open(upiDeepLink, '_blank');
+            closeModal('upiModal');
+        }
+
+        // Razorpay Integration with Order Creation
+        let razorpayInstance;
+        function initRazorpay() {
+            const amount = (document.getElementById('razorpayAmount').value === 'custom' ? 
+                parseInt(document.getElementById('customRazorpayAmount').value) : parseInt(document.getElementById('razorpayAmount').value)) * 100; // in paise
+            if (!amount || amount < 100) {
+                alert('Please select a valid amount (minimum ₹1).');
+                return;
+            }
+
+            // Create order on backend
+            fetch('https://sujal-donation-backend.herokuapp.com/create-order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ amount: amount / 100, currency: 'INR' })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.success) {
+                    throw new Error(data.message || 'Failed to create order');
+                }
+
+                const options = {
+                    key: 'rzp_test_YOUR_KEY_HERE', // Replace with your actual Razorpay Key ID
+                    amount: data.amount,
+                    currency: data.currency,
+                    order_id: data.order_id,
+                    name: 'Support Sujal Wagholikar',
+                    description: 'Donation to support education and projects',
+                    image: 'https://via.placeholder.com/150x150?text=Sujal', // Replace with your logo
+                    handler: function (response) {
+                        fetch('https://sujal-donation-backend.herokuapp.com/verify-payment', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_signature: response.razorpay_signature,
+                                amount: amount / 100
+                            })
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Payment Verified Successfully! Thank you for your support. Receipt: ' + response.razorpay_payment_id);
+                            } else {
+                                alert('Payment verification failed. Please contact support. Error: ' + data.message);
+                            }
+                            closeModal('razorpayModal');
+                        })
+                        .catch(err => {
+                            alert('Error verifying payment. Please try again or contact support.');
+                            console.error(err);
+                            closeModal('razorpayModal');
+                        });
+                    },
+                    prefill: {
+                        name: '',
+                        email: '',
+                        contact: ''
+                    },
+                    theme: {
+                        color: '#667eea'
+                    },
+                    modal: {
+                        ondismiss: function() {
+                            console.log('Payment dismissed');
+                        }
+                    },
+                    method: {
+                        upi: true,
+                        card: true,
+                        netbanking: true,
+                        wallet: true
+                    },
+                    preferences: {
+                        show_default_options: false,
+                        upi: {
+                            flow: 'intent' // Directs to UPI apps
+                        }
+                    }
+                };
+                razorpayInstance = new Razorpay(options);
+                razorpayInstance.open();
+            })
+            .catch(err => {
+                alert('Error creating order: ' + err.message);
+                console.error('Order Creation Error:', err);
+            });
+        }
+
+        // Attach event listener to Razorpay button
+        document.addEventListener('DOMContentLoaded', function() {
+            const rzpButton = document.getElementById('rzp-button');
+            rzpButton.addEventListener('click', initRazorpay);
+            
+            // Handle amount change for Razorpay
+            document.getElementById('razorpayAmount').addEventListener('change', function() {
+                toggleCustomAmount('razorpay');
+            });
+        });
+
+        // International Payment (Placeholder for PayPal)
+        function initiateInternationalPayment() {
+            const amount = document.getElementById('intlAmount').value === 'custom' ? 
+                document.getElementById('customIntlAmount').value : document.getElementById('intlAmount').value;
+            if (!amount || amount <= 0) {
+                alert('Please select a valid amount.');
+                return;
+            }
+            alert(`Redirecting to PayPal for $${amount} donation. (This is a placeholder - integrate actual PayPal in production)`);
+        }
+    </script>
+</body>
+</html>
