@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work on AI Projects - Sujal Wagholikar</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        keyframes: {
+          fadeInUp: {
+            '0%': { opacity: '0', transform: 'translateY(20px)' },
+            '100%': { opacity: '1', transform: 'translateY(0)' },
+          },
+          scaleIn: {
+            '0%': { opacity: '0', transform: 'scale(0.8)' },
+            '100%': { opacity: '1', transform: 'scale(1)' },
+          }
+        },
+        animation: {
+          fadeInUp: 'fadeInUp 0.8s ease-out forwards',
+          scaleIn: 'scaleIn 0.5s ease-out forwards',
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+<!-- Section Header -->
+<section class="text-center py-12">
+  <h1 class="text-4xl md:text-5xl font-bold mb-6">My AI Projects</h1>
+  <button id="viewProjectBtn" class="px-6 py-3 bg-indigo-600 rounded-full hover:bg-indigo-500 transition transform hover:scale-105">
+    View Project
+  </button>
+</section>
+
+<!-- Project Card (hidden by default) -->
+<section id="projectCard" class="max-w-5xl mx-auto mt-12 opacity-0 scale-90 pointer-events-none transition-all duration-500">
+  <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-800">
+    <!-- Background Image -->
+    <img src="https://images.unsplash.com/photo-1612831662615-b6f96d170d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" 
+         alt="AI Task Manager" class="w-full h-96 object-cover rounded-t-3xl">
+    
+    <!-- Content -->
+    <div class="p-10 bg-gradient-to-t from-black/80 via-black/50 to-transparent rounded-b-3xl">
+      <h3 class="text-4xl font-bold mb-4 animate-fadeInUp">AI Task Manager</h3>
+      <p class="text-gray-200 mb-6 animate-fadeInUp">
+        Boost your productivity with AI! The app predicts your priorities, categorizes tasks intelligently, and reminds you smartly.
+      </p>
+
+      <div class="flex flex-wrap gap-3 mb-6 animate-fadeInUp">
+        <span class="px-4 py-2 rounded-full bg-indigo-500/60 text-white text-xs font-semibold">AI</span>
+        <span class="px-4 py-2 rounded-full bg-purple-500/60 text-white text-xs font-semibold">Machine Learning</span>
+        <span class="px-4 py-2 rounded-full bg-pink-500/60 text-white text-xs font-semibold">Python</span>
+      </div>
+
+      <div class="flex flex-wrap gap-4 animate-fadeInUp">
+        <a href="#" class="px-6 py-3 bg-indigo-500 rounded-full hover:bg-indigo-400 transition">View Code</a>
+        <a href="#" class="px-6 py-3 bg-purple-500 rounded-full hover:bg-purple-400 transition">Live Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const viewBtn = document.getElementById('viewProjectBtn');
+  const projectCard = document.getElementById('projectCard');
+
+  viewBtn.addEventListener('click', () => {
+    // Show project card with animation
+    projectCard.classList.remove('opacity-0', 'scale-90', 'pointer-events-none');
+    projectCard.classList.add('animate-scaleIn');
+    // Scroll to the project card
+    projectCard.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
