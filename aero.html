@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research in Aeronautics - Sujal Wagholikar</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s ease;
+        }
+        .glass-effect:hover {
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .card-hover {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        .card-hover:hover {
+            transform: translateY(-12px) rotateX(2deg) rotateY(2deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        .btn-animated {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        .btn-animated::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.6s;
+            z-index: -1;
+        }
+        .btn-animated:hover::before {
+            left: 100%;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1e2e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4338ca;
+        }
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .project-image {
+            width: 100%;
+            height: 500px; /* Taller height for larger appearance */
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.5s ease;
+        }
+        .image-container:hover .project-image {
+            transform: scale(1.05);
+        }
+        .image-container .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .image-container:hover .overlay {
+            opacity: 1;
+        }
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1517976547714-720226b864c1') no-repeat center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+    <div class="parallax-bg"></div>
+    <nav class="glass-effect fixed w-full z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-indigo-400 tracking-tight">Sujal Wagholikar</a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="index.html#home" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Home</a>
+                    <a href="index.html#about" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">About</a>
+                    <a href="index.html#projects" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Projects</a>
+                    <a href="index.html#skills" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Skills</a>
+                    <a href="index.html#support" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Support</a>
+                    <a href="index.html#contact" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Connect</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="min-h-screen relative py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl md:text-6xl font-bold text-center mb-16 text-white fade-in">Research in Aeronautics</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div class="glass-effect rounded-2xl p-8 card-hover fade-in image-container">
+                    <div class="relative">
+                        <img src="https://planereclaimers.aero/wp-content/uploads/2023/11/glamping-2.webp" alt="Aircraft Fuselage Design" class="project-image">
+                        <div class="overlay"></div>
+                    </div>
+                    <h2 class="text-2xl font-semibold mt-6 mb-4 text-indigo-400">Aircraft Fuselage Design</h2>
+                    <p class="text-gray-300 leading-relaxed">
+                        The fuselage is the backbone of an aircraft, housing critical components like the cockpit and passenger cabin. My research optimizes fuselage design for structural integrity and aerodynamics, leveraging composite materials to enhance fuel efficiency and performance.
+                    </p>
+                </div>
+                <div class="glass-effect rounded-2xl p-8 card-hover fade-in image-container">
+                    <div class="relative">
+                        <img src="https://png.pngtree.com/png-vector/20230912/ourmid/pngtree-turbo-jet-engine-of-airplane-png-image_10022910.png" alt="Aero Engine Technologies" class="project-image">
+                        <div class="overlay"></div>
+                    </div>
+                    <h2 class="text-2xl font-semibold mt-6 mb-4 text-indigo-400">Aero Engine Technologies</h2>
+                    <p class="text-gray-300 leading-relaxed">
+                        Aero engines power aviation's future. My work explores turbofan and turbojet engines, focusing on improving thrust-to-weight ratios and reducing emissions through computational modeling and innovative designs.
+                    </p>
+                </div>
+                <div class="glass-effect rounded-2xl p-8 card-hover fade-in image-container">
+                    <div class="relative">
+                        <img src="https://flyingmag1.b-cdn.net/wp-content/uploads/sites/2/2022/06/avionics-scaled-1-e1748963013977.jpg" alt="Avionics Systems" class="project-image">
+                        <div class="overlay"></div>
+                    </div>
+                    <h2 class="text-2xl font-semibold mt-6 mb-4 text-indigo-400">Avionics Systems</h2>
+                    <p class="text-gray-300 leading-relaxed">
+                        Avionics systems are the brain of modern aircraft, integrating navigation, communication, and flight control. My project develops interactive simulations of avionics interfaces, enhancing pilot situational awareness and system reliability.
+                    </p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="index.html#projects" class="btn-animated bg-indigo-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-indigo-600 transition shadow-xl text-lg">Back to Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900/80 glass-effect py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm text-gray-400">&copy; 2025 Sujal Wagholikar. All rights reserved.</p>
+            <div class="mt-6 flex justify-center space-x-8">
+                <a href="https://www.instagram.com/sujalwagholikrr" class="social-icon text-gray-400 hover:text-indigo-400 transition"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="https://www.linkedin.com/in/sujal25" class="social-icon text-gray-400 hover:text-indigo-400 transition"><i class="fab fa-linkedin text-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Staggered Fade-in for Cards
+        gsap.utils.toArray('.fade-in').forEach((element, index) => {
+            gsap.fromTo(element, 
+                { opacity: 0, y: 50, scale: 0.95 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1,
+                    duration: 1,
+                    ease: 'power3.out',
+                    delay: index * 0.2,
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+
+        // Parallax Background
+        gsap.to('.parallax-bg', {
+            y: '20%',
+            scrollTrigger: {
+                trigger: '.min-h-screen',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+
+        // Card Hover Animations
+        gsap.utils.toArray('.card-hover').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                gsap.to(element, {
+                    rotateX: 2,
+                    rotateY: 2,
+                    scale: 1.02,
+                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            element.addEventListener('mouseleave', () => {
+                gsap.to(element, {
+                    rotateX: 0,
+                    rotateY: 0,
+                    scale: 1,
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // Image Hover Zoom
+        gsap.utils.toArray('.image-container').forEach(element => {
+            const image = element.querySelector('.project-image');
+            element.addEventListener('mouseenter', () => {
+                gsap.to(image, { scale: 1.05, duration: 0.5, ease: 'power2.out' });
+                gsap.to(element.querySelector('.overlay'), { opacity: 1, duration: 0.5 });
+            });
+            element.addEventListener('mouseleave', () => {
+                gsap.to(image, { scale: 1, duration: 0.5, ease: 'power2.out' });
+                gsap.to(element.querySelector('.overlay'), { opacity: 0, duration: 0.5 });
+            });
+        });
+    </script>
+</body>
+</html>
