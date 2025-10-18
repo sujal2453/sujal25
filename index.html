@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -16,16 +17,14 @@
             overflow-x: hidden;
         }
         .smooth-scroll {
-            scroll-behavior: very smooth;
+            scroll-behavior: smooth;
         }
-        /* Glassmorphism Effect */
         .glass-effect {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
-        /* Enhanced Fade-in Animation */
         .fade-in {
             opacity: 0;
             transform: translateY(40px);
@@ -35,7 +34,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Card Hover Effect */
         .card-hover {
             transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
         }
@@ -44,7 +42,6 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             background: rgba(255, 255, 255, 0.15);
         }
-        /* Button Animation */
         .btn-animated {
             position: relative;
             overflow: hidden;
@@ -65,7 +62,6 @@
         .btn-animated:hover::before {
             left: 100%;
         }
-        /* Hero Section Particle Animation */
         #particles-js {
             position: absolute;
             width: 100%;
@@ -73,7 +69,6 @@
             z-index: 0;
             background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
         }
-        /* Typing Animation */
         .typing-text::after {
             content: '|';
             display: inline-block;
@@ -85,7 +80,6 @@
             50% { opacity: 0; }
             100% { opacity: 1; }
         }
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -99,7 +93,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #4338ca;
         }
-        /* Support Section Styles */
         .support-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -108,7 +101,6 @@
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
-        /* Project Card Animation */
         .project-card {
             position: relative;
             overflow: hidden;
@@ -139,13 +131,85 @@
         .project-card:hover .project-details {
             transform: translateY(0);
         }
-        /* Micro-interaction for Social Icons */
         .social-icon {
             transition: transform 0.3s ease, color 0.3s ease;
         }
         .social-icon:hover {
             transform: scale(1.2);
             color: #a5b4fc;
+        }
+        .razorpay-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .razorpay-modal.active {
+            display: flex;
+        }
+        .razorpay-modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .amount-btn {
+            background: #f3f4f6;
+            color: #1f2937;
+            border: 1px solid #d1d5db;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 14px;
+            margin: 4px;
+            width: calc(50% - 8px);
+        }
+        .amount-btn:hover, .amount-btn.active {
+            background: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+        .success-message {
+            background: #f0fdf4;
+            color: #166534;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            animation: successPulse 0.6s ease-in-out;
+        }
+        @keyframes successPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .payment-history {
+            max-height: 150px;
+            overflow-y: auto;
+            margin-top: 15px;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 10px;
+        }
+        .payment-item {
+            background: #f9fafb;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin: 5px 0;
+            font-size: 14px;
+            color: #1f2937;
         }
     </style>
 </head>
@@ -160,7 +224,7 @@
                 <div class="flex items-center space-x-6">
                     <a href="#home" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Home</a>
                     <a href="#about" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">About</a>
-                    <a href="#projects" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Projects
+                    <a href="#projects" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Projects</a>
                     <a href="#skills" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Skills</a>
                     <a href="#support" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Support</a>
                     <a href="#contact" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Connect</a>
@@ -202,32 +266,34 @@
             <h2 class="text-5xl font-bold text-center mb-16 fade-in text-white">My Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="project-card glass-effect rounded-2xl overflow-hidden card-hover fade-in">
-                    <img src="https://www.brainfacts.org/-/media/Brainfacts2/In-the-Lab/Tools-and-Techniques/Article-Images/Network-Neuroscience-Thumbnail.jpg" class="w-full h-64 object-cover">
+                    <img src="https://www.brainfacts.org/-/media/Brainfacts2/In-the-Lab/Tools-and-Techniques/Article-Images/Network-Neuroscience-Thumbnail.jpg" alt="General Knowledge Quiz Platform" class="w-full h-64 object-cover">
                     <div class="project-details text-white p-6">
-                        <h3 class="text-xl font-semibold mb-2">Test your General Knowledge </h3>
+                        <h3 class="text-xl font-semibold mb-2">Test your General Knowledge</h3>
                         <p class="text-sm opacity-90">A proctored online quiz platform with real-time monitoring, Chart.js reports, and responsive design for educational assessments.</p>
                         <a href="adv.html" class="btn-animated mt-4 inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-600">View Project</a>
                     </div>
                 </div>
                 <div class="project-card glass-effect rounded-2xl overflow-hidden card-hover fade-in">
-                    <img src="https://mvjce.edu.in/wp-content/uploads/2022/11/Reasons-To-Choose-Aeronautical-Engineering-As-A-Career-Option.webp" class="w-full h-64 object-cover">
+                    <img src="https://mvjce.edu.in/wp-content/uploads/2022/11/Reasons-To-Choose-Aeronautical-Engineering-As-A-Career-Option.webp" alt="Aeronautics Research" class="w-full h-64 object-cover">
                     <div class="project-details text-white p-6">
                         <h3 class="text-xl font-semibold mb-2">Research in Aeronautics</h3>
-                        <p class="text-sm opacity-90">A sleek, responsive design showcasing my skills and projects, built with reaserach, analysis, and application</p>
-                        <a href="aero.html" class="btn-animated mt-4 inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-600">Study-Clicknow</a>
+                        <p class="text-sm opacity-90">An in-depth exploration of aircraft design, focusing on fuselage and aero engine technologies, with interactive visualizations.</p>
+                        <a href="aeronautics.html" class="btn-animated mt-4 inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-600">Study - Click Now</a>
                     </div>
                 </div>
                 <div class="project-card glass-effect rounded-2xl overflow-hidden card-hover fade-in">
-                    <img src="https://risktec.tuv.com/wp-content/uploads/2020/04/shutterstock_1154457493-cropped-1024x681.jpg" alt="Task Manager App" class="w-full h-64 object-cover">
+                    <img src="https://risktec.tuv.com/wp-content/uploads/2020/04/shutterstock_1154457493-cropped-1024x681.jpg" alt="AI Task Manager App" class="w-full h-64 object-cover">
                     <div class="project-details text-white p-6">
-                        <h3 class="text-xl font-semibold mb-2"> Work on AI App</h3>
-                        <p class="text-sm opacity-90">A productive reaserch for managing tasks with ai and local machine integration.</p>
+                        <h3 class="text-xl font-semibold mb-2">Work on AI App</h3>
+                        <p class="text-sm opacity-90">A productive research for managing tasks with AI and local machine integration.</p>
                         <a href="#" class="btn-animated mt-4 inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-600">View Project</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-                
-   <!-- Skills Section -->
+
+    <!-- Skills Section -->
     <section id="skills" class="py-32 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-5xl font-bold text-center mb-16 fade-in text-white">My Skills</h2>
@@ -262,36 +328,79 @@
             <h2 class="text-5xl font-bold text-center mb-16 fade-in text-white">Support My Journey</h2>
             <div class="flex justify-center">
                 <div class="support-card glass-effect rounded-2xl p-10 text-white text-center fade-in max-w-md w-full">
-                    <h3 class="text-2xl font-bold mb-4">Kindly Support Us</h3>
-                    <p class="text-lg mb-6 opacity-90">Your contributions fuel my pursuit of excellence in technology and education.</p>
-                    <img src="https://i.postimg.cc/TPhqpbSR/upi-1760696375881.png" alt="UPI QR Code" class="mx-auto rounded-lg shadow-2xl w-full max-w-xs border border-indigo-500/30">
-                    <p class="text-sm mt-4 opacity-90">Scan this QR code to contribute via UPI.</p>
+                    <h3 class="text-2xl font-bold mb-4">Kindly Support My Work</h3>
+                    <p class="text-lg mb-6 opacity-90">Your contributions fuel my pursuit of excellence in technology and education. Every rupee helps me continue my learning journey and create innovative projects.</p>
+                    <img src="https://i.postimg.cc/TPhqpbSR/upi-1760696375881.png" alt="UPI QR Code" class="mx-auto rounded-lg shadow-2xl w-full max-w-xs border border-indigo-500/30 mb-4">
+                    <p class="text-sm opacity-90 mb-4">Or use Razorpay for secure payment:</p>
+                    <button onclick="openRazorpayModal()" class="btn-animated bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition shadow-xl w-full">Make a Payment</button>
                 </div>
             </div>
         </div>
     </section>
 
-     <!-- Uploads Section -->
-     <section id="projects" class="py-32 bg-transparent">
+    <!-- Razorpay Amount Selection Modal -->
+    <div id="razorpayModal" class="razorpay-modal">
+        <div class="razorpay-modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800">Select Amount</h2>
+                <button onclick="closeRazorpayModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">Choose Amount (₹)</h3>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button class="amount-btn" data-amount="50">₹50</button>
+                    <button class="amount-btn" data-amount="100">₹100</button>
+                    <button class="amount-btn" data-amount="250">₹250</button>
+                    <button class="amount-btn" data-amount="500">₹500</button>
+                    <button class="amount-btn" data-amount="1000">₹1000</button>
+                    <button class="amount-btn" data-amount="custom">Custom</button>
+                </div>
+                <div id="customAmount" class="mt-4 hidden">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Enter Custom Amount (₹)</label>
+                    <input type="number" id="customAmountInput" min="10" max="10000" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter amount">
+                </div>
+            </div>
+            <button onclick="proceedToPayment()" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">Pay Now with Razorpay</button>
+            <div class="mt-4">
+                <h4 class="text-lg font-semibold text-gray-800 mb-2">Recent Contributions</h4>
+                <div id="paymentHistory" class="payment-history">
+                    <p class="text-sm text-gray-500 text-center">No payments yet. Be the first to support!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Overlay -->
+    <div id="successOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-1050 flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg max-w-md w-full mx-4 text-center">
+            <i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Payment Successful!</h3>
+            <p class="text-gray-600 mb-4">Thank you for your support! Your contribution helps me continue creating innovative projects.</p>
+            <button onclick="closeSuccessOverlay()" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">Close</button>
+        </div>
+    </div>
+
+    <!-- Uploads Section -->
+    <section id="Uploads" class="py-32 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-5xl font-bold text-center mb-16 fade-in text-white">My Uploads</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="project-card glass-effect rounded-2xl overflow-hidden card-hover fade-in">
-                    <img src="images/hal amca.avif/Gray Military Aircraft Design.jpeg/"w-full h-64 object-cover">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/HAL_Tejas_Mk1.jpg" alt="HAL Tejas Aircraft" class="w-full h-64 object-cover">
                     <div class="project-details text-white p-6">
-                        <h3 class="text-xl font-semibold mb-2">View my Uploads </h3>
-                        <p class="text-sm opacity-90">My images are uploaded .</p>
-                        <a href="wp5534142-lca-tejas-wallpapers.jpg" class="btn-animated mt-4 inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-600">Click me </a>
+                        <h3 class="text-xl font-semibold mb-2">My Uploads</h3>
+                        <p class="text-sm opacity-90">Explore my collection of aircraft-related images and designs.</p>
+                        <a href="https://upload.wikimedia.org/wikipedia/commons/9/9f/HAL_Tejas_Mk1.jpg" target="_blank" class="btn-animated mt-4 inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-600">View Image</a>
                     </div>
-             </div>
+                </div>
+            </div>
         </div>
     </section>
-    
 
     <!-- Contact Section -->
     <section id="contact" class="py-32 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center mb-16 fade-in text-white">Join US</h2>
+            <h2 class="text-5xl font-bold text-center mb-16 fade-in text-white">Join Us</h2>
             <div class="max-w-lg mx-auto fade-in">
                 <div class="space-y-8 glass-effect rounded-2xl p-8">
                     <div class="flex items-center space-x-4">
@@ -327,16 +436,19 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-sm text-gray-400">&copy; 2025 Sujal Wagholikar. All rights reserved.</p>
             <div class="mt-6 flex justify-center space-x-8">
-                <a href="https://www.instagram.com/sujalwagholikrr" class="social-icon text-gray-400 hover:text-indigo-400 transition"><i class="fab fa-instagram text-2xl"></i></a>
-                <a href="https://www.linkedin.com/in/sujal25" class="social-icon text-gray-400 hover:text-indigo-400 transition"><i class="fab fa-linkedin text-2xl"></i></a>
+                <a href="https://www.instagram.com/sujalwagholikrr" class="social-icon text-gray-300 hover:text-indigo-400 transition"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="https://www.linkedin.com/in/sujal25" class="social-icon text-gray-300 hover:text-indigo-400 transition"><i class="fab fa-linkedin text-2xl"></i></a>
             </div>
         </div>
     </footer>
 
+    <!-- Razorpay Checkout Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
     <!-- Particles.js Script -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        // Initialize Particles.js for Hero Section
+        // Initialize Particles.js
         particlesJS('particles-js', {
             particles: {
                 number: { value: 100, density: { enable: true, value_area: 800 } },
@@ -355,7 +467,7 @@
             retina_detect: true
         });
 
-        // Fade-in animation on scroll
+        // Fade-in animation
         const fadeInElements = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -364,15 +476,13 @@
                 }
             });
         }, { threshold: 0.15 });
-
         fadeInElements.forEach(element => observer.observe(element));
 
-        // Contact form submission (simulated)
+        // Contact form
         function submitContact() {
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-
             if (name && email && message) {
                 alert('Message sent successfully!');
                 document.getElementById('name').value = '';
@@ -383,7 +493,7 @@
             }
         }
 
-        // Typing animation for hero text
+        // Typing animation
         const textElement = document.querySelector('.typing-text');
         const text = textElement.textContent;
         textElement.textContent = '';
@@ -396,11 +506,171 @@
             }
         }
         setTimeout(typeWriter, 300);
+
+        // Razorpay Integration
+        let selectedAmount = 0;
+        const razorpayKey = 'rzp_test_0a5e5b7c8d9e1f'; // Replace with your Razorpay key
+        const backendUrl = 'http://localhost:3000'; // Update with your deployed backend URL
+
+        function openRazorpayModal() {
+            document.getElementById('razorpayModal').classList.add('active');
+            gsap.from('.razorpay-modal-content', { opacity: 0, y: -20, duration: 0.3 });
+            loadPaymentHistory();
+        }
+
+        function closeRazorpayModal() {
+            document.getElementById('razorpayModal').classList.remove('active');
+            resetAmountSelection();
+        }
+
+        function resetAmountSelection() {
+            selectedAmount = 0;
+            document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('customAmount').classList.add('hidden');
+            document.getElementById('customAmountInput').value = '';
+        }
+
+        // Amount Selection
+        document.querySelectorAll('.amount-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                if (this.dataset.amount === 'custom') {
+                    document.getElementById('customAmount').classList.remove('hidden');
+                    selectedAmount = 0;
+                } else {
+                    document.getElementById('customAmount').classList.add('hidden');
+                    selectedAmount = parseInt(this.dataset.amount);
+                }
+            });
+        });
+
+        document.getElementById('customAmountInput').addEventListener('input', function() {
+            selectedAmount = parseInt(this.value) || 0;
+        });
+
+        async function proceedToPayment() {
+            if (selectedAmount < 10) {
+                alert('Please select an amount of at least ₹10');
+                return;
+            }
+
+            try {
+                // Create order by calling backend
+                const response = await fetch(`${backendUrl}/create-order`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount: selectedAmount })
+                });
+                const order = await response.json();
+                if (order.error) {
+                    alert(order.error);
+                    return;
+                }
+
+                // Open Razorpay Checkout
+                const options = {
+                    key: razorpayKey,
+                    amount: order.amount,
+                    currency: order.currency,
+                    name: 'Support Sujal Wagholikar',
+                    description: 'Fueling innovation and learning',
+                    order_id: order.order_id,
+                    image: 'https://i.postimg.cc/WzfS97xX/1695115499931.jpg',
+                    handler: async function (response) {
+                        // Verify payment with backend
+                        const verifyResponse = await fetch(`${backendUrl}/verify-payment`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_signature: response.razorpay_signature,
+                                amount: selectedAmount * 100
+                            })
+                        });
+                        const result = await verifyResponse.json();
+                        if (result.status === 'success') {
+                            showSuccessOverlay(response.razorpay_payment_id, selectedAmount);
+                            loadPaymentHistory();
+                        } else {
+                            alert('Payment verification failed: ' + result.error);
+                        }
+                    },
+                    prefill: {
+                        name: '',
+                        email: 'sujalwagholikar25@gmail.com',
+                        contact: '+917499970152'
+                    },
+                    theme: {
+                        color: '#4f46e5'
+                    },
+                    modal: {
+                        ondismiss: function() {
+                            console.log('Payment dismissed');
+                            closeRazorpayModal();
+                        }
+                    }
+                };
+
+                const rzp = new Razorpay(options);
+                rzp.open();
+                closeRazorpayModal();
+            } catch (error) {
+                console.error('Payment initiation failed:', error);
+                alert('Failed to initiate payment. Please try again.');
+            }
+        }
+
+        function showSuccessOverlay(paymentId, amount) {
+            document.getElementById('successOverlay').classList.remove('hidden');
+            gsap.from('#successOverlay .bg-white', { opacity: 0, scale: 0.95, duration: 0.3 });
+        }
+
+        function closeSuccessOverlay() {
+            document.getElementById('successOverlay').classList.add('hidden');
+        }
+
+        async function loadPaymentHistory() {
+            try {
+                const response = await fetch(`${backendUrl}/payment-history`);
+                const payments = await response.json();
+                const historyContainer = document.getElementById('paymentHistory');
+                if (payments.length === 0) {
+                    historyContainer.innerHTML = '<p class="text-sm text-gray-500 text-center">No payments yet. Be the first to support!</p>';
+                    return;
+                }
+                historyContainer.innerHTML = payments.map(payment => `
+                    <div class="payment-item">
+                        <div class="flex justify-between items-center">
+                            <span>₹${payment.amount}</span>
+                            <span class="text-xs text-gray-500">${payment.date}</span>
+                        </div>
+                        <div class="text-xs text-gray-600 mt-1">${payment.status}</div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Failed to load payment history:', error);
+            }
+        }
+
+        // Close modal on outside click
+        document.getElementById('razorpayModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeRazorpayModal();
+            }
+        });
+
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeRazorpayModal();
+                closeSuccessOverlay();
+            }
+        });
     </script>
 </body>
 </html>
-
-
 
 
 
