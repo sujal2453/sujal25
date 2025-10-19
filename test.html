@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mic & Camera Real Physics Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      text-align: center;
+      padding: 20px;
+    }
+    select, button {
+      margin: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+    }
+    video {
+      border: 2px solid #4caf50;
+      border-radius: 10px;
+      width: 320px;
+      height: 240px;
+      margin-top: 10px;
+    }
+    canvas.graph {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎤📷 Mic & Camera Real Physics Tracker</h1>
+  <p>Choose your devices and observe real dB values and physical motion tracking.</p>
+
+  <label for="micSelect">Microphone:</label>
+  <select id="micSelect"></select>
+
+  <label for="camSelect">Camera:</label>
+  <select id="camSelect"></select>
+  <br />
+  <button id="startBtn">Start Test</button>
+  <button id="stopBtn">Stop Test</button>
+
+  <h2>🎧 Real Sound Level: <span id="dbValue">0</span> dB SPL</h2>
+  <canvas id="dbChart" class="graph" width="600" height="200"></canvas>
+
+  <h2>🎥 Real Motion Intensity: <span id="motionValue">0</span></h2>
+  <video id="cameraFeed" autoplay playsinline></video>
+  <canvas id="motionChart" class="graph" width="600" height="200"></canvas>
+
+  <script>
+    const micSelect=document.getElementById('micSelect');
+    const camSelect=document.getElementById('camSelect');
+    const startBtn=document.getElementById('startBtn');
+    const stopBtn=document.getElementById('stopBtn');
+    const video=document.getElementById('cameraFeed');
+    const dbValue=document.getElementById('dbValue');
+    const motionValue=document.getElementById('motionValue');
+
+    const dbCtx=document.getElementById('dbChart').getContext('2d');
+    const motionCtx=document.getElementById('motionChart').getContext('2d');
+
+    let audioStream, videoStream, audioContext, analyser, dataArray, rafId, prevFrame, motionCanvas, motionCtx2d;
+
+    const dbChart=new Chart(dbCtx,{type:'line',data:{labels:[],datasets:[{label:'Sound Level (dB)',data:[],borderColor:'#4caf50',tension:0.2}]},options:{animation:false,scales:{y:{min:0,max:120,title:{display:true,text:'dB SPL'}}}}});
+    const motionChart=new Chart(motionCtx,{type:'line',data:{labels:[],datasets:[{label:'Motion Intensity',data:[],borderColor:'#f59e0b',tension:0.2}]},options:{animation:false,scales:{y:{min:0,max:100,title:{display:true,text:'Motion %'}}}}});
+
+    async function getDevices(){
+      const devices=await navigator.mediaDevices.enumerateDevices();
+      micSelect.innerHTML=''; camSelect.innerHTML='';
+      devices.forEach(d=>{
+        const opt=document.createElement('option');
+        opt.value=d.deviceId;
+        opt.text=d.label||d.kind;
+        if(d.kind==='audioinput') micSelect.appendChild(opt);
+        if(d.kind==='videoinput') camSelect.appendChild(opt);
+      });
+    }
+
+    async function startTest(){
+      const micId=micSelect.value;
+      const camId=camSelect.value;
+      const stream=await navigator.mediaDevices.getUserMedia({audio:{deviceId:micId?{exact:micId}:undefined},video:{deviceId:camId?{exact:camId}:undefined}});
+
+      // Microphone setup
+      audioContext=new AudioContext();
+      const source=audioContext.createMediaStreamSource(stream);
+      analyser=audioContext.createAnalyser();
+      analyser.fftSize=2048;
+      const bufferLength=analyser.fftSize;
+      dataArray=new Float32Array(bufferLength);
+      source.connect(analyser);
+
+      // Camera setup
+      video.srcObject=stream;
+      motionCanvas=document.createElement('canvas');
+      motionCanvas.width=320; motionCanvas.height=240;
+      motionCtx2d=motionCanvas.getContext('2d');
+
+      function calculateDB(){
+        analyser.getFloatTimeDomainData(dataArray);
+        let sumSquares=0;
+        for(let i=0;i<dataArray.length;i++) sumSquares+=dataArray[i]*dataArray[i];
+        const rms=Math.sqrt(sumSquares/dataArray.length);
+        const dbSPL=20*Math.log10(rms/0.00002); // Reference pressure 20 µPa (human hearing threshold)
+        return Math.max(0, Math.min(120, dbSPL));
+      }
+
+      function update(){
+        const db=calculateDB();
+        dbValue.textContent=db.toFixed(1);
+        dbChart.data.labels.push('');
+        dbChart.data.datasets[0].data.push(db);
+        if(dbChart.data.labels.length>100){dbChart.data.labels.shift();dbChart.data.datasets[0].data.shift();}
+        dbChart.update('none');
+
+        // Motion detection
+        motionCtx2d.drawImage(video,0,0,320,240);
+        const curr=motionCtx2d.getImageData(0,0,320,240);
+        let motion=0;
+        if(prevFrame){
+          let diff=0;
+          for(let i=0;i<curr.data.length;i+=4){diff+=Math.abs(curr.data[i]-prevFrame.data[i]);}
+          motion=(diff/(curr.data.length*255))*100;
+        }
+        prevFrame=curr;
+        motionValue.textContent=motion.toFixed(2);
+        motionChart.data.labels.push('');
+        motionChart.data.datasets[0].data.push(motion);
+        if(motionChart.data.labels.length>100){motionChart.data.labels.shift();motionChart.data.datasets[0].data.shift();}
+        motionChart.update('none');
+
+        rafId=requestAnimationFrame(update);
+      }
+      update();
+    }
+
+    function stopTest(){
+      cancelAnimationFrame(rafId);
+      audioContext?.close();
+      video.srcObject?.getTracks().forEach(t=>t.stop());
+    }
+
+    startBtn.onclick=startTest;
+    stopBtn.onclick=stopTest;
+    navigator.mediaDevices.getUserMedia({audio:true,video:true}).then(getDevices);
+  </script>
+</body>
+</html>
