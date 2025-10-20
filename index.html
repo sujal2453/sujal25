@@ -261,88 +261,6 @@
             transform: scale(1.2);
             color: #a5b4fc;
         }
-        .razorpay-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        .razorpay-modal.active {
-            display: flex;
-        }
-        .razorpay-modal-content {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            animation: modalSlideIn 0.3s ease-out;
-            color: #1f2937;
-        }
-        @keyframes modalSlideIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .amount-btn {
-            background: #f3f4f6;
-            color: #1f2937;
-            border: 1px solid #d1d5db;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 14px;
-            margin: 4px 0;
-            width: calc(50% - 4px);
-        }
-        .amount-btn:nth-child(odd) {
-            margin-right: 8px;
-        }
-        .amount-btn:hover, .amount-btn.active {
-            background: #4f46e5;
-            color: white;
-            border-color: #4f46e5;
-        }
-        .success-message {
-            background: #f0fdf4;
-            color: #166534;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            animation: successPulse 0.6s ease-in-out;
-        }
-        @keyframes successPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-        .payment-history {
-            max-height: 150px;
-            overflow-y: auto;
-            margin-top: 15px;
-            border-top: 1px solid #e5e7eb;
-            padding-top: 10px;
-        }
-        .payment-item {
-            background: #f9fafb;
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin: 5px 0;
-            font-size: 14px;
-            color: #1f2937;
-            display: flex;
-            justify-content: space-between;
-        }
-        .z-1050 {
-            z-index: 1050;
-        }
         .partner-link-container {
             display: flex;
             align-items: center;
@@ -603,52 +521,12 @@
                     <h3 class="text-2xl font-bold mb-4">Kindly Support My Work</h3>
                     <p class="text-lg mb-6 opacity-90">Your contributions fuel my pursuit of excellence in technology and education. Every rupee helps me continue my learning journey and create innovative projects.</p>
                     <img src="https://i.postimg.cc/TPhqpbSR/upi-1760696375881.png" alt="UPI QR Code" class="mx-auto rounded-lg shadow-2xl w-full max-w-xs border border-indigo-500/30 mb-4">
-                    <p class="text-sm opacity-90 mb-4">Or use Razorpay for secure payment:</p>
-                    <button onclick="openRazorpayModal()" class="btn-animated bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition shadow-xl w-full">Make a Payment</button>
+                    <p class="text-sm opacity-90 mb-4">Or use Cashfree for secure payment:</p>
+                    <a href="https://payments-test.cashfree.com/links?code=J9bq06b59bp0_AAAAAAClgig" target="_blank" class="btn-animated bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition shadow-xl w-full">Make a Payment</a>
                 </div>
             </div>
         </div>
     </section>
-
-    <div id="razorpayModal" class="razorpay-modal" onclick="if (event.target.id === 'razorpayModal') closeRazorpayModal()">
-        <div class="razorpay-modal-content" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold text-gray-800">Select Amount</h2>
-                <button onclick="closeRazorpayModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-            </div>
-            <div class="mb-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-3">Choose Amount (₹)</h3>
-                <div id="amountButtonsContainer" class="flex flex-wrap justify-start gap-y-2">
-                    <button class="amount-btn active" data-amount="50">₹50</button>
-                    <button class="amount-btn" data-amount="100">₹100</button>
-                    <button class="amount-btn" data-amount="250">₹250</button>
-                    <button class="amount-btn" data-amount="500">₹500</button>
-                    <button class="amount-btn" data-amount="1000">₹1000</button>
-                    <button class="amount-btn" data-amount="custom">Custom</button>
-                </div>
-                <div id="customAmount" class="mt-4 hidden">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Enter Custom Amount (₹)</label>
-                    <input type="number" id="customAmountInput" min="10" max="10000" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter amount">
-                </div>
-            </div>
-            <button id="payNowButton" onclick="proceedToPayment()" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">Pay Now with Razorpay</button>
-            <div class="mt-4">
-                <h4 class="text-lg font-semibold text-gray-800 mb-2">Recent Contributions</h4>
-                <div id="paymentHistory" class="payment-history">
-                    <p class="text-sm text-gray-500 text-center history-placeholder">No payments yet. Be the first to support!</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="successOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-1050 flex items-center justify-center">
-        <div class="bg-white p-8 rounded-lg max-w-md w-full mx-4 text-center">
-            <i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Payment Successful!</h3>
-            <p class="text-gray-600 mb-4">Thank you for your support! Your contribution helps me continue creating innovative projects.</p>
-            <button onclick="closeSuccessOverlay()" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">Close</button>
-        </div>
-    </div>
 
     <section id="contact" class="py-32 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -994,109 +872,7 @@
         }
         setTimeout(startTypingEffect, 1500);
 
-        // --- Razorpay Modal Functions ---
-        let selectedAmount = 50; 
-        let paymentHistory = [
-            { amount: 500, date: 'Oct 18, 2025' },
-            { amount: 100, date: 'Sep 25, 2025' }
-        ];
-
-        const razorpayModal = document.getElementById('razorpayModal');
-        const customAmountDiv = document.getElementById('customAmount');
-        const customAmountInput = document.getElementById('customAmountInput');
-        const amountButtonsContainer = document.getElementById('amountButtonsContainer');
-        const payNowButton = document.getElementById('payNowButton');
-        const successOverlay = document.getElementById('successOverlay');
-        const paymentHistoryDiv = document.getElementById('paymentHistory');
-
-        function renderPaymentHistory() {
-            if (paymentHistory.length === 0) {
-                paymentHistoryDiv.innerHTML = '<p class="text-sm text-gray-500 text-center history-placeholder">No payments yet. Be the first to support!</p>';
-                return;
-            }
-            paymentHistoryDiv.innerHTML = paymentHistory.map(item => `
-                <div class="payment-item">
-                    <span>${item.date}</span>
-                    <span class="font-semibold text-indigo-600">₹${item.amount.toLocaleString('en-IN')}</span>
-                </div>
-            `).join('');
-        }
-        renderPaymentHistory();
-
-        amountButtonsContainer.querySelectorAll('.amount-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                amountButtonsContainer.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                const amountType = this.getAttribute('data-amount');
-                if (amountType === 'custom') {
-                    customAmountDiv.classList.remove('hidden');
-                    selectedAmount = parseInt(customAmountInput.value) || 0; 
-                } else {
-                    customAmountDiv.classList.add('hidden');
-                    selectedAmount = parseInt(amountType);
-                    customAmountInput.value = '';
-                }
-
-                const displayAmount = selectedAmount > 0 ? selectedAmount.toLocaleString('en-IN') : '...';
-                payNowButton.textContent = `Pay ₹${displayAmount} with Razorpay`;
-                payNowButton.disabled = selectedAmount < 10 && amountType !== 'custom';
-            });
-        });
-
-        customAmountInput.addEventListener('input', function() {
-            selectedAmount = parseInt(this.value) || 0;
-            if (selectedAmount < 10 && this.value !== "") {
-                payNowButton.textContent = "Amount too low (Min ₹10)";
-                payNowButton.disabled = true;
-                payNowButton.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
-                payNowButton.classList.add('bg-red-500');
-            } else {
-                payNowButton.textContent = `Pay ₹${selectedAmount.toLocaleString('en-IN')} with Razorpay`;
-                payNowButton.disabled = false;
-                payNowButton.classList.remove('bg-red-500');
-                payNowButton.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
-            }
-        });
-        
-        document.querySelector('.amount-btn[data-amount="50"]').click();
-
-        function openRazorpayModal() {
-            razorpayModal.classList.add('active');
-        }
-
-        function closeRazorpayModal() {
-            razorpayModal.classList.remove('active');
-        }
-
-        function proceedToPayment() {
-            let finalAmount = selectedAmount;
-            if (document.querySelector('.amount-btn[data-amount="custom"]').classList.contains('active')) {
-                finalAmount = parseInt(customAmountInput.value) || 0;
-            }
-            if (finalAmount < 10) {
-                alert("Please enter a valid amount (minimum ₹10).");
-                return;
-            }
-            closeRazorpayModal();
-            setTimeout(() => {
-                handleSuccessfulPayment(finalAmount);
-            }, 500);
-        }
-        
-        function handleSuccessfulPayment(amount) {
-            const today = new Date().toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' });
-            paymentHistory.unshift({ amount: amount, date: today });
-            paymentHistory = paymentHistory.slice(0, 5);
-            renderPaymentHistory();
-            successOverlay.classList.remove('hidden');
-            setTimeout(() => successOverlay.style.opacity = 1, 10);
-        }
-
-        function closeSuccessOverlay() {
-            successOverlay.classList.add('hidden');
-        }
-
+        // --- Contact Form Submission ---
         function submitContact() {
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
