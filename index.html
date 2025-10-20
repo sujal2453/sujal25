@@ -286,6 +286,93 @@
         }
         .fa-instagram { color: #E1306C; }
         .fa-x-twitter { color: #1DA1F2; }
+        .cashfree-button-container {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            padding: 10px;
+            width: fit-content;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            margin: 0 auto;
+        }
+        .cashfree-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 10px;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        .cashfree-logo-container {
+            width: 40px;
+            height: 40px;
+        }
+        .cashfree-secondary-logo-container {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+        }
+        .cashfree-button-container a {
+            text-decoration: none;
+        }
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .success-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        .success-checkmark {
+            font-size: 80px;
+            color: #22c55e;
+            margin-bottom: 20px;
+        }
+        .success-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .success-close-btn:hover {
+            color: #a5b4fc;
+            transform: rotate(90deg);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+        .pulse-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.3), transparent);
+            transform: translate(-50%, -50%);
+            animation: pulse 2s infinite ease-in-out;
+            z-index: -1;
+        }
 
         /* Hamburger Menu Styles */
         .hamburger {
@@ -522,7 +609,20 @@
                     <p class="text-lg mb-6 opacity-90">Your contributions fuel my pursuit of excellence in technology and education. Every rupee helps me continue my learning journey and create innovative projects.</p>
                     <img src="https://i.postimg.cc/TPhqpbSR/upi-1760696375881.png" alt="UPI QR Code" class="mx-auto rounded-lg shadow-2xl w-full max-w-xs border border-indigo-500/30 mb-4">
                     <p class="text-sm opacity-90 mb-4">Or use Cashfree for secure payment:</p>
-                    <a href="https://payments-test.cashfree.com/links?code=J9bq06b59bp0_AAAAAAClgig" target="_blank" class="btn-animated bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition shadow-xl w-full">Make a Payment</a>
+                    <a href="https://payments.cashfree.com/forms/sujal25" target="_parent" class="cashfree-button-container">
+                        <div>
+                            <img src="https://cashfreelogo.cashfree.com/cashfreepayments/logosvgs/Group_4355.svg" alt="Cashfree Logo" class="cashfree-logo-container">
+                        </div>
+                        <div class="cashfree-text-container">
+                            <div style="font-family: Inter, sans-serif; color: #fff; margin-bottom: 5px; font-size: 14px;">
+                                Pay Now
+                            </div>
+                            <div style="font-family: Inter, sans-serif; color: #fff; font-size: 10px;">
+                                <span>Powered By Cashfree</span>
+                                <img src="https://cashfreelogo.cashfree.com/cashfreepayments/logosvgs/Group_4355.svg" alt="Cashfree Logo" class="cashfree-secondary-logo-container">
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -560,6 +660,17 @@
             </div>
         </div>
     </section>
+
+    <div id="success-overlay" class="success-overlay">
+        <div class="success-content glass-effect">
+            <div class="pulse-bg"></div>
+            <i class="fas fa-check-circle success-checkmark"></i>
+            <h2 class="text-4xl font-bold text-white mb-4">Thank You!</h2>
+            <p class="text-lg text-gray-200 mb-6">Thanks for your support!</p>
+            <button class="btn-animated bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition">Close</button>
+            <i class="fas fa-times success-close-btn" tabindex="0" aria-label="Close success message"></i>
+        </div>
+    </div>
 
     <footer id="footer" class="bg-gray-900/80 glass-effect py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -883,6 +994,79 @@
                 alert("Please fill in all fields (Name, Email, Message) before sending.");
             }
         }
+
+        // --- Payment Success Tracking ---
+        const successOverlay = document.getElementById('success-overlay');
+        const successCloseBtn = successOverlay.querySelector('.success-close-btn');
+        const successCloseButton = successOverlay.querySelector('button');
+
+        function showSuccessMessage() {
+            successOverlay.style.display = 'flex';
+            gsap.fromTo(
+                '.success-content',
+                { scale: 0.5, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.5)' }
+            );
+            gsap.fromTo(
+                '.success-checkmark',
+                { scale: 0, rotation: -180, opacity: 0 },
+                { scale: 1, rotation: 0, opacity: 1, duration: 1, ease: 'elastic.out(1, 0.5)', delay: 0.3 }
+            );
+            gsap.fromTo(
+                '.success-content h2',
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.5 }
+            );
+            gsap.fromTo(
+                '.success-content p',
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.7 }
+            );
+            gsap.fromTo(
+                '.success-content button',
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.9 }
+            );
+            gsap.fromTo(
+                '.success-close-btn',
+                { scale: 0, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.5)', delay: 1 }
+            );
+        }
+
+        function hideSuccessMessage() {
+            gsap.to('.success-content', {
+                scale: 0.5,
+                opacity: 0,
+                duration: 0.5,
+                ease: 'power2.in',
+                onComplete: () => {
+                    successOverlay.style.display = 'none';
+                    // Clear the URL parameter
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                }
+            });
+        }
+
+        // Check for payment success parameter on page load
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('payment') === 'success') {
+                showSuccessMessage();
+            }
+        });
+
+        // Close success message on button or icon click
+        successCloseBtn.addEventListener('click', hideSuccessMessage);
+        successCloseButton.addEventListener('click', hideSuccessMessage);
+
+        // Keyboard accessibility for success close button
+        successCloseBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                hideSuccessMessage();
+            }
+        });
     </script>
 </body>
 </html>
