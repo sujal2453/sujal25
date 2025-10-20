@@ -4,18 +4,124 @@
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Sujal Santosh Wagholikar",
-  "url": "https://sujalwagholikar.online",
-  "image": "https://i.postimg.cc/WzfS97xX/1695115499931.jpg",
-  "sameAs": [
-    "https://www.linkedin.com/in/sujal25",
-    "https://www.instagram.com/sujalwagholikrr"
-  ],
-  "jobTitle": "Full Stack Developer",
-  "description": "MYSELF Sujal Wagholikar — a Class 12 student, web developer, and AI enthusiast."
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Sujal Santosh Wagholikar",
+      "jobTitle": "Full Stack Developer",
+      "description": "Sujal Wagholikar is a Class 12 student, web developer, and AI enthusiast based in Sagroli, Maharashtra, passionate about creating innovative web solutions and exploring AI and aeronautics.",
+      "url": "https://sujalwagholikar.online",
+      "image": "https://i.postimg.cc/WzfS97xX/1695115499931.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/sujal25",
+        "https://www.instagram.com/sujalwagholikrr"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "email": "sujalwagholikar25@gmail.com",
+          "telephone": "+917499970152",
+          "contactType": "Personal"
+        }
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "SSM Sagroli"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sagroli",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "India"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "name": "Sujal Santosh Wagholikar Portfolio",
+      "url": "https://sujalwagholikar.online",
+      "description": "Official portfolio of Sujal Santosh Wagholikar, showcasing projects in AI, web development, and aeronautics."
+    },
+    {
+      "@type": "WebPage",
+      "name": "Sujal Santosh Wagholikar | Full-Stack Developer & Innovator",
+      "url": "https://sujalwagholikar.online",
+      "description": "Explore Sujal Wagholikar's portfolio, featuring innovative projects in AI, aeronautics, and web development, built by a passionate Class 12 student from Sagroli, Maharashtra.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "url": "https://sujalwagholikar.online"
+      },
+      "hasPart": [
+        {
+          "@type": "ItemList",
+          "name": "Navigation Menu",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "url": "https://sujalwagholikar.online/#home"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "About",
+              "url": "https://sujalwagholikar.online/#about"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Projects",
+              "url": "https://sujalwagholikar.online/#projects"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Skills",
+              "url": "https://sujalwagholikar.online/#skills"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Support",
+              "url": "https://sujalwagholikar.online/#support"
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "name": "Connect",
+              "url": "https://sujalwagholikar.online/#contact"
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "name": "TEST M&C",
+              "url": "https://sujalwagholikar.online/test.html"
+            }
+          ]
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Test your General Knowledge",
+          "description": "A proctored online quiz platform with real-time monitoring, Chart.js reports, and responsive design for educational assessments.",
+          "url": "https://sujalwagholikar.online/adv.html"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Research in Aeronautics",
+          "description": "An in-depth exploration of aircraft design, focusing on fuselage and aero engine technologies, with interactive visualizations.",
+          "url": "https://sujalwagholikar.online/aero.html"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Work on AI App",
+          "description": "A productive research for managing tasks with AI and local machine integration.",
+          "url": "https://sujalwagholikar.online/ai.html"
+        }
+      ]
+    }
+  ]
 }
-</script>
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -262,6 +368,108 @@
         }
         .fa-instagram { color: #E1306C; }
         .fa-x-twitter { color: #1DA1F2; }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 36px;
+            height: 28px;
+            cursor: pointer;
+            z-index: 30;
+            padding: 4px;
+            transition: transform 0.3s ease;
+        }
+        .hamburger:hover {
+            transform: scale(1.1);
+        }
+        .hamburger span {
+            width: 100%;
+            height: 4px;
+            background-color: #ffffff;
+            transition: all 0.4s ease;
+            border-radius: 2px;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100vh;
+            width: 300px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95));
+            backdrop-filter: blur(12px);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 3rem;
+            transition: right 0.5s ease;
+            z-index: 20;
+            overflow-y: auto;
+        }
+        .nav-menu.active {
+            right: 0;
+        }
+        .nav-menu .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .nav-menu .close-btn:hover {
+            color: #a5b4fc;
+            transform: rotate(90deg);
+        }
+        .nav-menu a {
+            margin: 0.75rem 0;
+            font-size: 1.125rem;
+            font-weight: 500;
+            text-align: center;
+            width: 80%;
+            padding: 0.75rem 1rem;
+            color: #e0e0e0;
+            position: relative;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #a5b4fc;
+            transition: width 0.3s ease;
+        }
+        .nav-menu a:hover::after {
+            width: 50%;
+        }
+        .nav-menu a:hover {
+            color: #a5b4fc;
+        }
+        .nav-menu .btn-animated {
+            margin: 0.75rem 0;
+            width: 80%;
+            text-align: center;
+        }
     </style>
 </head>
 <body class="text-gray-200 smooth-scroll">
@@ -273,14 +481,22 @@
                         <img src="https://i.postimg.cc/KjP9yvZz/Screenshot-2025-10-18-173415.png" alt="Sujal Wagholikar Logo" class="h-12 w-auto object-contain">
                     </a>
                 </div>
-                <div class="flex items-center space-x-6">
-                    <a href="#home" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Home</a>
-                    <a href="#about" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">About</a>
-                    <a href="#projects" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Projects</a>
-                    <a href="#skills" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Skills</a>
-                    <a href="#support" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Support</a>
-                    <a href="#contact" class="text-gray-300 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Connect</a>
-                    <a href="test.html" class="btn-animated bg-indigo-500 text-white px-4 py-2 rounded-full font-semibold hover:bg-indigo-600 transition text-sm">TEST M&C</a>
+                <div class="flex items-center">
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="nav-menu" id="nav-menu">
+                        <i class="fas fa-times close-btn" id="close-menu" tabindex="0" aria-label="Close menu"></i>
+                        <a href="#home" tabindex="0">Home</a>
+                        <a href="#about" tabindex="0">About</a>
+                        <a href="#projects" tabindex="0">Projects</a>
+                        <a href="#skills" tabindex="0">Skills</a>
+                        <a href="#support" tabindex="0">Support</a>
+                        <a href="#contact" tabindex="0">Connect</a>
+                        <a href="test.html" class="btn-animated bg-indigo-500 text-white px-4 py-2 rounded-full font-semibold hover:bg-indigo-600 transition text-sm" tabindex="0">TEST M&C</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -487,7 +703,7 @@
                 <div>
                     <h4 class="text-lg font-semibold text-indigo-400 mb-4 border-b border-indigo-400/30 pb-2">Connect</h4>
                     <div class="flex flex-col space-y-3">
-                        <a href="mailto:sujalwagholikar25@gmail.com" class="text-gray-300 hover:text-indigo-300 transition text-sm flex items-center justify-center md:justify-start">
+                        <a href="mailto:sujalwagholikar25@gmail.com" class="text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start">
                             <i class="fas fa-envelope mr-2 text-indigo-400"></i> Email
                         </a>
                         <a href="https://www.linkedin.com/in/sujal25" target="_blank" class="social-icon text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start">
@@ -654,6 +870,108 @@
             scrollTrigger: {
                 trigger: "#contact",
                 start: "top 70%",
+            }
+        });
+
+        // --- Hamburger Menu Toggle ---
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+
+            if (isMenuOpen) {
+                gsap.to(navMenu, {
+                    right: 0,
+                    duration: 0.5,
+                    ease: "power3.out"
+                });
+                gsap.fromTo(
+                    "#nav-menu a",
+                    { x: 50, opacity: 0 },
+                    {
+                        x: 0,
+                        opacity: 1,
+                        stagger: 0.1,
+                        duration: 0.6,
+                        ease: "power2.out",
+                        delay: 0.2
+                    }
+                );
+                gsap.fromTo(
+                    ".close-btn",
+                    { scale: 0, opacity: 0 },
+                    {
+                        scale: 1,
+                        opacity: 1,
+                        duration: 0.4,
+                        ease: "back.out(1.5)",
+                        delay: 0.3
+                    }
+                );
+            } else {
+                gsap.to(navMenu, {
+                    right: "-100%",
+                    duration: 0.4,
+                    ease: "power2.in"
+                });
+                gsap.to("#nav-menu a", {
+                    x: 50,
+                    opacity: 0,
+                    duration: 0.3,
+                    stagger: 0.05,
+                    ease: "power2.in"
+                });
+                gsap.to(".close-btn", {
+                    scale: 0,
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: "power2.in"
+                });
+            }
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Add hover animations for nav links
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                gsap.to(link, {
+                    scale: 1.05,
+                    opacity: 0.9,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+            link.addEventListener('mouseleave', () => {
+                gsap.to(link, {
+                    scale: 1,
+                    opacity: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // Keyboard accessibility for close button
+        closeMenuBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu();
             }
         });
 
