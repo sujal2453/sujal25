@@ -37,15 +37,15 @@
     },
     {
       "@type": "WebSite",
-      "name": "Sujal Santosh Wagholikar Portfolio",
+      "name": "Sujal Santosh Wagholikar",
       "url": "https://sujalwagholikar.online",
-      "description": "Official portfolio of Sujal Santosh Wagholikar, showcasing projects in AI, web development, and aeronautics."
+      "description": "Official portfolio of Sujal Santosh Wagholikar, showcasing cutting-edge passion in AI, web development, and aeronautics."
     },
     {
       "@type": "WebPage",
       "name": "Sujal Santosh Wagholikar | Full-Stack Developer & Innovator",
       "url": "https://sujalwagholikar.online",
-      "description": "Explore Sujal Wagholikar's portfolio, featuring innovative projects in AI, aeronautics, and web development, built by a passionate Class 12 student from Sagroli, Maharashtra.",
+      "description": "Explore the portfolio of Sujal Wagholikar, a passionate Class 12 student from Sagroli, Maharashtra, delivering innovative solutions in AI, web development, and aeronautics.",
       "isPartOf": {
         "@type": "WebSite",
         "url": "https://sujalwagholikar.online"
@@ -125,19 +125,19 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sujal Santosh Wagholikar</title>
-    <meta name="description" content="Official portfolio of Sujal Santosh Wagholikar – a passionate Full-Stack Developer, Innovator, and Class 12 student from India. Explore projects in AI, Web Development, and Aeronautics.">
-    <meta name="keywords" content="Sujal Wagholikar, Sujal Santosh Wagholikar, Full Stack Developer, Portfolio, Web Developer, Student, Aeronautics, AI Research, HTML, Tailwind, Node.js, GitHub Pages">
+    <title>Sujal Santosh Wagholikar | Innovator & Developer</title>
+    <meta name="description" content="Discover the portfolio of Sujal Santosh Wagholikar, a Class 12 student from Sagroli, Maharashtra, delivering cutting-edge solutions in AI, web development, and aeronautics.">
+    <meta name="keywords" content="Sujal Wagholikar, Full Stack Developer, AI, Web Development, Aeronautics, Portfolio, Sagroli, Maharashtra, React, Node.js, Tailwind CSS">
     <meta name="author" content="Sujal Santosh Wagholikar">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Sujal Santosh Wagholikar | Full-Stack Developer & Innovator">
-    <meta property="og:description" content="Explore Sujal Wagholikar's portfolio — projects in AI, Aeronautics, and Web Development.">
+    <meta property="og:title" content="Sujal Santosh Wagholikar | Innovator & Developer">
+    <meta property="og:description" content="Explore Sujal Wagholikar's portfolio showcasing innovative projects in AI, web development, and aeronautics.">
     <meta property="og:image" content="https://i.postimg.cc/WzfS97xX/1695115499931.jpg">
     <meta property="og:url" content="https://sujalwagholikar.online">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sujal Santosh Wagholikar | Portfolio">
-    <meta name="twitter:description" content="Discover Sujal Wagholikar’s innovative web projects and research.">
+    <meta name="twitter:description" content="Discover Sujal Wagholikar's innovative projects in AI, web development, and aeronautics.">
     <meta name="twitter:image" content="https://i.postimg.cc/WzfS97xX/1695115499931.jpg">
     <link rel="canonical" href="https://sujalwagholikar.online" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sujalwagholikar.online/sitemap.xml">
@@ -148,391 +148,276 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
+        :root {
+            --primary: #4f46e5;
+            --secondary: #a5b4fc;
+            --accent: #22c55e;
+            --background: #0f172a;
+            --card-bg: rgba(31, 41, 55, 0.8);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #e0e0e0;
+            background: var(--background);
+            color: #e2e8f0;
             overflow-x: hidden;
+            position: relative;
         }
+
         .smooth-scroll {
             scroll-behavior: smooth;
         }
+
         .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
-        .card-hover {
-            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.15);
-        }
-        .btn-animated {
+
+        .btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 9999px;
+            font-weight: 600;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s ease;
-            z-index: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .btn-animated::before {
+
+        .btn-primary::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: 0.6s;
-            z-index: -1;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
         }
-        .btn-animated:hover::before {
+
+        .btn-primary:hover::before {
             left: 100%;
         }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(79, 70, 229, 0.5);
+        }
+
         .typing-text::after {
             content: '|';
             display: inline-block;
             animation: blink 0.7s infinite;
-            color: #a5b4fc;
+            color: var(--secondary);
         }
+
         @keyframes blink {
-            0% { opacity: 1; }
+            0%, 100% { opacity: 1; }
             50% { opacity: 0; }
-            100% { opacity: 1; }
         }
+
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #1e1e2e;
+            background: var(--background);
         }
+
         ::-webkit-scrollbar-thumb {
-            background: #4f46e5;
-            border-radius: 5px;
+            background: var(--primary);
+            border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #4338ca;
         }
-        .support-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .support-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        .project-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7));
-            transition: opacity 0.4s ease;
-            opacity: 0;
-        }
-        .project-card:hover::before {
-            opacity: 1;
-        }
-        .project-card .project-details {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-        }
-        .project-card:hover .project-details {
-            transform: translateY(0);
-        }
-        .social-icon {
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-        .social-icon:hover {
-            transform: scale(1.2);
-            color: #a5b4fc;
-        }
-        .partner-link-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            transition: all 0.3s ease;
-        }
-        .partner-link-container:hover {
-            transform: translateX(5px);
-        }
-        .partner-link-container a {
-            color: #a5b4fc;
-            transition: color 0.3s ease;
-        }
-        .partner-link-container a:hover {
-            color: #818cf8;
-        }
-        .social-icon-footer {
-            transition: color 0.3s ease, transform 0.3s ease;
-            margin-left: 8px;
-        }
-        .social-icon-footer:hover {
-            transform: scale(1.1);
-        }
-        .fa-instagram { color: #E1306C; }
-        .fa-x-twitter { color: #1DA1F2; }
-        .cashfree-button-container {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            display: flex;
-            padding: 10px;
-            width: fit-content;
-            cursor: pointer;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            margin: 0 auto;
-        }
-        .cashfree-text-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-left: 10px;
-            justify-content: center;
-            margin-right: 10px;
-        }
-        .cashfree-logo-container {
-            width: 40px;
-            height: 40px;
-        }
-        .cashfree-secondary-logo-container {
-            width: 16px;
-            height: 16px;
-            vertical-align: middle;
-        }
-        .cashfree-button-container a {
-            text-decoration: none;
-        }
-        .success-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        .success-content {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
-        .success-checkmark {
-            font-size: 80px;
-            color: #22c55e;
-            margin-bottom: 20px;
-        }
-        .success-close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            color: #e0e0e0;
-            cursor: pointer;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        .success-close-btn:hover {
-            color: #a5b4fc;
-            transform: rotate(90deg);
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 0.5; }
-        }
-        .pulse-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(34, 197, 94, 0.3), transparent);
-            transform: translate(-50%, -50%);
-            animation: pulse 2s infinite ease-in-out;
-            z-index: -1;
-        }
 
-        /* Hamburger Menu Styles */
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 36px;
-            height: 28px;
-            cursor: pointer;
-            z-index: 30;
-            padding: 4px;
-            transition: transform 0.3s ease;
-        }
-        .hamburger:hover {
-            transform: scale(1.1);
-        }
-        .hamburger span {
-            width: 100%;
-            height: 4px;
-            background-color: #ffffff;
-            transition: all 0.4s ease;
-            border-radius: 2px;
-        }
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
-        }
         .nav-menu {
             position: fixed;
             top: 0;
             right: -100%;
             height: 100vh;
             width: 300px;
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95));
+            background: var(--card-bg);
             backdrop-filter: blur(12px);
-            border-left: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding-top: 3rem;
-            transition: right 0.5s ease;
-            z-index: 20;
-            overflow-y: auto;
+            padding-top: 4rem;
+            transition: right 0.4s ease;
+            z-index: 999;
         }
+
         .nav-menu.active {
             right: 0;
         }
-        .nav-menu .close-btn {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 1.8rem;
-            color: #e0e0e0;
-            cursor: pointer;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        .nav-menu .close-btn:hover {
-            color: #a5b4fc;
-            transform: rotate(90deg);
-        }
+
         .nav-menu a {
-            margin: 0.75rem 0;
+            color: #e2e8f0;
+            padding: 12px;
             font-size: 1.125rem;
             font-weight: 500;
             text-align: center;
-            width: 80%;
-            padding: 0.75rem 1rem;
-            color: #e0e0e0;
-            position: relative;
-            transition: color 0.3s ease;
-            text-decoration: none;
+            transition: color 0.3s ease, background 0.3s ease;
         }
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #a5b4fc;
-            transition: width 0.3s ease;
-        }
-        .nav-menu a:hover::after {
-            width: 50%;
-        }
+
         .nav-menu a:hover {
-            color: #a5b4fc;
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
         }
-        .nav-menu .btn-animated {
-            margin: 0.75rem 0;
-            width: 80%;
-            text-align: center;
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 32px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        #hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.3));
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .social-links a {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            color: var(--secondary);
+        }
+
+        .highlight-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
-<body class="text-gray-200 smooth-scroll">
-    <nav id="nav" class="glass-effect fixed w-full z-20">
+<body class="smooth-scroll">
+    <nav id="nav" class="glass-effect fixed w-full z-50" role="banner" aria-label="Main navigation">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
+            <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="#home">
-                        <img src="https://i.postimg.cc/KjP9yvZz/Screenshot-2025-10-18-173415.png" alt="Sujal Wagholikar Logo" class="h-12 w-auto object-contain">
+                    <a href="#home" aria-label="Home">
+                        <img src="https://i.postimg.cc/KjP9yvZz/Screenshot-2025-10-18-173415.png" alt="Sujal Wagholikar Logo" class="h-12 w-auto object-contain" loading="lazy">
                     </a>
                 </div>
                 <div class="flex items-center">
-                    <div class="hamburger" id="hamburger">
+                    <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
-                    <div class="nav-menu" id="nav-menu">
-                        <i class="fas fa-times close-btn" id="close-menu" tabindex="0" aria-label="Close menu"></i>
-                        <a href="#home" tabindex="0">Home</a>
-                        <a href="#about" tabindex="0">About</a>
-                        <a href="#projects" tabindex="0">Projects</a>
-                        <a href="#skills" tabindex="0">Skills</a>
-                        <a href="#support" tabindex="0">Support</a>
-                        <a href="#contact" tabindex="0">Connect</a>
-                        <a href="test.html" class="btn-animated bg-indigo-500 text-white px-4 py-2 rounded-full font-semibold hover:bg-indigo-600 transition text-sm" tabindex="0">TEST M&C</a>
+                    <div class="nav-menu" id="nav-menu" role="navigation" aria-hidden="true">
+                        <i class="fas fa-times modal-close" id="close-menu" tabindex="0" aria-label="Close menu"></i>
+                        <a href="#home" tabindex="-1">Home</a>
+                        <a href="#about" tabindex="-1">About</a>
+                        <a href="#projects" tabindex="-1">Projects</a>
+                        <a href="#skills" tabindex="-1">Skills</a>
+                        <a href="#support" tabindex="-1">Support</a>
+                        <a href="#contact" tabindex="-1">Connect</a>
+                        <a href="test.html" class="btn-primary text-sm" tabindex="-1">TEST M&C</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-indigo-700 to-violet-900">
-        <div id="hero-content" class="text-center z-10">
-            <h2 class="text-5xl md:text-7xl font-extrabold mb-4 text-white tracking-tight">Sujal Wagholikar</h2>
-            <p id="typing-text-target" class="text-xl md:text-3xl mb-8 text-indigo-200 typing-text">Full-Stack Developer | Innovator | Student</p>
-            <a href="#contact" class="btn-animated bg-indigo-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-indigo-600 transition shadow-xl text-lg">Connect with Me</a>
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-900" role="main" aria-label="Hero section">
+        <div id="hero-particles"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-4 text-white tracking-tight leading-tight">
+                Welcome to the World of <span class="highlight-text">Sujal Wagholikar</span>
+            </h1>
+            <p id="typing-text-target" class="text-lg sm:text-xl md:text-2xl mb-8 text-gray-300 font-light typing-text" aria-live="polite">
+                           PASSIONATE IN AI , WEB DEVELOPMENT AND AERONAUICS 
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" target="_blank" rel="noopener" class="btn-primary text-base sm:text-lg" aria-label="Start a collaboration with Sujal via email">JOIN US </a>
+                <a href="#projects" class="btn-primary bg-transparent border-2 border-indigo-500 text-white hover:bg-indigo-500/20 text-base sm:text-lg" aria-label="Explore Sujal's projects">Explore My Work</a>
+            </div>
+            <div class="social-links flex justify-center gap-6">
+                <a href="https://www.linkedin.com/in/sujal25" target="_blank" rel="noopener" aria-label="Sujal's LinkedIn profile">
+                    <i class="fab fa-linkedin text-2xl sm:text-3xl text-gray-300" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/sujalwagholikrr" target="_blank" rel="noopener" aria-label="Sujal's Instagram profile">
+                    <i class="fab fa-instagram text-2xl sm:text-3xl text-gray-300" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:sujalwagholikar25@gmail.com" aria-label="Email Sujal">
+                    <i class="fas fa-envelope text-2xl sm:text-3xl text-gray-300" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    <section id="about" class="py-32 bg-transparent">
+    <section id="about" class="py-20 sm:py-32 bg-transparent" aria-labelledby="about-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center mb-16 section-heading text-white">About Me</h2>
-            <div class="flex flex-col md:flex-row items-center gap-16">
+            <h2 id="about-heading" class="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-white">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8 lg:gap-16">
                 <div class="md:w-1/2 about-media-anim">
-                    <img src="https://i.postimg.cc/WzfS97xX/1695115499931.jpg" alt="Sujal Wagholikar" class="rounded-2xl shadow-2xl w-full max-w-md mx-auto border border-indigo-500/30">
+                    <img src="https://i.postimg.cc/WzfS97xX/1695115499931.jpg" alt="Portrait of Sujal Wagholikar, a young developer from Sagroli, Maharashtra" class="rounded-2xl shadow-2xl w-full max-w-md mx-auto glass-effect" loading="lazy" onload="this.classList.add('loaded')">
                 </div>
                 <div class="md:w-1/2 about-text-anim">
-                    <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                        I'm Sujal Santosh Wagholikar, a dedicated **Class 12th student** currently pursuing my studies at **RCSSV School in Sagroli, Maharashtra**. My roots are in **Sagroli**, and my passion lies in crafting innovative web solutions and exploring the frontiers of AI.
+                    <p class="text-base sm:text-lg text-gray-300 leading-relaxed mb-6">
+                        I'm Sujal Santosh Wagholikar, a <strong>Class 12 student</strong> at <strong>RCSSV School, Sagroli, Maharashtra</strong>. Rooted in Sagroli, my passion drives me to create innovative web solutions and explore the frontiers of AI and aeronautics.
                     </p>
-                    <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                        My journey in technology is driven by curiosity and a commitment to excellence, blending creativity with technical expertise. I'm actively involved in research and development, and also contribute my skills professionally at **SSM Sagroli**.
+                    <p class="text-base sm:text-lg text-gray-300 leading-relaxed mb-6">
+                        My journey blends creativity with technical expertise, fueled by curiosity and a commitment to excellence. At <strong>SSM Sagroli</strong>, I contribute professionally while pushing boundaries through research and development.
                     </p>
-                    <div class="glass-effect rounded-xl p-4 mt-6">
-                        <h3 class="text-xl font-semibold text-indigo-400 mb-2 flex items-center"><i class="fas fa-users mr-3"></i> Research & Analysis Partners:</h3>
+                    <div class="glass-effect rounded-xl p-6 mt-6">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-2 flex items-center">
+                            <i class="fas fa-users mr-3" aria-hidden="true"></i> Collaborative Innovation
+                        </h3>
                         <p class="text-gray-300 leading-relaxed text-base">
-                            I collaborate closely with a team of talented individuals on various projects.
+                            I work with a talented team to bring impactful projects to life, combining diverse expertise for groundbreaking results.
                         </p>
                     </div>
                 </div>
@@ -540,329 +425,363 @@
         </div>
     </section>
 
-    <section id="projects" class="py-32 bg-transparent">
+    <section id="projects" class="py-20 sm:py-32 bg-transparent" aria-labelledby="projects-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center mb-16 section-heading text-white">My Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 project-grid">
-                <div class="project-card glass-effect rounded-2xl overflow-hidden card-hover project-item">
-                    <img src="https://www.brainfacts.org/-/media/Brainfacts2/In-the-Lab/Tools-and-Techniques/Article-Images/Network-Neuroscience-Thumbnail.jpg" alt="General Knowledge Quiz Platform" class="w-full h-64 object-cover">
+            <h2 id="projects-heading" class="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-white">Featured Projects</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 project-grid">
+                <div class="glass-effect rounded-2xl overflow-hidden project-card">
+                    <img src="https://www.brainfacts.org/-/media/Brainfacts2/In-the-Lab/Tools-and-Techniques/Article-Images/Network-Neuroscience-Thumbnail.jpg" alt="Screenshot of General Knowledge Quiz Platform interface" class="w-full h-64 object-cover" loading="lazy" onload="this.classList.add('loaded')">
                     <div class="project-details text-white p-6">
-                        <h3 class="text-xl font-semibold mb-2">Test your General Knowledge</h3>
-                        <p class="text-sm opacity-90">A proctored online quiz platform with real-time monitoring, Chart.js reports, and responsive design for educational assessments.</p>
-                        <a href="adv.html" class="btn-animated mt-4 inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-600">View Project</a>
+                        <h3 class="text-xl font-semibold mb-2">General Knowledge Quiz</h3>
+                        <p class="text-sm opacity-90 mb-4">A proctored online quiz platform with real-time monitoring, Chart.js analytics, and responsive design for seamless educational assessments.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge bg-gray-700/50 px-3 py-1 rounded-full text-xs">HTML/CSS/JS</span>
+                            <span class="tech-badge bg-gray-700/50 px-3 py-1 rounded-full text-xs">Chart.js</span>
+                            <span class="tech-badge bg-gray-700/50 px-3 py-1 rounded-full text-xs">Responsive Design</span>
+                        </div>
+                        <a href="adv.html" class="btn-primary text-sm" aria-label="View General Knowledge Quiz project">Explore Project</a>
                     </div>
                 </div>
-                <div class="project-card glass-effect rounded-2xl overflow-hidden card-hover project-item">
-                    <img src="https://mvjce.edu.in/wp-content/uploads/2022/11/Reasons-To-Choose-Aeronautical-Engineering-As-A-Career-Option.webp" alt="Aeronautics Research" class="w-full h-64 object-cover">
+                <div class="glass-effect rounded-2xl overflow-hidden project-card">
+                    <img src="https://mvjce.edu.in/wp-content/uploads/2022/11/Reasons-To-Choose-Aeronautical-Engineering-As-A-Career-Option.webp" alt="Visualization of aeronautical research on aircraft design" class="w-full h-64 object-cover" loading="lazy" onload="this.classList.add('loaded')">
                     <div class="project-details text-white p-6">
-                        <h3 class="text-xl font-semibold mb-2">Research in Aeronautics</h3>
-                        <p class="text-sm opacity-90">An in-depth exploration of aircraft design, focusing on fuselage and aero engine technologies, with interactive visualizations.</p>
-                        <a href="aero.html" class="btn-animated mt-4 inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-600">Know more - Click Now</a>
+                        <h3 class="text-xl font-semibold mb-2">Aeronautics Research</h3>
+                        <p class="text-sm opacity-90 mb-4">In-depth exploration of aircraft design, focusing on fuselage and aero engine technologies with interactive visualizations.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge bg-gray-700/50 px-3 py-1 rounded-full text-xs">Research</span>
+                            <span class="tech-badge bg-gray-700/50 px-3 py-1 rounded-full text-xs">3D Visualization</span>
+                            <span class="tech-badge bg-gray-700/50 px-3 py-1 rounded-full text-xs">Aeronautics</span>
+                        </div>
+                        <a href="aero.html" class="btn-primary text-sm" aria-label="Learn more about Aeronautics Research">Discover More</a>
                     </div>
                 </div>
-                <div class="project-card glass-effect rounded-2xl overflow-hidden card-hover project-item">
-                    <img src="https://risktec.tuv.com/wp-content/uploads/2020/04/shutterstock_1154457493-cropped-1024x681.jpg" alt="AI Task Manager App" class="w-full h-64 object-cover">
+                <div class="glass-effect rounded-2xl overflow-hidden project-card">
+                    <img src="https://risktec.tuv.com/wp-content/uploads/2020/04/shutterstock_1154457493-cropped-1024x681.jpg" alt="Interface of AI Task Manager App" class="w-full h-64 object-cover" loading="lazy" onload="this.classList.add('loaded')">
                     <div class="project-details text-white p-6">
-                        <h3 class="text-xl font-semibold mb-2">Work on AI App</h3>
-                        <p class="text-sm opacity-90">A productive research for managing tasks with AI and local machine integration.</p>
-                        <a href="ai.html" class="btn-animated mt-4 inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-600">View more</a>
+                        <h3 class="text-xl font-semibold mb-2">AI Task Manager</h3>
+                        <p class="text-sm opacity-90 mb-4">A productivity app leveraging AI for task management with seamless local machine integration.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge bg-gray-700/50 px-3 py-1 rounded-full text-xs">AI/ML</span>
+                            <span class="tech-badge bg-gray-700/50 px-3 py-1 rounded-full text-xs">Node.js</span>
+                            <span class="tech-badge bg-gray-700/50 px-3 py-1 rounded-full text-xs">Productivity</span>
+                        </div>
+                        <a href="ai.html" class="btn-primary text-sm" aria-label="View AI Task Manager project">See Details</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-32 bg-transparent">
+    <section id="skills" class="py-20 sm:py-32 bg-transparent" aria-labelledby="skills-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center mb-16 section-heading text-white">My Skills</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 skill-grid">
-                <div class="glass-effect rounded-2xl p-8 card-hover skill-item">
-                    <i class="fas fa-code text-indigo-400 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Web Development</h3>
-                    <p class="text-gray-300">Proficient in HTML, CSS, JavaScript, React, and Tailwind CSS for building responsive, modern websites.</p>
+            <h2 id="skills-heading" class="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-white">Core Competencies</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 skill-grid">
+                <div class="glass-effect rounded-xl p-6 sm:p-8 skill-item">
+                    <i class="fas fa-code text-indigo-300 text-3xl sm:text-4xl mb-4" aria-hidden="true"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Web Development</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Expertise in HTML, CSS, JavaScript, React, and Tailwind CSS to craft responsive, user-centric websites.</p>
                 </div>
-                <div class="glass-effect rounded-2xl p-8 card-hover skill-item">
-                    <i class="fas fa-server text-indigo-400 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Backend Development</h3>
-                    <p class="text-gray-300">Skilled in Node.js, Express, and MongoDB for creating robust server-side applications.</p>
+                <div class="glass-effect rounded-xl p-6 sm:p-8 skill-item">
+                    <i class="fas fa-server text-indigo-300 text-3xl sm:text-4xl mb-4" aria-hidden="true"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Backend Development</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Proficient in Node.js, Express, and MongoDB for building scalable server-side solutions.</p>
                 </div>
-                <div class="glass-effect rounded-2xl p-8 card-hover skill-item">
-                    <i class="fas fa-swimmer text-indigo-400 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Competitive Swimming</h3>
-                    <p class="text-gray-300">State-level competitor with a focus on discipline and performance.</p>
+                <div class="glass-effect rounded-xl p-6 sm:p-8 skill-item">
+                    <i class="fas fa-swimmer text-indigo-300 text-3xl sm:text-4xl mb-4" aria-hidden="true"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Competitive Swimming</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">State-level athlete with a focus on discipline and peak performance.</p>
                 </div>
-                <div class="glass-effect rounded-2xl p-8 card-hover skill-item">
-                    <i class="fas fa-graduation-cap text-indigo-400 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Academic Excellence</h3>
-                    <p class="text-gray-300">Consistently high performance in STEM subjects, with a 90% score in Class 10th.</p>
+                <div class="glass-effect rounded-xl p-6 sm:p-8 skill-item">
+                    <i class="fas fa-graduation-cap text-indigo-300 text-3xl sm:text-4xl mb-4" aria-hidden="true"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Academic Excellence</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Achieved 90% in Class 10th, excelling in STEM disciplines.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="support" class="py-32 bg-transparent">
+    <section id="support" class="py-20 sm:py-32 bg-transparent" aria-labelledby="support-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center mb-16 section-heading text-white">Support My Journey</h2>
+            <h2 id="support-heading" class="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-white">Support My Vision</h2>
             <div class="flex justify-center">
-                <div class="support-card glass-effect rounded-2xl p-10 text-white text-center support-content-anim max-w-md w-full">
-                    <h3 class="text-2xl font-bold mb-4">Kindly Support My Work</h3>
-                    <p class="text-lg mb-6 opacity-90">Your contributions fuel my pursuit of excellence in technology and education. Every rupee helps me continue my learning journey and create innovative projects.</p>
-                    <img src="https://i.postimg.cc/TPhqpbSR/upi-1760696375881.png" alt="UPI QR Code" class="mx-auto rounded-lg shadow-2xl w-full max-w-xs border border-indigo-500/30 mb-4">
-                    <p class="text-sm opacity-90 mb-4">Or use Cashfree for secure payment:</p>
-                    <a href="https://payments.cashfree.com/forms/sujal25" target="_parent" class="cashfree-button-container">
-                        <div>
-                            <img src="https://cashfreelogo.cashfree.com/cashfreepayments/logosvgs/Group_4355.svg" alt="Cashfree Logo" class="cashfree-logo-container">
-                        </div>
-                        <div class="cashfree-text-container">
-                            <div style="font-family: Inter, sans-serif; color: #fff; margin-bottom: 5px; font-size: 14px;">
-                                Pay Now
-                            </div>
-                            <div style="font-family: Inter, sans-serif; color: #fff; font-size: 10px;">
-                                <span>Powered By Cashfree</span>
-                                <img src="https://cashfreelogo.cashfree.com/cashfreepayments/logosvgs/Group_4355.svg" alt="Cashfree Logo" class="cashfree-secondary-logo-container">
-                            </div>
-                        </div>
-                    </a>
+                <div class="glass-effect rounded-2xl p-8 sm:p-10 text-white text-center support-content-anim max-w-md w-full">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4">Empower Innovation</h3>
+                    <p class="text-base sm:text-lg mb-6 opacity-90">Your support fuels my journey in technology and education, enabling new projects and cutting-edge research.</p>
+                    <img src="https://i.postimg.cc/TPhqpbSR/upi-1760696375881.png" alt="UPI QR Code for donations to Sujal Wagholikar" class="mx-auto rounded-lg shadow-2xl w-full max-w-xs mb-4" loading="lazy" onload="this.classList.add('loaded')">
+                    <p class="text-sm opacity-90 mb-4">Or contribute securely via Cashfree:</p>
+                    <a href="https://payments.cashfree.com/forms/sujal25" target="_blank" rel="noopener" class="btn-primary text-sm" aria-label="Support via Cashfree">Contribute Now</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 bg-transparent">
+    <section id="contact" class="py-20 sm:py-32 bg-transparent" aria-labelledby="contact-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center mb-16 section-heading text-white">Join Us</h2>
+            <h2 id="contact-heading" class="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-white">Get in Touch</h2>
             <div class="max-w-lg mx-auto contact-form-anim">
-                <div class="space-y-8 glass-effect rounded-2xl p-8">
+                <div class="glass-effect rounded-2xl p-8 space-y-6">
                     <div class="flex items-center space-x-4">
-                        <i class="fas fa-envelope text-indigo-400 text-2xl"></i>
-                        <p class="text-lg text-gray-300"><a href="mailto:sujalwagholikar25@gmail.com" class="text-indigo-400 hover:text-indigo-300 transition">sujalwagholikar25@gmail.com</a></p>
+                        <i class="fas fa-envelope text-indigo-300 text-xl sm:text-2xl" aria-hidden="true"></i>
+                        <p class="text-base sm:text-lg text-gray-300">
+                            <a href="mailto:sujalwagholikar25@gmail.com" class="text-indigo-300 hover:text-indigo-400 transition" aria-label="Send email to Sujal">sujalwagholikar25@gmail.com</a>
+                        </p>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <i class="fas fa-phone text-indigo-400 text-2xl"></i>
-                        <p class="text-lg text-gray-300"><a href="tel:+917499970152" class="text-indigo-400 hover:text-indigo-300 transition">+91 7499970152</a></p>
+                        <i class="fas fa-phone text-indigo-300 text-xl sm:text-2xl" aria-hidden="true"></i>
+                        <p class="text-base sm:text-lg text-gray-300">
+                            <a href="tel:+917499970152" class="text-indigo-300 hover:text-indigo-400 transition" aria-label="Call Sujal">+91 7499970152</a>
+                        </p>
                     </div>
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
-                        <input type="text" id="name" class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3" placeholder="Your Name">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
-                        <input type="email" id="email" class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3" placeholder="your@email.com">
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
-                        <textarea id="message" rows="5" class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3" placeholder="Your message here..."></textarea>
-                    </div>
-                    <div>
-                        <button onclick="submitContact()" class="btn-animated w-full bg-indigo-500 text-white px-6 py-4 rounded-md font-semibold hover:bg-indigo-600 transition shadow-xl">Send Message</button>
-                    </div>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300">Full Name <span class="text-red-400">*</span></label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3" placeholder="Your full name" aria-describedby="name-error">
+                            <div id="name-error" class="text-red-400 text-sm mt-1" aria-live="polite"></div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300">Email Address <span class="text-red-400">*</span></label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3" placeholder="your@email.com" aria-describedby="email-error">
+                            <div id="email-error" class="text-red-400 text-sm mt-1" aria-live="polite"></div>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-300">Message <span class="text-red-400">*</span></label>
+                            <textarea id="message" name="message" rows="5" required class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3" placeholder="Share your project or collaboration idea..." aria-describedby="message-error"></textarea>
+                            <div id="message-error" class="text-red-400 text-sm mt-1" aria-live="polite"></div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn-primary w-full" aria-label="Submit contact form">Send Message</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="success-overlay" class="success-overlay">
-        <div class="success-content glass-effect">
-            <div class="pulse-bg"></div>
-            <i class="fas fa-check-circle success-checkmark"></i>
-            <h2 class="text-4xl font-bold text-white mb-4">Thank You!</h2>
-            <p class="text-lg text-gray-200 mb-6">Thanks for your support!</p>
-            <button class="btn-animated bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition">Close</button>
-            <i class="fas fa-times success-close-btn" tabindex="0" aria-label="Close success message"></i>
+    <div id="success-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[1000] hidden" role="dialog" aria-modal="true" aria-labelledby="success-title" aria-hidden="true">
+        <div class="glass-effect rounded-2xl p-8 max-w-md w-full text-center">
+            <i class="fas fa-times absolute top-4 right-4 text-gray-300 cursor-pointer hover:text-indigo-400 transition transform hover:rotate-90" id="modal-close" tabindex="0" aria-label="Close success message"></i>
+            <i class="fas fa-check-circle text-5xl text-green-500 mb-4" aria-hidden="true"></i>
+            <h2 id="success-title" class="text-2xl font-bold text-white mb-4">Message Sent!</h2>
+            <p class="text-gray-300 mb-6">Thank you for reaching out. I'll respond within 24-48 hours.</p>
+            <button class="btn-primary" aria-label="Close success message">Close</button>
         </div>
     </div>
 
-    <footer id="footer" class="bg-gray-900/80 glass-effect py-12">
+    <footer id="footer" class="glass-effect py-12" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
                 <div>
-                    <img src="https://i.postimg.cc/BbTynwYV/Screenshot-2025-10-19-132402.png" alt="Sujal Wagholikar Logo" class="h-10 w-auto object-contain mb-4 mx-auto md:mx-0">
-                    <p class="text-sm text-gray-400 leading-relaxed">&copy; 2025 Sujal Wagholikar. All rights reserved.</p>
-                    <p class="text-xs text-gray-500 mt-2">Crafting innovative solutions from Sagroli, MH.</p>
+                    <img src="https://i.postimg.cc/BbTynwYV/Screenshot-2025-10-19-132402.png" alt="Sujal Wagholikar Logo" class="h-10 w-auto object-contain mb-4 mx-auto md:mx-0" loading="lazy" onload="this.classList.add('loaded')">
+                    <p class="text-sm text-gray-400">&copy; 2025 Sujal Wagholikar. All rights reserved.</p>
+                    <p class="text-xs text-gray-500 mt-2">Innovating from Sagroli, Maharashtra.</p>
                 </div>
                 <div>
-                    <h4 class="text-lg font-semibold text-indigo-400 mb-4 border-b border-indigo-400/30 pb-2">Quick Links</h4>
+                    <h4 class="text-lg font-semibold text-indigo-300 mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#about" class="text-gray-300 hover:text-indigo-300 transition">About</a></li>
-                        <li><a href="#projects" class="text-gray-300 hover:text-indigo-300 transition">Projects</a></li>
-                        <li><a href="#skills" class="text-gray-300 hover:text-indigo-300 transition">My Skills</a></li>
-                        <li><a href="#support" class="text-gray-300 hover:text-indigo-300 transition">Support Me</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-indigo-400 transition">About</a></li>
+                        <li><a href="#projects" class="text-gray-300 hover:text-indigo-400 transition">Projects</a></li>
+                        <li><a href="#skills" class="text-gray-300 hover:text-indigo-400 transition">Skills</a></li>
+                        <li><a href="#support" class="text-gray-300 hover:text-indigo-400 transition">Support</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-lg font-semibold text-indigo-400 mb-4 border-b border-indigo-400/30 pb-2">Connect</h4>
+                    <h4 class="text-lg font-semibold text-indigo-300 mb-4">Connect</h4>
                     <div class="flex flex-col space-y-3">
-                        <a href="mailto:sujalwagholikar25@gmail.com" class="text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start">
-                            <i class="fas fa-envelope mr-2 text-indigo-400"></i> Email
+                        <a href="mailto:sujalwagholikar25@gmail.com" class="text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start" aria-label="Email Sujal">
+                            <i class="fas fa-envelope mr-2 text-indigo-300" aria-hidden="true"></i> Email
                         </a>
-                        <a href="https://www.linkedin.com/in/sujal25" target="_blank" class="social-icon text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start">
-                            <i class="fab fa-linkedin text-lg mr-2"></i> LinkedIn
+                        <a href="https://www.linkedin.com/in/sujal25" target="_blank" rel="noopener" class="text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start" aria-label="Sujal's LinkedIn profile">
+                            <i class="fab fa-linkedin text-lg mr-2" aria-hidden="true"></i> LinkedIn
                         </a>
-                        <a href="https://www.instagram.com/sujalwagholikrr" target="_blank" class="social-icon text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start">
-                            <i class="fab fa-instagram text-lg mr-2"></i> Instagram
+                        <a href="https://www.instagram.com/sujalwagholikrr" target="_blank" rel="noopener" class="text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start" aria-label="Sujal's Instagram profile">
+                            <i class="fab fa-instagram text-lg mr-2" aria-hidden="true"></i> Instagram
                         </a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="text-lg font-semibold text-indigo-400 mb-4 border-b border-indigo-400/30 pb-2">Research Partners</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li class="partner-link-container justify-center md:justify-start">
-                            Anirudha Wagholikar 
-                            <a href="#instagram_id" target="_blank" aria-label="Anirudha Wagholikar Instagram">
-                                <i class="fab fa-instagram social-icon-footer text-base"></i>
+                    <h4 class="text-lg font-semibold text-indigo-300 mb-4">Research Partners</h4>
+                    <ul class="space-y-2 text-sm" aria-label="List of research collaborators">
+                        <li class="flex items-center justify-center md:justify-start gap-2">
+                            Anirudha Wagholikar
+                            <a href="https://www.instagram.com/anirudha_wagholikar" target="_blank" rel="noopener" aria-label="Anirudha Wagholikar Instagram">
+                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
                             </a>
-                            <a href="#twitter_id" target="_blank" aria-label="Anirudha Wagholikar Twitter">
-                                <i class="fab fa-x-twitter social-icon-footer text-base"></i>
+                            <a href="https://twitter.com/anirudha_wag" target="_blank" rel="noopener" aria-label="Anirudha Wagholikar Twitter">
+                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
                             </a>
                         </li>
-                        <li class="partner-link-container justify-center md:justify-start">
+                        <li class="flex items-center justify-center md:justify-start gap-2">
                             Parth Wagholikar
-                            <a href="#instagram_id" target="_blank" aria-label="Parth Wagholikar Instagram">
-                                <i class="fab fa-instagram social-icon-footer text-base"></i>
+                            <a href="https://www.instagram.com/parth_wagholikar" target="_blank" rel="noopener" aria-label="Parth Wagholikar Instagram">
+                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
                             </a>
-                            <a href="#twitter_id" target="_blank" aria-label="Parth Wagholikar Twitter">
-                                <i class="fab fa-x-twitter social-icon-footer text-base"></i>
+                            <a href="https://twitter.com/parth_wag" target="_blank" rel="noopener" aria-label="Parth Wagholikar Twitter">
+                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
                             </a>
                         </li>
-                        <li class="partner-link-container justify-center md:justify-start">
+                        <li class="flex items-center justify-center md:justify-start gap-2">
                             Sharvari Wagholikar
-                            <a href="#instagram_id" target="_blank" aria-label="Sharvari Wagholikar Instagram">
-                                <i class="fab fa-instagram social-icon-footer text-base"></i>
+                            <a href="https://www.instagram.com/sharvari_wagholikar" target="_blank" rel="noopener" aria-label="Sharvari Wagholikar Instagram">
+                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
                             </a>
-                            <a href="#twitter_id" target="_blank" aria-label="Sharvari Wagholikar Twitter">
-                                <i class="fab fa-x-twitter social-icon-footer text-base"></i>
+                            <a href="https://twitter.com/sharvari_wag" target="_blank" rel="noopener" aria-label="Sharvari Wagholikar Twitter">
+                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
                             </a>
                         </li>
-                        <li class="partner-link-container justify-center md:justify-start">
+                        <li class="flex items-center justify-center md:justify-start gap-2">
                             Akash Dharmadhikari
-                            <a href="#instagram_id" target="_blank" aria-label="Akash Dharmadhikari Instagram">
-                                <i class="fab fa-instagram social-icon-footer text-base"></i>
+                            <a href="https://www.instagram.com/akash_dharmadhikari" target="_blank" rel="noopener" aria-label="Akash Dharmadhikari Instagram">
+                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
                             </a>
-                            <a href="#twitter_id" target="_blank" aria-label="Akash Dharmadhikari Twitter">
-                                <i class="fab fa-x-twitter social-icon-footer text-base"></i>
+                            <a href="https://twitter.com/akash_dharma" target="_blank" rel="noopener" aria-label="Akash Dharmadhikari Twitter">
+                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
                             </a>
                         </li>
-                        <li class="partner-link-container justify-center md:justify-start">
+                        <li class="flex items-center justify-center md:justify-start gap-2">
                             Disha Dharmadhikari
-                            <a href="#instagram_id" target="_blank" aria-label="Disha Dharmadhikari Instagram">
-                                <i class="fab fa-instagram social-icon-footer text-base"></i>
+                            <a href="https://www.instagram.com/disha_dharmadhikari" target="_blank" rel="noopener" aria-label="Disha Dharmadhikari Instagram">
+                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
                             </a>
-                            <a href="#twitter_id" target="_blank" aria-label="Disha Dharmadhikari Twitter">
-                                <i class="fab fa-x-twitter social-icon-footer text-base"></i>
+                            <a href="https://twitter.com/disha_dharma" target="_blank" rel="noopener" aria-label="Disha Dharmadhikari Twitter">
+                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-10 pt-6 border-t border-gray-700/50">
-                <p class="text-sm text-gray-500 text-center">Built with passion using HTML, Tailwind CSS, and GSAP for immersive animations.</p>
+            <div class="mt-8 pt-6 border-t border-gray-700/50 text-center">
+                <p class="text-sm text-gray-500">Designed & developed with passion using HTML, Tailwind CSS, GSAP, and Particles.js for a dynamic, accessible experience.</p>
             </div>
         </div>
     </footer>
-    
+
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // --- GSAP Scroll Animations ---
+        // --- Initialize Particles.js for Hero Section ---
+        particlesJS('hero-particles', {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 1000 } },
+                color: { value: ['#4f46e5', '#a5b4fc', '#22c55e'] },
+                shape: { type: 'circle', stroke: { width: 0 } },
+                opacity: { value: 0.4, random: true },
+                size: { value: 4, random: true },
+                line_linked: { enable: true, distance: 150, color: '#a5b4fc', opacity: 0.2, width: 1 },
+                move: { enable: true, speed: 3, direction: 'none', random: true }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
+                modes: { grab: { distance: 200 }, push: { particles_nb: 3 } }
+            },
+            retina_detect: true
+        });
+
+        // --- GSAP Animations for Hero Section ---
         gsap.from("#nav", {
             y: -100,
             opacity: 0,
-            duration: 0.8,
-            ease: "power2.out"
+            duration: 1,
+            ease: "power4.out"
         });
 
-        gsap.from("#hero-content h2, #hero-content p, #hero-content a", {
+        gsap.from(".hero-content h1", {
+            y: 100,
             opacity: 0,
-            y: 50,
-            scale: 0.9,
-            stagger: 0.3,
             duration: 1.2,
-            ease: "power3.out"
+            ease: "power4.out",
+            delay: 0.2
         });
 
+        gsap.from(".hero-content p", {
+            y: 80,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.4
+        });
+
+        gsap.from(".hero-content .btn-primary", {
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            stagger: 0.2,
+            delay: 0.6
+        });
+
+        gsap.from(".social-links a", {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power3.out",
+            stagger: 0.1,
+            delay: 0.8
+        });
+
+        // --- Other Section Animations ---
         gsap.utils.toArray(".section-heading").forEach(heading => {
             gsap.from(heading, {
-                y: 50,
+                y: 40,
                 opacity: 0,
                 duration: 1,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: heading,
-                    start: "top 80%",
-                }
+                ease: "power3.out",
+                scrollTrigger: { trigger: heading, start: "top 80%" }
             });
         });
 
         gsap.from(".about-media-anim", {
-            x: -100,
+            x: -120,
             opacity: 0,
-            duration: 1.2,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: "#about",
-                start: "top 60%",
-            }
-        });
-        gsap.from(".about-text-anim", {
-            x: 100,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: "#about",
-                start: "top 60%",
-            }
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: { trigger: "#about", start: "top 70%" }
         });
 
-        gsap.from(".project-item", {
+        gsap.from(".about-text-anim", {
+            x: 120,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: { trigger: "#about", start: "top 70%" }
+        });
+
+        gsap.from(".project-card", {
             y: 80,
             opacity: 0,
             duration: 1,
-            ease: "back.out(1.2)",
+            ease: "power3.out",
             stagger: 0.2,
-            scrollTrigger: {
-                trigger: ".project-grid",
-                start: "top 70%",
-            }
+            scrollTrigger: { trigger: ".project-grid", start: "top 70%" }
         });
 
         gsap.from(".skill-item", {
-            y: 100,
+            y: 60,
             opacity: 0,
-            scale: 0.8,
-            duration: 0.8,
-            ease: "elastic.out(1, 0.5)",
+            scale: 0.9,
+            duration: 1,
+            ease: "elastic.out(1, 0.6)",
             stagger: 0.15,
-            scrollTrigger: {
-                trigger: "#skills",
-                start: "top 70%",
-            }
+            scrollTrigger: { trigger: "#skills", start: "top 70%" }
         });
 
         gsap.from(".support-content-anim", {
-            y: 100,
+            y: 80,
             opacity: 0,
-            rotationX: 90,
-            duration: 1.5,
+            duration: 1.2,
             ease: "power3.out",
-            scrollTrigger: {
-                trigger: "#support",
-                start: "top 70%",
-            }
+            scrollTrigger: { trigger: "#support", start: "top 70%" }
         });
-        
+
         gsap.from(".contact-form-anim", {
             y: 80,
             opacity: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: "#contact",
-                start: "top 70%",
-            }
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: { trigger: "#contact", start: "top 70%" }
         });
 
-        // --- Hamburger Menu Toggle ---
+        // --- Navigation Menu ---
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const closeMenuBtn = document.getElementById('close-menu');
@@ -872,201 +791,166 @@
             isMenuOpen = !isMenuOpen;
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
-
-            if (isMenuOpen) {
-                gsap.to(navMenu, {
-                    right: 0,
-                    duration: 0.5,
-                    ease: "power3.out"
-                });
-                gsap.fromTo(
-                    "#nav-menu a",
-                    { x: 50, opacity: 0 },
-                    {
-                        x: 0,
-                        opacity: 1,
-                        stagger: 0.1,
-                        duration: 0.6,
-                        ease: "power2.out",
-                        delay: 0.2
-                    }
-                );
-                gsap.fromTo(
-                    ".close-btn",
-                    { scale: 0, opacity: 0 },
-                    {
-                        scale: 1,
-                        opacity: 1,
-                        duration: 0.4,
-                        ease: "back.out(1.5)",
-                        delay: 0.3
-                    }
-                );
-            } else {
-                gsap.to(navMenu, {
-                    right: "-100%",
-                    duration: 0.4,
-                    ease: "power2.in"
-                });
-                gsap.to("#nav-menu a", {
-                    x: 50,
-                    opacity: 0,
-                    duration: 0.3,
-                    stagger: 0.05,
-                    ease: "power2.in"
-                });
-                gsap.to(".close-btn", {
-                    scale: 0,
-                    opacity: 0,
-                    duration: 0.3,
-                    ease: "power2.in"
-                });
-            }
+            hamburger.setAttribute('aria-expanded', isMenuOpen);
+            navMenu.setAttribute('aria-hidden', !isMenuOpen);
+            gsap.to(navMenu, {
+                right: isMenuOpen ? 0 : '-100%',
+                duration: 0.4,
+                ease: "power3.out"
+            });
+            gsap.fromTo(
+                ".nav-menu a",
+                { x: isMenuOpen ? 50 : 0, opacity: isMenuOpen ? 0 : 1 },
+                { x: isMenuOpen ? 0 : 50, opacity: isMenuOpen ? 1 : 0, stagger: 0.1, duration: 0.5, ease: "power3.out" }
+            );
+            if (isMenuOpen) closeMenuBtn.focus();
         }
 
         hamburger.addEventListener('click', toggleMenu);
         closeMenuBtn.addEventListener('click', toggleMenu);
-
-        // Close menu when a link is clicked
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (isMenuOpen) {
-                    toggleMenu();
-                }
-            });
-        });
-
-        // Add hover animations for nav links
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                gsap.to(link, {
-                    scale: 1.05,
-                    opacity: 0.9,
-                    duration: 0.3,
-                    ease: "power2.out"
-                });
-            });
-            link.addEventListener('mouseleave', () => {
-                gsap.to(link, {
-                    scale: 1,
-                    opacity: 1,
-                    duration: 0.3,
-                    ease: "power2.out"
-                });
-            });
-        });
-
-        // Keyboard accessibility for close button
-        closeMenuBtn.addEventListener('keydown', (e) => {
+        hamburger.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 toggleMenu();
             }
         });
 
-        // --- Typing Text Effect ---
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) toggleMenu();
+            });
+        });
+
+        // --- Typing Effect ---
         function startTypingEffect() {
             const textElement = document.getElementById('typing-text-target');
-            const originalText = "Aspiring Full-Stack Developer | Innovator | Student";
-            textElement.innerHTML = '';
-            textElement.classList.add('typing-text'); 
+            const texts = ["Full-Stack Developer & AI Innovator", "Pioneering Web Solutions", "Exploring Aeronautics & AI"];
+            let textIndex = 0;
             let charIndex = 0;
-            const typingInterval = 70;
+            let isDeleting = false;
+
             function type() {
-                if (charIndex < originalText.length) {
-                    textElement.innerHTML += originalText.charAt(charIndex);
+                const currentText = texts[textIndex];
+                textElement.innerHTML = currentText.substring(0, charIndex);
+                textElement.classList.add('typing-text');
+
+                if (!isDeleting && charIndex < currentText.length) {
                     charIndex++;
-                    setTimeout(type, typingInterval);
+                    setTimeout(type, 80);
+                } else if (isDeleting && charIndex > 0) {
+                    charIndex--;
+                    setTimeout(type, 40);
+                } else {
+                    isDeleting = !isDeleting;
+                    if (!isDeleting) {
+                        textIndex = (textIndex + 1) % texts.length;
+                    }
+                    textElement.classList.toggle('typing-text', isDeleting);
+                    setTimeout(type, isDeleting ? 1000 : 200);
                 }
             }
             type();
         }
-        setTimeout(startTypingEffect, 1500);
+        setTimeout(startTypingEffect, 1000);
 
-        // --- Contact Form Submission ---
-        function submitContact() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            if (name && email && message) {
-                alert(`Thank you, ${name}! Your message has been prepared.\n\nNOTE: A functional contact form requires a server-side endpoint (e.g., Node.js/PHP script or a service like Formspree) to actually send the email. This button currently only validates locally.`);
-            } else {
-                alert("Please fill in all fields (Name, Email, Message) before sending.");
+        // --- Form Validation ---
+        const contactForm = document.getElementById('contact-form');
+        const inputs = {
+            name: document.getElementById('name'),
+            email: document.getElementById('email'),
+            message: document.getElementById('message')
+        };
+        const errors = {
+            name: document.getElementById('name-error'),
+            email: document.getElementById('email-error'),
+            message: document.getElementById('message-error')
+        };
+
+        function validateForm() {
+            let isValid = true;
+            Object.keys(inputs).forEach(key => {
+                const input = inputs[key];
+                const error = errors[key];
+                input.classList.remove('border-red-400');
+                error.textContent = '';
+                if (!input.value.trim()) {
+                    error.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)} is required.`;
+                    input.classList.add('border-red-400');
+                    isValid = false;
+                } else if (key === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+                    error.textContent = 'Please enter a valid email address.';
+                    input.classList.add('border-red-400');
+                    isValid = false;
+                }
+            });
+            return isValid;
+        }
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validateForm()) {
+                showModal();
+                contactForm.reset();
             }
+        });
+
+        Object.values(inputs).forEach(input => {
+            input.addEventListener('input', () => {
+                const key = input.id;
+                const error = errors[key];
+                input.classList.remove('border-red-400');
+                error.textContent = '';
+            });
+        });
+
+        // --- Modal Handling ---
+        const modal = document.getElementById('success-modal');
+        const modalClose = document.getElementById('modal-close');
+        const modalButton = modal.querySelector('button');
+
+        function showModal() {
+            modal.classList.remove('hidden');
+            modal.setAttribute('aria-hidden', 'false');
+            gsap.fromTo('.glass-effect', 
+                { scale: 0.7, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)' }
+            );
+            modalButton.focus();
         }
 
-        // --- Payment Success Tracking ---
-        const successOverlay = document.getElementById('success-overlay');
-        const successCloseBtn = successOverlay.querySelector('.success-close-btn');
-        const successCloseButton = successOverlay.querySelector('button');
-
-        function showSuccessMessage() {
-            successOverlay.style.display = 'flex';
-            gsap.fromTo(
-                '.success-content',
-                { scale: 0.5, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.5)' }
-            );
-            gsap.fromTo(
-                '.success-checkmark',
-                { scale: 0, rotation: -180, opacity: 0 },
-                { scale: 1, rotation: 0, opacity: 1, duration: 1, ease: 'elastic.out(1, 0.5)', delay: 0.3 }
-            );
-            gsap.fromTo(
-                '.success-content h2',
-                { y: 50, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.5 }
-            );
-            gsap.fromTo(
-                '.success-content p',
-                { y: 50, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.7 }
-            );
-            gsap.fromTo(
-                '.success-content button',
-                { y: 50, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.9 }
-            );
-            gsap.fromTo(
-                '.success-close-btn',
-                { scale: 0, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.5)', delay: 1 }
-            );
-        }
-
-        function hideSuccessMessage() {
-            gsap.to('.success-content', {
-                scale: 0.5,
+        function hideModal() {
+            gsap.to('.glass-effect', {
+                scale: 0.7,
                 opacity: 0,
-                duration: 0.5,
+                duration: 0.4,
                 ease: 'power2.in',
                 onComplete: () => {
-                    successOverlay.style.display = 'none';
-                    // Clear the URL parameter
-                    window.history.replaceState({}, document.title, window.location.pathname);
+                    modal.classList.add('hidden');
+                    modal.setAttribute('aria-hidden', 'true');
                 }
             });
         }
 
-        // Check for payment success parameter on page load
-        window.addEventListener('load', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('payment') === 'success') {
-                showSuccessMessage();
-            }
+        modalClose.addEventListener('click', hideModal);
+        modalButton.addEventListener('click', hideModal);
+        modal.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') hideModal();
         });
 
-        // Close success message on button or icon click
-        successCloseBtn.addEventListener('click', hideSuccessMessage);
-        successCloseButton.addEventListener('click', hideSuccessMessage);
-
-        // Keyboard accessibility for success close button
-        successCloseBtn.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                hideSuccessMessage();
-            }
-        });
+        // --- Lazy Loading ---
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => imageObserver.observe(img));
+        }
     </script>
 </body>
 </html>
