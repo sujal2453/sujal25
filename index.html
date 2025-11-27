@@ -11,7 +11,7 @@
       "jobTitle": "Full Stack Developer",
       "description": "Sujal Wagholikar is a Class 12 student, web developer, and AI enthusiast based in Sagroli, Maharashtra, passionate about creating innovative web solutions and exploring AI and aeronautics.",
       "url": "https://sujalwagholikar.online",
-      "image": "https://i.postimg.cc/WzfS97xX/1695115499931.jpg",
+      "image": "https://i.postimg.cc/xXg3xYGV/Firefly-Gemini-Flash-Keep-suit-colour-Black-everything-else-same-695776-1.jpg",
       "sameAs": [
         "https://www.linkedin.com/in/sujal25",
         "https://www.instagram.com/sujalwagholikrr"
@@ -122,7 +122,6 @@
   ]
 }
     </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sujal Santosh Wagholikar | Innovator & Developer</title>
@@ -132,13 +131,13 @@
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Sujal Santosh Wagholikar | Innovator & Developer">
     <meta property="og:description" content="Explore Sujal Wagholikar's portfolio showcasing innovative projects in AI, web development, and aeronautics.">
-    <meta property="og:image" content="https://i.postimg.cc/WzfS97xX/1695115499931.jpg">
+    <meta property="og:image" content="https://i.postimg.cc/xXg3xYGV/Firefly-Gemini-Flash-Keep-suit-colour-Black-everything-else-same-695776-1.jpg">
     <meta property="og:url" content="https://sujalwagholikar.online">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sujal Santosh Wagholikar | Portfolio">
     <meta name="twitter:description" content="Discover Sujal Wagholikar's innovative projects in AI, web development, and aeronautics.">
-    <meta name="twitter:image" content="https://i.postimg.cc/WzfS97xX/1695115499931.jpg">
+    <meta name="twitter:image" content="https://i.postimg.cc/xXg3xYGV/Firefly-Gemini-Flash-Keep-suit-colour-Black-everything-else-same-695776-1.jpg">
     <link rel="canonical" href="https://sujalwagholikar.online" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sujalwagholikar.online/sitemap.xml">
     <link rel="icon" href="cropped_circle_image.png" type="image/x-icon">
@@ -157,37 +156,32 @@
             --background: #0f172a;
             --card-bg: rgba(31, 41, 55, 0.8);
         }
-
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--background);
+            background: linear-gradient(135deg, var(--background) 0%, #1e293b 100%);
             color: #e2e8f0;
             overflow-x: hidden;
             position: relative;
         }
-
         .smooth-scroll {
             scroll-behavior: smooth;
         }
-
         .glass-effect {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
-
         .btn-primary {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #ffffff;
             padding: 14px 28px;
             border-radius: 9999px;
             font-weight: 600;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
         }
-
         .btn-primary::before {
             content: '';
             position: absolute;
@@ -195,48 +189,39 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
         .btn-primary:hover::before {
             left: 100%;
         }
-
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(79, 70, 229, 0.5);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.6);
         }
-
         .typing-text::after {
             content: '|';
             display: inline-block;
             animation: blink 0.7s infinite;
             color: var(--secondary);
         }
-
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-
         ::-webkit-scrollbar {
             width: 8px;
         }
-
         ::-webkit-scrollbar-track {
             background: var(--background);
         }
-
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
             border-radius: 4px;
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: #4338ca;
         }
-
         .nav-menu {
             position: fixed;
             top: 0;
@@ -244,33 +229,30 @@
             height: 100vh;
             width: 300px;
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
             border-left: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             flex-direction: column;
             padding-top: 4rem;
-            transition: right 0.4s ease;
+            transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 999;
         }
-
         .nav-menu.active {
             right: 0;
         }
-
         .nav-menu a {
             color: #e2e8f0;
             padding: 12px;
             font-size: 1.125rem;
             font-weight: 500;
             text-align: center;
-            transition: color 0.3s ease, background 0.3s ease;
+            transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease;
         }
-
         .nav-menu a:hover {
             color: var(--secondary);
             background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
         }
-
         .hamburger {
             display: flex;
             flex-direction: column;
@@ -279,28 +261,27 @@
             height: 24px;
             cursor: pointer;
             z-index: 1000;
+            transition: transform 0.3s ease;
         }
-
         .hamburger span {
             width: 100%;
             height: 3px;
             background: #ffffff;
             border-radius: 2px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
         .hamburger.active span:nth-child(1) {
             transform: rotate(45deg) translate(7px, 7px);
         }
-
         .hamburger.active span:nth-child(2) {
             opacity: 0;
         }
-
         .hamburger.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
         }
-
+        .hamburger:hover {
+            transform: scale(1.1);
+        }
         #hero-particles {
             position: absolute;
             top: 0;
@@ -309,34 +290,50 @@
             height: 100%;
             z-index: 0;
         }
-
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.3));
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4));
             z-index: 1;
         }
-
         .hero-content {
             z-index: 2;
         }
-
         .social-links a {
-            transition: transform 0.3s ease, color 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.3s ease;
         }
-
         .social-links a:hover {
-            transform: scale(1.2);
+            transform: scale(1.3) rotate(5deg);
             color: var(--secondary);
         }
-
         .highlight-text {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .project-card, .skill-item {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+        }
+        .project-card:hover, .skill-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+        }
+        .about-media-anim img {
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .about-media-anim:hover img {
+            transform: scale(1.05);
+        }
+        .footer-link {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .footer-link:hover {
+            transform: translateX(5px);
+            color: var(--secondary);
         }
     </style>
 </head>
@@ -346,7 +343,7 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <a href="#home" aria-label="Home">
-                        <img src="https://i.postimg.cc/KjP9yvZz/Screenshot-2025-10-18-173415.png" alt="Sujal Wagholikar Logo" class="h-12 w-auto object-contain" loading="lazy">
+                        <img src="https://i.postimg.cc/KjP9yvZz/Screenshot-2025-10-18-173415.png" alt="Sujal Wagholikar Logo" class="h-12 w-auto object-contain transition-transform duration-300 hover:scale-110" loading="lazy">
                     </a>
                 </div>
                 <div class="flex items-center">
@@ -369,7 +366,6 @@
             </div>
         </div>
     </nav>
-
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-900" role="main" aria-label="Hero section">
         <div id="hero-particles"></div>
         <div class="hero-overlay"></div>
@@ -378,7 +374,7 @@
                 Welcome to the World of <span class="highlight-text">Sujal Wagholikar</span>
             </h1>
             <p id="typing-text-target" class="text-lg sm:text-xl md:text-2xl mb-8 text-gray-300 font-light typing-text" aria-live="polite">
-                           PASSIONATE IN AI , WEB DEVELOPMENT AND AERONAUICS 
+                           PASSIONATE IN AI , WEB DEVELOPMENT AND AERONAUICS
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" target="_blank" rel="noopener" class="btn-primary text-base sm:text-lg" aria-label="Start a collaboration with Sujal via email">JOIN US </a>
@@ -397,13 +393,12 @@
             </div>
         </div>
     </section>
-
     <section id="about" class="py-20 sm:py-32 bg-transparent" aria-labelledby="about-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="about-heading" class="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-white">About Me</h2>
             <div class="flex flex-col md:flex-row items-center gap-8 lg:gap-16">
                 <div class="md:w-1/2 about-media-anim">
-                    <img src="https://i.postimg.cc/WzfS97xX/1695115499931.jpg" alt="Portrait of Sujal Wagholikar, a young developer from Sagroli, Maharashtra" class="rounded-2xl shadow-2xl w-full max-w-md mx-auto glass-effect" loading="lazy" onload="this.classList.add('loaded')">
+                    <img src="https://i.postimg.cc/xXg3xYGV/Firefly-Gemini-Flash-Keep-suit-colour-Black-everything-else-same-695776-1.jpg" alt="Portrait of Sujal Wagholikar, a young developer from Sagroli, Maharashtra" class="rounded-2xl shadow-2xl w-full max-w-md mx-auto glass-effect" loading="lazy" onload="this.classList.add('loaded')">
                 </div>
                 <div class="md:w-1/2 about-text-anim">
                     <p class="text-base sm:text-lg text-gray-300 leading-relaxed mb-6">
@@ -424,13 +419,12 @@
             </div>
         </div>
     </section>
-
     <section id="projects" class="py-20 sm:py-32 bg-transparent" aria-labelledby="projects-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="projects-heading" class="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-white">Featured Projects</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 project-grid">
                 <div class="glass-effect rounded-2xl overflow-hidden project-card">
-                    <img src="https://www.brainfacts.org/-/media/Brainfacts2/In-the-Lab/Tools-and-Techniques/Article-Images/Network-Neuroscience-Thumbnail.jpg" alt="Screenshot of General Knowledge Quiz Platform interface" class="w-full h-64 object-cover" loading="lazy" onload="this.classList.add('loaded')">
+                    <img src="https://www.brainfacts.org/-/media/Brainfacts2/In-the-Lab/Tools-and-Techniques/Article-Images/Network-Neuroscience-Thumbnail.jpg" alt="Screenshot of General Knowledge Quiz Platform interface" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110" loading="lazy" onload="this.classList.add('loaded')">
                     <div class="project-details text-white p-6">
                         <h3 class="text-xl font-semibold mb-2">General Knowledge Quiz</h3>
                         <p class="text-sm opacity-90 mb-4">A proctored online quiz platform with real-time monitoring, Chart.js analytics, and responsive design for seamless educational assessments.</p>
@@ -443,7 +437,7 @@
                     </div>
                 </div>
                 <div class="glass-effect rounded-2xl overflow-hidden project-card">
-                    <img src="https://mvjce.edu.in/wp-content/uploads/2022/11/Reasons-To-Choose-Aeronautical-Engineering-As-A-Career-Option.webp" alt="Visualization of aeronautical research on aircraft design" class="w-full h-64 object-cover" loading="lazy" onload="this.classList.add('loaded')">
+                    <img src="https://mvjce.edu.in/wp-content/uploads/2022/11/Reasons-To-Choose-Aeronautical-Engineering-As-A-Career-Option.webp" alt="Visualization of aeronautical research on aircraft design" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110" loading="lazy" onload="this.classList.add('loaded')">
                     <div class="project-details text-white p-6">
                         <h3 class="text-xl font-semibold mb-2">Aeronautics Research</h3>
                         <p class="text-sm opacity-90 mb-4">In-depth exploration of aircraft design, focusing on fuselage and aero engine technologies with interactive visualizations.</p>
@@ -456,7 +450,7 @@
                     </div>
                 </div>
                 <div class="glass-effect rounded-2xl overflow-hidden project-card">
-                    <img src="https://risktec.tuv.com/wp-content/uploads/2020/04/shutterstock_1154457493-cropped-1024x681.jpg" alt="Interface of AI Task Manager App" class="w-full h-64 object-cover" loading="lazy" onload="this.classList.add('loaded')">
+                    <img src="https://risktec.tuv.com/wp-content/uploads/2020/04/shutterstock_1154457493-cropped-1024x681.jpg" alt="Interface of AI Task Manager App" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110" loading="lazy" onload="this.classList.add('loaded')">
                     <div class="project-details text-white p-6">
                         <h3 class="text-xl font-semibold mb-2">AI Task Manager</h3>
                         <p class="text-sm opacity-90 mb-4">A productivity app leveraging AI for task management with seamless local machine integration.</p>
@@ -471,7 +465,6 @@
             </div>
         </div>
     </section>
-
     <section id="skills" class="py-20 sm:py-32 bg-transparent" aria-labelledby="skills-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="skills-heading" class="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-white">Core Competencies</h2>
@@ -486,7 +479,6 @@
                     <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Backend Development</h3>
                     <p class="text-gray-300 text-sm sm:text-base">Proficient in Node.js, Express, and MongoDB for building scalable server-side solutions.</p>
                 </div>
-                </div>
                 <div class="glass-effect rounded-xl p-6 sm:p-8 skill-item">
                     <i class="fas fa-graduation-cap text-indigo-300 text-3xl sm:text-4xl mb-4" aria-hidden="true"></i>
                     <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Academic Excellence</h3>
@@ -495,7 +487,6 @@
             </div>
         </div>
     </section>
-
     <section id="support" class="py-20 sm:py-32 bg-transparent" aria-labelledby="support-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="support-heading" class="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-white">Support My Vision</h2>
@@ -503,45 +494,44 @@
                 <div class="glass-effect rounded-2xl p-8 sm:p-10 text-white text-center support-content-anim max-w-md w-full">
                     <h3 class="text-xl sm:text-2xl font-bold mb-4">Empower Innovation</h3>
                     <p class="text-base sm:text-lg mb-6 opacity-90">Your support fuels my journey in technology and education, enabling new projects and cutting-edge research.</p>
-                    <img src="https://i.postimg.cc/TPhqpbSR/upi-1760696375881.png" alt="UPI QR Code for donations to Sujal Wagholikar" class="mx-auto rounded-lg shadow-2xl w-full max-w-xs mb-4" loading="lazy" onload="this.classList.add('loaded')">
+                    <img src="https://i.postimg.cc/TPhqpbSR/upi-1760696375881.png" alt="UPI QR Code for donations to Sujal Wagholikar" class="mx-auto rounded-lg shadow-2xl w-full max-w-xs mb-4 transition-transform duration-300 hover:scale-105" loading="lazy" onload="this.classList.add('loaded')">
                     <p class="text-sm opacity-90 mb-4">Or contribute securely via Cashfree:</p>
                     <a href="https://payments.cashfree.com/forms/sujal25" target="_blank" rel="noopener" class="btn-primary text-sm" aria-label="Support via Cashfree">Contribute Now</a>
                 </div>
             </div>
         </div>
     </section>
-
     <section id="contact" class="py-20 sm:py-32 bg-transparent" aria-labelledby="contact-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="contact-heading" class="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-white">Get in Touch</h2>
             <div class="max-w-lg mx-auto contact-form-anim">
                 <div class="glass-effect rounded-2xl p-8 space-y-6">
                     <div class="flex items-center space-x-4">
-                        <i class="fas fa-envelope text-indigo-300 text-xl sm:text-2xl" aria-hidden="true"></i>
+                        <i class="fas fa-envelope text-indigo-300 text-xl sm:text-2xl transition-transform duration-300 hover:rotate-12" aria-hidden="true"></i>
                         <p class="text-base sm:text-lg text-gray-300">
-                            <a href="mailto:sujalwagholikar25@gmail.com" class="text-indigo-300 hover:text-indigo-400 transition" aria-label="Send email to Sujal">sujalwagholikar25@gmail.com</a>
+                            <a href="mailto:sujalwagholikar25@gmail.com" class="text-indigo-300 hover:text-indigo-400 transition footer-link" aria-label="Send email to Sujal">sujalwagholikar25@gmail.com</a>
                         </p>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <i class="fas fa-phone text-indigo-300 text-xl sm:text-2xl" aria-hidden="true"></i>
+                        <i class="fas fa-phone text-indigo-300 text-xl sm:text-2xl transition-transform duration-300 hover:rotate-12" aria-hidden="true"></i>
                         <p class="text-base sm:text-lg text-gray-300">
-                            <a href="tel:+917499970152" class="text-indigo-300 hover:text-indigo-400 transition" aria-label="Call Sujal">+91 7499970152</a>
+                            <a href="tel:+917499970152" class="text-indigo-300 hover:text-indigo-400 transition footer-link" aria-label="Call Sujal">+91 7499970152</a>
                         </p>
                     </div>
                     <form id="contact-form" class="space-y-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-300">Full Name <span class="text-red-400">*</span></label>
-                            <input type="text" id="name" name="name" required class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3" placeholder="Your full name" aria-describedby="name-error">
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3 transition-all duration-300 focus:scale-102" placeholder="Your full name" aria-describedby="name-error">
                             <div id="name-error" class="text-red-400 text-sm mt-1" aria-live="polite"></div>
                         </div>
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-300">Email Address <span class="text-red-400">*</span></label>
-                            <input type="email" id="email" name="email" required class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3" placeholder="your@email.com" aria-describedby="email-error">
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3 transition-all duration-300 focus:scale-102" placeholder="your@email.com" aria-describedby="email-error">
                             <div id="email-error" class="text-red-400 text-sm mt-1" aria-live="polite"></div>
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-300">Message <span class="text-red-400">*</span></label>
-                            <textarea id="message" name="message" rows="5" required class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3" placeholder="Share your project or collaboration idea..." aria-describedby="message-error"></textarea>
+                            <textarea id="message" name="message" rows="5" required class="mt-1 block w-full border-none rounded-md bg-gray-800/50 text-gray-200 shadow-sm focus:ring-indigo-400 focus:border-indigo-400 p-3 transition-all duration-300 focus:scale-102" placeholder="Share your project or collaboration idea..." aria-describedby="message-error"></textarea>
                             <div id="message-error" class="text-red-400 text-sm mt-1" aria-live="polite"></div>
                         </div>
                         <div>
@@ -552,44 +542,42 @@
             </div>
         </div>
     </section>
-
     <div id="success-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[1000] hidden" role="dialog" aria-modal="true" aria-labelledby="success-title" aria-hidden="true">
         <div class="glass-effect rounded-2xl p-8 max-w-md w-full text-center">
-            <i class="fas fa-times absolute top-4 right-4 text-gray-300 cursor-pointer hover:text-indigo-400 transition transform hover:rotate-90" id="modal-close" tabindex="0" aria-label="Close success message"></i>
+            <i class="fas fa-times absolute top-4 right-4 text-gray-300 cursor-pointer hover:text-indigo-400 transition transform hover:rotate-90 duration-300" id="modal-close" tabindex="0" aria-label="Close success message"></i>
             <i class="fas fa-check-circle text-5xl text-green-500 mb-4" aria-hidden="true"></i>
             <h2 id="success-title" class="text-2xl font-bold text-white mb-4">Message Sent!</h2>
             <p class="text-gray-300 mb-6">Thank you for reaching out. I'll respond within 24-48 hours.</p>
             <button class="btn-primary" aria-label="Close success message">Close</button>
         </div>
     </div>
-
     <footer id="footer" class="glass-effect py-12" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
                 <div>
-                    <img src="https://i.postimg.cc/BbTynwYV/Screenshot-2025-10-19-132402.png" alt="Sujal Wagholikar Logo" class="h-10 w-auto object-contain mb-4 mx-auto md:mx-0" loading="lazy" onload="this.classList.add('loaded')">
+                    <img src="https://i.postimg.cc/BbTynwYV/Screenshot-2025-10-19-132402.png" alt="Sujal Wagholikar Logo" class="h-10 w-auto object-contain mb-4 mx-auto md:mx-0 transition-transform duration-300 hover:scale-110" loading="lazy" onload="this.classList.add('loaded')">
                     <p class="text-sm text-gray-400">&copy; 2025 Sujal Wagholikar. All rights reserved.</p>
                     <p class="text-xs text-gray-500 mt-2">Innovating from Sagroli, Maharashtra.</p>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-indigo-300 mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#about" class="text-gray-300 hover:text-indigo-400 transition">About</a></li>
-                        <li><a href="#projects" class="text-gray-300 hover:text-indigo-400 transition">Projects</a></li>
-                        <li><a href="#skills" class="text-gray-300 hover:text-indigo-400 transition">Skills</a></li>
-                        <li><a href="#support" class="text-gray-300 hover:text-indigo-400 transition">Support</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-indigo-400 transition footer-link">About</a></li>
+                        <li><a href="#projects" class="text-gray-300 hover:text-indigo-400 transition footer-link">Projects</a></li>
+                        <li><a href="#skills" class="text-gray-300 hover:text-indigo-400 transition footer-link">Skills</a></li>
+                        <li><a href="#support" class="text-gray-300 hover:text-indigo-400 transition footer-link">Support</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-indigo-300 mb-4">Connect</h4>
                     <div class="flex flex-col space-y-3">
-                        <a href="mailto:sujalwagholikar25@gmail.com" class="text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start" aria-label="Email Sujal">
+                        <a href="mailto:sujalwagholikar25@gmail.com" class="text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start footer-link" aria-label="Email Sujal">
                             <i class="fas fa-envelope mr-2 text-indigo-300" aria-hidden="true"></i> Email
                         </a>
-                        <a href="https://www.linkedin.com/in/sujal25" target="_blank" rel="noopener" class="text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start" aria-label="Sujal's LinkedIn profile">
+                        <a href="https://www.linkedin.com/in/sujal25" target="_blank" rel="noopener" class="text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start footer-link" aria-label="Sujal's LinkedIn profile">
                             <i class="fab fa-linkedin text-lg mr-2" aria-hidden="true"></i> LinkedIn
                         </a>
-                        <a href="https://www.instagram.com/sujalwagholikrr" target="_blank" rel="noopener" class="text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start" aria-label="Sujal's Instagram profile">
+                        <a href="https://www.instagram.com/sujalwagholikrr" target="_blank" rel="noopener" class="text-gray-300 hover:text-indigo-400 transition text-sm flex items-center justify-center md:justify-start footer-link" aria-label="Sujal's Instagram profile">
                             <i class="fab fa-instagram text-lg mr-2" aria-hidden="true"></i> Instagram
                         </a>
                     </div>
@@ -600,46 +588,46 @@
                         <li class="flex items-center justify-center md:justify-start gap-2">
                             Anirudha Wagholikar
                             <a href="https://www.instagram.com/anirudha_wagholikar" target="_blank" rel="noopener" aria-label="Anirudha Wagholikar Instagram">
-                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
+                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition footer-link" aria-hidden="true"></i>
                             </a>
                             <a href="https://twitter.com/anirudha_wag" target="_blank" rel="noopener" aria-label="Anirudha Wagholikar Twitter">
-                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
+                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition footer-link" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li class="flex items-center justify-center md:justify-start gap-2">
                             Parth Wagholikar
                             <a href="https://www.instagram.com/parth_wagholikar" target="_blank" rel="noopener" aria-label="Parth Wagholikar Instagram">
-                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
+                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition footer-link" aria-hidden="true"></i>
                             </a>
                             <a href="https://twitter.com/parth_wag" target="_blank" rel="noopener" aria-label="Parth Wagholikar Twitter">
-                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
+                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition footer-link" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li class="flex items-center justify-center md:justify-start gap-2">
                             Sharvari Wagholikar
                             <a href="https://www.instagram.com/sharvari_wagholikar" target="_blank" rel="noopener" aria-label="Sharvari Wagholikar Instagram">
-                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
+                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition footer-link" aria-hidden="true"></i>
                             </a>
                             <a href="https://twitter.com/sharvari_wag" target="_blank" rel="noopener" aria-label="Sharvari Wagholikar Twitter">
-                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
+                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition footer-link" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li class="flex items-center justify-center md:justify-start gap-2">
                             Akash Dharmadhikari
                             <a href="https://www.instagram.com/akash_dharmadhikari" target="_blank" rel="noopener" aria-label="Akash Dharmadhikari Instagram">
-                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
+                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition footer-link" aria-hidden="true"></i>
                             </a>
                             <a href="https://twitter.com/akash_dharma" target="_blank" rel="noopener" aria-label="Akash Dharmadhikari Twitter">
-                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
+                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition footer-link" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li class="flex items-center justify-center md:justify-start gap-2">
                             Disha Dharmadhikari
                             <a href="https://www.instagram.com/disha_dharmadhikari" target="_blank" rel="noopener" aria-label="Disha Dharmadhikari Instagram">
-                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
+                                <i class="fab fa-instagram text-base hover:text-indigo-400 transition footer-link" aria-hidden="true"></i>
                             </a>
                             <a href="https://twitter.com/disha_dharma" target="_blank" rel="noopener" aria-label="Disha Dharmadhikari Twitter">
-                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition" aria-hidden="true"></i>
+                                <i class="fab fa-x-twitter text-base hover:text-indigo-400 transition footer-link" aria-hidden="true"></i>
                             </a>
                         </li>
                     </ul>
@@ -650,139 +638,148 @@
             </div>
         </div>
     </footer>
-
     <script>
         gsap.registerPlugin(ScrollTrigger);
-
-        // --- Initialize Particles.js for Hero Section ---
+        // --- Initialize Particles.js for Hero Section with enhanced config ---
         particlesJS('hero-particles', {
             particles: {
-                number: { value: 60, density: { enable: true, value_area: 1000 } },
-                color: { value: ['#4f46e5', '#a5b4fc', '#22c55e'] },
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ['#4f46e5', '#a5b4fc', '#22c55e', '#ec4899'] },
                 shape: { type: 'circle', stroke: { width: 0 } },
-                opacity: { value: 0.4, random: true },
-                size: { value: 4, random: true },
-                line_linked: { enable: true, distance: 150, color: '#a5b4fc', opacity: 0.2, width: 1 },
-                move: { enable: true, speed: 3, direction: 'none', random: true }
+                opacity: { value: 0.5, random: true },
+                size: { value: 5, random: true },
+                line_linked: { enable: true, distance: 120, color: '#a5b4fc', opacity: 0.3, width: 1.5 },
+                move: { enable: true, speed: 2, direction: 'none', random: true, out_mode: 'bounce' }
             },
             interactivity: {
                 detect_on: 'canvas',
-                events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
-                modes: { grab: { distance: 200 }, push: { particles_nb: 3 } }
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+                modes: { repulse: { distance: 150, duration: 0.4 }, push: { particles_nb: 4 } }
             },
             retina_detect: true
         });
-
-        // --- GSAP Animations for Hero Section ---
+        // --- Enhanced GSAP Animations for Hero Section ---
         gsap.from("#nav", {
             y: -100,
             opacity: 0,
-            duration: 1,
-            ease: "power4.out"
-        });
-
-        gsap.from(".hero-content h1", {
-            y: 100,
-            opacity: 0,
             duration: 1.2,
-            ease: "power4.out",
-            delay: 0.2
+            ease: "power2.out"
         });
-
-        gsap.from(".hero-content p", {
+        gsap.from(".hero-content h1", {
             y: 80,
             opacity: 0,
-            duration: 1,
-            ease: "power3.out",
-            delay: 0.4
+            duration: 1.5,
+            ease: "back.out(1.7)",
+            delay: 0.3
         });
-
-        gsap.from(".hero-content .btn-primary", {
+        gsap.from(".hero-content p", {
             y: 60,
             opacity: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            stagger: 0.2,
+            duration: 1.2,
+            ease: "power2.out",
             delay: 0.6
         });
-
-        gsap.from(".social-links a", {
-            y: 40,
+        gsap.from(".hero-content .btn-primary", {
+            y: 50,
             opacity: 0,
-            duration: 0.6,
-            ease: "power3.out",
-            stagger: 0.1,
-            delay: 0.8
+            duration: 1,
+            ease: "back.out(1.7)",
+            stagger: 0.2,
+            delay: 0.9
         });
-
-        // --- Other Section Animations ---
-        gsap.utils.toArray(".section-heading").forEach(heading => {
+        gsap.from(".social-links a", {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.15,
+            delay: 1.2
+        });
+        // Parallax effect for hero overlay
+        gsap.to(".hero-overlay", {
+            yPercent: -20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#home",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+        // --- Enhanced Section Animations ---
+        gsap.utils.toArray("h2").forEach(heading => {
             gsap.from(heading, {
-                y: 40,
+                y: 50,
                 opacity: 0,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: { trigger: heading, start: "top 80%" }
+                duration: 1.2,
+                ease: "power2.out",
+                scrollTrigger: { trigger: heading, start: "top 85%" }
             });
         });
-
         gsap.from(".about-media-anim", {
-            x: -120,
+            x: -150,
             opacity: 0,
-            duration: 1.5,
-            ease: "power3.out",
-            scrollTrigger: { trigger: "#about", start: "top 70%" }
+            rotation: -5,
+            duration: 1.8,
+            ease: "back.out(1.7)",
+            scrollTrigger: { trigger: "#about", start: "top 75%" }
         });
-
         gsap.from(".about-text-anim", {
-            x: 120,
+            x: 150,
             opacity: 0,
-            duration: 1.5,
-            ease: "power3.out",
-            scrollTrigger: { trigger: "#about", start: "top 70%" }
+            rotation: 5,
+            duration: 1.8,
+            ease: "back.out(1.7)",
+            scrollTrigger: { trigger: "#about", start: "top 75%" }
         });
-
         gsap.from(".project-card", {
-            y: 80,
-            opacity: 0,
-            duration: 1,
-            ease: "power3.out",
-            stagger: 0.2,
-            scrollTrigger: { trigger: ".project-grid", start: "top 70%" }
-        });
-
-        gsap.from(".skill-item", {
             y: 60,
             opacity: 0,
+            scale: 0.95,
+            duration: 1.2,
+            ease: "power2.out",
+            stagger: 0.3,
+            scrollTrigger: { trigger: ".project-grid", start: "top 75%" }
+        });
+        gsap.from(".skill-item", {
+            y: 50,
+            opacity: 0,
             scale: 0.9,
-            duration: 1,
-            ease: "elastic.out(1, 0.6)",
-            stagger: 0.15,
-            scrollTrigger: { trigger: "#skills", start: "top 70%" }
+            duration: 1.2,
+            ease: "back.out(1.7)",
+            stagger: 0.2,
+            scrollTrigger: { trigger: "#skills", start: "top 75%" }
         });
-
         gsap.from(".support-content-anim", {
-            y: 80,
+            y: 60,
             opacity: 0,
-            duration: 1.2,
-            ease: "power3.out",
-            scrollTrigger: { trigger: "#support", start: "top 70%" }
+            scale: 0.95,
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: { trigger: "#support", start: "top 75%" }
         });
-
         gsap.from(".contact-form-anim", {
-            y: 80,
+            y: 60,
             opacity: 0,
-            duration: 1.2,
-            ease: "power3.out",
-            scrollTrigger: { trigger: "#contact", start: "top 70%" }
+            scale: 0.95,
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: { trigger: "#contact", start: "top 75%" }
         });
-
-        // --- Navigation Menu ---
+        // Footer animations
+        gsap.from("#footer > div > div", {
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out",
+            stagger: 0.2,
+            scrollTrigger: { trigger: "#footer", start: "top 80%" }
+        });
+        // --- Navigation Menu with smoother toggle ---
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const closeMenuBtn = document.getElementById('close-menu');
         let isMenuOpen = false;
-
         function toggleMenu() {
             isMenuOpen = !isMenuOpen;
             hamburger.classList.toggle('active');
@@ -791,17 +788,16 @@
             navMenu.setAttribute('aria-hidden', !isMenuOpen);
             gsap.to(navMenu, {
                 right: isMenuOpen ? 0 : '-100%',
-                duration: 0.4,
-                ease: "power3.out"
+                duration: 0.5,
+                ease: "power2.out"
             });
             gsap.fromTo(
                 ".nav-menu a",
                 { x: isMenuOpen ? 50 : 0, opacity: isMenuOpen ? 0 : 1 },
-                { x: isMenuOpen ? 0 : 50, opacity: isMenuOpen ? 1 : 0, stagger: 0.1, duration: 0.5, ease: "power3.out" }
+                { x: isMenuOpen ? 0 : 50, opacity: isMenuOpen ? 1 : 0, stagger: 0.15, duration: 0.6, ease: "back.out(1.7)" }
             );
             if (isMenuOpen) closeMenuBtn.focus();
         }
-
         hamburger.addEventListener('click', toggleMenu);
         closeMenuBtn.addEventListener('click', toggleMenu);
         hamburger.addEventListener('keydown', (e) => {
@@ -810,45 +806,40 @@
                 toggleMenu();
             }
         });
-
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (isMenuOpen) toggleMenu();
             });
         });
-
-        // --- Typing Effect ---
+        // --- Enhanced Typing Effect ---
         function startTypingEffect() {
             const textElement = document.getElementById('typing-text-target');
             const texts = ["Full-Stack Developer & AI Innovator", "Pioneering Web Solutions", "Exploring Aeronautics & AI"];
             let textIndex = 0;
             let charIndex = 0;
             let isDeleting = false;
-
             function type() {
                 const currentText = texts[textIndex];
                 textElement.innerHTML = currentText.substring(0, charIndex);
                 textElement.classList.add('typing-text');
-
                 if (!isDeleting && charIndex < currentText.length) {
                     charIndex++;
-                    setTimeout(type, 80);
+                    setTimeout(type, 100);
                 } else if (isDeleting && charIndex > 0) {
                     charIndex--;
-                    setTimeout(type, 40);
+                    setTimeout(type, 50);
                 } else {
                     isDeleting = !isDeleting;
                     if (!isDeleting) {
                         textIndex = (textIndex + 1) % texts.length;
                     }
                     textElement.classList.toggle('typing-text', isDeleting);
-                    setTimeout(type, isDeleting ? 1000 : 200);
+                    setTimeout(type, isDeleting ? 1500 : 300);
                 }
             }
             type();
         }
         setTimeout(startTypingEffect, 1000);
-
         // --- Form Validation ---
         const contactForm = document.getElementById('contact-form');
         const inputs = {
@@ -861,7 +852,6 @@
             email: document.getElementById('email-error'),
             message: document.getElementById('message-error')
         };
-
         function validateForm() {
             let isValid = true;
             Object.keys(inputs).forEach(key => {
@@ -881,7 +871,6 @@
             });
             return isValid;
         }
-
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             if (validateForm()) {
@@ -889,7 +878,6 @@
                 contactForm.reset();
             }
         });
-
         Object.values(inputs).forEach(input => {
             input.addEventListener('input', () => {
                 const key = input.id;
@@ -898,27 +886,25 @@
                 error.textContent = '';
             });
         });
-
-        // --- Modal Handling ---
+        // --- Enhanced Modal Handling ---
         const modal = document.getElementById('success-modal');
         const modalClose = document.getElementById('modal-close');
         const modalButton = modal.querySelector('button');
-
         function showModal() {
             modal.classList.remove('hidden');
             modal.setAttribute('aria-hidden', 'false');
-            gsap.fromTo('.glass-effect', 
-                { scale: 0.7, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)' }
+            gsap.fromTo('.glass-effect',
+                { scale: 0.5, opacity: 0, rotation: -10 },
+                { scale: 1, opacity: 1, rotation: 0, duration: 0.6, ease: 'back.out(1.7)' }
             );
             modalButton.focus();
         }
-
         function hideModal() {
             gsap.to('.glass-effect', {
-                scale: 0.7,
+                scale: 0.5,
                 opacity: 0,
-                duration: 0.4,
+                rotation: 10,
+                duration: 0.5,
                 ease: 'power2.in',
                 onComplete: () => {
                     modal.classList.add('hidden');
@@ -926,13 +912,11 @@
                 }
             });
         }
-
         modalClose.addEventListener('click', hideModal);
         modalButton.addEventListener('click', hideModal);
         modal.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') hideModal();
         });
-
         // --- Lazy Loading ---
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries) => {
