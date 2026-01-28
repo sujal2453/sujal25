@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Chemistry | Sujal Wagholikar</title>
+    <meta name="description" content="Class 12 Organic Chemistry Chapters - NCERT + JEE Preparation">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .glass-effect {
+            background: rgba(31, 41, 55, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #4f46e5, #a5b4fc);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.4);
+        }
+        .chapter-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .chapter-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Back / Header -->
+    <header class="glass-effect fixed w-full z-50 top-0 py-4">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <a href="https://sujalwagholikar.online" class="text-2xl font-bold text-indigo-300 hover:text-indigo-400 transition">
+                ← Back to Portfolio
+            </a>
+            <h1 class="text-xl sm:text-2xl font-semibold text-center">Organic Chemistry – Class 12</h1>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center pt-24 pb-16 px-6">
+        <div class="max-w-5xl w-full glass-effect rounded-3xl p-8 sm:p-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-white">
+                Choose Chapter
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                
+                <!-- 1 -->
+                <div class="glass-effect rounded-2xl p-6 chapter-card">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-300">Haloalkanes and Haloarenes</h3>
+                    <p class="text-gray-300 mb-6 opacity-90">Reactions, SN1/SN2/E2 mechanisms, comparisons, key points – NCERT + JEE</p>
+                    <a href="organic-chemistry-halo.html" class="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto">
+                        <i class="fas fa-file-alt"></i> Open File
+                    </a>
+                </div>
+
+                <!-- 2 -->
+                <div class="glass-effect rounded-2xl p-6 chapter-card">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-300">Aldehydes, Ketones & Carboxylic Acids</h3>
+                    <p class="text-gray-300 mb-6 opacity-90">Name reactions, preparations, properties, distinctions, important conversions</p>
+                    <a href="#" class="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto opacity-50 cursor-not-allowed">
+                        <i class="fas fa-file-alt"></i> Open File (Coming Soon)
+                    </a>
+                </div>
+
+                <!-- 3 -->
+                <div class="glass-effect rounded-2xl p-6 chapter-card">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-300">Alcohols, Phenols and Ethers</h3>
+                    <p class="text-gray-300 mb-6 opacity-90">Classification, preparations, reactions, acidity comparison, ether cleavage</p>
+                    <a href="#" class="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto opacity-50 cursor-not-allowed">
+                        <i class="fas fa-file-alt"></i> Open File (Coming Soon)
+                    </a>
+                </div>
+
+                <!-- 4 -->
+                <div class="glass-effect rounded-2xl p-6 chapter-card">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-300">Amines</h3>
+                    <p class="text-gray-300 mb-6 opacity-90">Basicity order, preparation methods, reactions (diazotization, carbylamine, etc.)</p>
+                    <a href="#" class="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto opacity-50 cursor-not-allowed">
+                        <i class="fas fa-file-alt"></i> Open File (Coming Soon)
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass-effect py-6 text-center text-sm text-gray-400">
+        © 2025 Sujal Wagholikar • Designed for Class 12 Chemistry Preparation
+    </footer>
+
+</body>
+</html>
