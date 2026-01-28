@@ -1,0 +1,187 @@
+import React from "react";
+import { motion } from "framer-motion";
+
+const slides = [
+  {
+    title: "Aldol Condensation",
+    content: "Enolate ion attacks another carbonyl compound forming β-hydroxy compound.",
+    reaction: "R-CHO → β-hydroxy aldehyde → α,β-unsaturated aldehyde",
+    mechanism: ["Base removes α-H forming enolate","Enolate attacks carbonyl carbon","Alkoxide formed","Protonation","Dehydration"]
+  },
+  {
+    title: "Cross Aldol Reaction",
+    content: "Two different carbonyl compounds undergo aldol reaction.",
+    reaction: "R-CHO + R'-CHO → mixed aldol",
+    mechanism: ["Enolate formation","Attack on second carbonyl","Intermediate formation","Protonation"]
+  },
+  {
+    title: "Cannizzaro Reaction",
+    content: "Aldehydes without α-H undergo disproportionation.",
+    reaction: "2R-CHO → R-CH2OH + R-COO⁻",
+    mechanism: ["OH⁻ attack","Alkoxide formation","Hydride shift","Alcohol + acid salt"]
+  },
+  {
+    title: "Oxime Formation",
+    content: "Reaction of carbonyl with hydroxylamine.",
+    reaction: "R-CO-R + NH2OH → R-C=NOH",
+    mechanism: ["Nucleophilic attack","Intermediate formation","Water elimination"]
+  },
+  {
+    title: "Hydrazone Formation",
+    content: "Reaction with hydrazine.",
+    reaction: "R-CO-R + NH2NH2 → R-C=NNH2",
+    mechanism: ["Attack on carbonyl","Intermediate","Dehydration"]
+  },
+  {
+    title: "Schiff Base Formation",
+    content: "Reaction with primary amine.",
+    reaction: "R-CHO + RNH2 → R-CH=NR",
+    mechanism: ["Amine attack","Intermediate","Loss of water"]
+  },
+  {
+    title: "Tollens Test",
+    content: "Oxidation of aldehydes giving silver mirror.",
+    reaction: "R-CHO → R-COO⁻ + Ag",
+    mechanism: ["Aldehyde oxidized","Silver reduced"]
+  },
+  {
+    title: "Fehling Test",
+    content: "Aldehydes reduce Cu2+ to Cu2O.",
+    reaction: "R-CHO → R-COO⁻ + Cu2O",
+    mechanism: ["Oxidation-reduction process"]
+  },
+  {
+    title: "Iodoform Reaction",
+    content: "Methyl ketones form yellow precipitate.",
+    reaction: "R-CO-CH3 → CHI3",
+    mechanism: ["Halogenation","Cleavage","Iodoform formation"]
+  },
+  {
+    title: "Reduction (NaBH4/LiAlH4)",
+    content: "Carbonyl reduced to alcohol.",
+    reaction: "R-CO-R → Alcohol",
+    mechanism: ["Hydride attack","Protonation"]
+  },
+  {
+    title: "Clemmensen Reduction",
+    content: "Carbonyl to hydrocarbon in acidic medium.",
+    reaction: "R-CO-R → R-CH2-R",
+    mechanism: ["Zn-Hg reduction"]
+  },
+  {
+    title: "Wolff-Kishner Reduction",
+    content: "Carbonyl reduced in basic medium.",
+    reaction: "R-CO-R → R-CH2-R",
+    mechanism: ["Hydrazone formation","Nitrogen elimination"]
+  },
+  {
+    title: "Baeyer Villiger Oxidation",
+    content: "Ketone converted to ester.",
+    reaction: "Ketone → Ester",
+    mechanism: ["Peracid attack","Rearrangement"]
+  },
+  {
+    title: "Esterification",
+    content: "Acid + alcohol forms ester.",
+    reaction: "R-COOH + R-OH → Ester",
+    mechanism: ["Protonation","Alcohol attack","Water loss"]
+  },
+  {
+    title: "Ester Hydrolysis",
+    content: "Ester breaks into acid and alcohol.",
+    reaction: "Ester → Acid + Alcohol",
+    mechanism: ["Nucleophilic attack","Cleavage"]
+  },
+  {
+    title: "Decarboxylation",
+    content: "Removal of CO2 from acid salt.",
+    reaction: "R-COONa → RH",
+    mechanism: ["Heating with soda lime"]
+  },
+  {
+    title: "HVZ Reaction",
+    content: "α-halogenation of acid.",
+    reaction: "R-CH2-COOH → R-CHX-COOH",
+    mechanism: ["Acid chloride formation","Enolization","Halogenation"]
+  },
+  {
+    title: "Acid Chloride Formation",
+    content: "Using SOCl2 or PCl5.",
+    reaction: "R-COOH → R-COCl",
+    mechanism: ["Substitution reaction"]
+  },
+  {
+    title: "Amide Formation",
+    content: "Reaction with ammonia.",
+    reaction: "R-COOH → R-CONH2",
+    mechanism: ["Acyl substitution"]
+  }
+];
+
+const Mechanism = ({ steps }) => {
+  return (
+    <div className="mt-4 space-y-3">
+      {steps.map((step, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: index * 0.3 }}
+          className="bg-black/40 text-green-300 p-3 rounded-xl font-mono"
+        >
+          ➜ {step}
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+const Header = () => (
+  <header className="w-full py-6 bg-black/40 backdrop-blur-xl text-center shadow-lg fixed top-0 z-50">
+    <h1 className="text-4xl font-bold text-cyan-400">Organic Chemistry Reaction Simulator</h1>
+    <p className="text-gray-300 mt-1">Class 12 NCERT | JEE & NEET Mechanism Animations</p>
+  </header>
+);
+
+const Footer = () => (
+  <footer className="w-full py-6 bg-black/40 backdrop-blur-xl text-center mt-16">
+    <p className="text-gray-400">© 2026 Organic Chemistry Learning Platform</p>
+    <p className="text-gray-500 text-sm">Built with React, Tailwind & Framer Motion</p>
+  </footer>
+);
+
+export default function SliderWebsite() {
+  return (
+    <div className="min-h-screen bg-gradient-to-r from-indigo-900 to-black flex flex-col items-center py-10">
+
+      <Header />
+
+      <div className="pt-32 w-11/12 md:w-3/4 space-y-10">
+        {slides.map((slide, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            className="bg-white/10 backdrop-blur-xl p-8 rounded-2xl shadow-xl"
+          >
+            <h1 className="text-3xl font-bold text-cyan-400 mb-3">
+              {slide.title}
+            </h1>
+
+            <p className="text-white mb-2">{slide.content}</p>
+
+            <p className="text-yellow-300 font-mono mb-4">
+              {slide.reaction}
+            </p>
+
+            <Mechanism steps={slide.mechanism} />
+          </motion.div>
+        ))}
+      </div>
+
+      <Footer />
+
+    </div>
+  );
+}
