@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Haloalkanes & Haloarenes – Class 12 | JEE Mains & NCERT + Mechanisms</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeInUp {
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    .mechanism-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    }
+    .mechanism-details.open {
+      max-height: 1200px; /* adjust as needed */
+    }
+    .reaction-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 30px -10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 via-white to-indigo-50 min-h-screen text-gray-800 font-sans antialiased">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-indigo-800 via-indigo-700 to-blue-700 text-white shadow-2xl">
+    <div class="max-w-7xl mx-auto px-6 py-28 md:py-36 text-center">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-5 animate-fadeInUp">
+        Haloalkanes & Haloarenes
+      </h1>
+      <p class="text-2xl md:text-3xl opacity-95 mb-10 animate-fadeInUp animation-delay-300">
+        Class 12 NCERT + JEE Mains – All Reactions with Detailed Mechanisms
+      </p>
+      <div class="flex flex-wrap justify-center gap-6 animate-fadeInUp animation-delay-500">
+        <a href="#haloalkanes" class="bg-white text-indigo-800 px-10 py-5 rounded-full font-bold shadow-xl hover:bg-indigo-100 transition transform hover:-translate-y-2">
+          <i class="fas fa-flask mr-2"></i>Haloalkanes
+        </a>
+        <a href="#haloarenes" class="bg-white/25 backdrop-blur-md text-white border-2 border-white px-10 py-5 rounded-full font-bold hover:bg-white/40 transition transform hover:-translate-y-2">
+          <i class="fas fa-ring mr-2"></i>Haloarenes
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-7xl mx-auto px-6 py-20">
+
+    <!-- Haloalkanes -->
+    <section id="haloalkanes" class="mb-32 scroll-mt-24">
+      <h2 class="text-5xl font-extrabold text-indigo-800 mb-12 border-b-4 border-indigo-300 pb-5 inline-block">
+        1. Haloalkanes (Alkyl Halides – RX) – Reactions & Mechanisms
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- SN2 Mechanism Card -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-400 reaction-card opacity-0 translate-y-12">
+          <div class="bg-indigo-600 text-white px-7 py-5 font-bold text-xl flex items-center">
+            <i class="fas fa-exchange-alt mr-3"></i>SN2 – Nucleophilic Substitution
+          </div>
+          <div class="p-7">
+            <p class="font-mono text-base bg-gray-100 p-4 rounded-lg mb-4 overflow-x-auto">
+              RX + Nu⁻ → RNu + X⁻
+            </p>
+            <p class="text-gray-700 mb-4">
+              Favored: 1° > 2° >> 3° (steric), strong Nu, polar aprotic solvent, inversion of configuration.
+            </p>
+            <button class="text-indigo-700 font-semibold flex items-center toggle-btn">
+              <i class="fas fa-info-circle mr-2"></i>Show Detailed Mechanism
+            </button>
+            <div class="mechanism-details mt-4 text-gray-700 leading-relaxed">
+              <p><strong>Mechanism (One-step, concerted):</strong></p>
+              <ul class="list-disc pl-6 space-y-2 mt-3">
+                <li>Nu⁻ attacks from back side → transition state with partial bonds</li>
+                <li>Simultaneous C–Nu bond formation & C–X bond breaking</li>
+                <li>Inversion of configuration (umbrella flip) if chiral center</li>
+                <li>Rate = k [RX][Nu⁻] → bimolecular</li>
+              </ul>
+              <p class="mt-4 font-semibold">Energy: One transition state, no intermediate.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SN1 Mechanism Card -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-400 reaction-card opacity-0 translate-y-12" style="animation-delay: 100ms;">
+          <div class="bg-rose-600 text-white px-7 py-5 font-bold text-xl flex items-center">
+            <i class="fas fa-random mr-3"></i>SN1 – Nucleophilic Substitution
+          </div>
+          <div class="p-7">
+            <p class="font-mono text-base bg-gray-100 p-4 rounded-lg mb-4 overflow-x-auto">
+              RX → R⁺ + X⁻ (slow) → RNu (fast)
+            </p>
+            <p class="text-gray-700 mb-4">
+              Favored: 3° > 2° > 1°, weak Nu, polar protic solvent, racemization.
+            </p>
+            <button class="text-rose-700 font-semibold flex items-center toggle-btn">
+              <i class="fas fa-info-circle mr-2"></i>Show Detailed Mechanism
+            </button>
+            <div class="mechanism-details mt-4 text-gray-700 leading-relaxed">
+              <p><strong>Mechanism (Two-step):</strong></p>
+              <ol class="list-decimal pl-6 space-y-3 mt-3">
+                <li><strong>Step 1 (RDS):</strong> Heterolytic cleavage → planar carbocation + X⁻</li>
+                <li><strong>Step 2:</strong> Nu attacks carbocation from either side → racemic mixture if chiral</li>
+              </ol>
+              <p class="mt-4 font-semibold">Rate = k [RX] → unimolecular</p>
+              <p class="mt-2">Carbocation rearrangements possible (1,2-hydride/methyl shift).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- E2 Elimination Card -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-400 reaction-card opacity-0 translate-y-12" style="animation-delay: 200ms;">
+          <div class="bg-emerald-600 text-white px-7 py-5 font-bold text-xl flex items-center">
+            <i class="fas fa-trash-alt mr-3"></i>E2 – Dehydrohalogenation (alc. KOH)
+          </div>
+          <div class="p-7">
+            <p class="font-mono text-base bg-gray-100 p-4 rounded-lg mb-4 overflow-x-auto">
+              RX + alc. KOH → Alkene + KX + H₂O
+            </p>
+            <p class="text-gray-700 mb-4">
+              Saytzeff rule: more substituted alkene major • Anti-periplanar geometry.
+            </p>
+            <button class="text-emerald-700 font-semibold flex items-center toggle-btn">
+              <i class="fas fa-info-circle mr-2"></i>Show Detailed Mechanism
+            </button>
+            <div class="mechanism-details mt-4 text-gray-700 leading-relaxed">
+              <p><strong>Mechanism (One-step, concerted):</strong></p>
+              <ul class="list-disc pl-6 space-y-2 mt-3">
+                <li>Strong base (OH⁻) abstracts β-H</li>
+                <li>Leaving group (X) departs simultaneously</li>
+                <li>C=C π bond forms</li>
+                <li>Rate = k [RX][Base] → bimolecular</li>
+              </ul>
+              <p class="mt-4 font-semibold">Anti-elimination preferred in acyclic systems.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Williamson Ether -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-400 reaction-card opacity-0 translate-y-12" style="animation-delay: 300ms;">
+          <div class="bg-cyan-600 text-white px-7 py-5 font-bold text-xl">
+            Williamson Ether Synthesis
+          </div>
+          <div class="p-7">
+            <p class="font-mono text-base bg-gray-100 p-4 rounded-lg mb-4 overflow-x-auto">
+              RX + NaOR' → R–O–R' + NaX
+            </p>
+            <p class="text-gray-700">SN2 – best with 1° RX.</p>
+          </div>
+        </div>
+
+        <!-- Ambident – KCN vs AgCN -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-400 reaction-card opacity-0 translate-y-12" style="animation-delay: 400ms;">
+          <div class="bg-purple-600 text-white px-7 py-5 font-bold text-xl">
+            Ambident Nucleophiles (KCN vs AgCN)
+          </div>
+          <div class="p-7">
+            <p class="font-mono text-base bg-gray-100 p-4 rounded-lg mb-4 overflow-x-auto">
+              RX + KCN → R–CN (nitrile)<br>
+              RX + AgCN → R–NC (isocyanide)
+            </p>
+            <p class="text-gray-700">CN⁻ ambident: C-attack (K⁺) vs N-attack (Ag⁺ hardens N).</p>
+          </div>
+        </div>
+
+        <!-- Wurtz -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-400 reaction-card opacity-0 translate-y-12" style="animation-delay: 500ms;">
+          <div class="bg-pink-600 text-white px-7 py-5 font-bold text-xl">
+            Wurtz Reaction
+          </div>
+          <div class="p-7">
+            <p class="font-mono text-base bg-gray-100 p-4 rounded-lg mb-4 overflow-x-auto">
+              2RX + 2Na → R–R + 2NaX (dry ether)
+            </p>
+            <p class="text-gray-700">Free radical coupling via organosodium intermediate.</p>
+          </div>
+        </div>
+
+        <!-- Grignard -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-400 reaction-card opacity-0 translate-y-12" style="animation-delay: 600ms;">
+          <div class="bg-teal-600 text-white px-7 py-5 font-bold text-xl">
+            Grignard Reagent Formation
+          </div>
+          <div class="p-7">
+            <p class="font-mono text-base bg-gray-100 p-4 rounded-lg mb-4 overflow-x-auto">
+              RX + Mg → RMgX (dry ether)
+            </p>
+            <p class="text-gray-700">Radical mechanism on Mg surface → insertion.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Haloarenes -->
+    <section id="haloarenes" class="mb-32 scroll-mt-24">
+      <h2 class="text-5xl font-extrabold text-indigo-800 mb-12 border-b-4 border-indigo-300 pb-5 inline-block">
+        2. Haloarenes (ArX) – Reactions & Mechanisms
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-400 reaction-card opacity-0 translate-y-12">
+          <div class="bg-indigo-700 text-white px-7 py-5 font-bold text-xl">
+            Low Reactivity – Why?
+          </div>
+          <div class="p-7 text-gray-700 leading-relaxed">
+            <ul class="list-disc pl-6 space-y-3">
+              <li>Resonance: partial double bond character (C–X bond stronger, shorter)</li>
+              <li>sp² carbon: harder for backside attack</li>
+              <li>Unstable aryl carbocation → no SN1</li>
+              <li>No SN2 (geometry + resonance)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-400 reaction-card opacity-0 translate-y-12" style="animation-delay: 100ms;">
+          <div class="bg-rose-700 text-white px-7 py-5 font-bold text-xl">
+            Nucleophilic Substitution (Harsh conditions)
+          </div>
+          <div class="p-7">
+            <p class="font-mono text-base bg-gray-100 p-4 rounded-lg mb-4 overflow-x-auto">
+              ArX + NaOH (623 K, pressure) → ArOH
+            </p>
+            <button class="text-rose-700 font-semibold flex items-center toggle-btn">
+              <i class="fas fa-info-circle mr-2"></i>Show Mechanism (Addition-Elimination)
+            </button>
+            <div class="mechanism-details mt-4 text-gray-700 leading-relaxed">
+              <p><strong>Mechanism (for activated ArX or high T/P):</strong></p>
+              <ol class="list-decimal pl-6 space-y-3 mt-3">
+                <li>Nu⁻ adds to carbon bearing X → Meisenheimer complex (negative charge delocalized)</li>
+                <li>Loss of X⁻ restores aromaticity</li>
+              </ol>
+              <p class="mt-4 font-semibold">Requires electron-withdrawing groups ortho/para to X for easier addition.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-400 reaction-card opacity-0 translate-y-12" style="animation-delay: 200ms;">
+          <div class="bg-emerald-700 text-white px-7 py-5 font-bold text-xl">
+            Wurtz-Fittig & Fittig
+          </div>
+          <div class="p-7">
+            <p class="font-mono text-base bg-gray-100 p-4 rounded-lg mb-4 overflow-x-auto">
+              ArX + RX + 2Na → Ar–R<br>
+              2ArX + 2Na → Ar–Ar
+            </p>
+            <p class="text-gray-700">Free radical via organosodium.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="mb-32">
+      <h2 class="text-5xl font-extrabold text-indigo-800 mb-12 border-b-4 border-indigo-300 pb-5 inline-block">
+        Quick Comparison Table
+      </h2>
+      <div class="overflow-x-auto rounded-2xl shadow-2xl">
+        <table class="w-full text-left border-collapse bg-white">
+          <thead>
+            <tr class="bg-indigo-800 text-white text-lg">
+              <th class="p-6">Property / Reaction</th>
+              <th class="p-6">Haloalkane (RX)</th>
+              <th class="p-6">Haloarene (ArX)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 text-base">
+            <tr class="hover:bg-indigo-50 transition">
+              <td class="p-6 font-medium">Nucleophilic substitution</td>
+              <td class="p-6">Easy (SN1/SN2)</td>
+              <td class="p-6">Very difficult (only harsh conditions or activated)</td>
+            </tr>
+            <tr class="hover:bg-indigo-50 transition">
+              <td class="p-6 font-medium">Mechanism for SN</td>
+              <td class="p-6">SN1 (carbocation) or SN2 (concerted)</td>
+              <td class="p-6">Addition-elimination (Meisenheimer complex)</td>
+            </tr>
+            <tr class="hover:bg-indigo-50 transition">
+              <td class="p-6 font-medium">alc. KOH product</td>
+              <td class="p-6">Alkene (E2)</td>
+              <td class="p-6">No reaction</td>
+            </tr>
+            <tr class="hover:bg-indigo-50 transition">
+              <td class="p-6 font-medium">With NH₃</td>
+              <td class="p-6">RNH₂ (easy)</td>
+              <td class="p-6">ArNH₂ (high T, pressure, Cu)</td>
+            </tr>
+            <tr class="hover:bg-indigo-50 transition">
+              <td class="p-6 font-medium">Grignard</td>
+              <td class="p-6">Easy</td>
+              <td class="p-6">Difficult</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-gray-900 to-indigo-950 text-gray-300 py-16 text-center">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="text-xl mb-4">Complete Class 12 NCERT Chapter 10 – With Detailed Mechanisms for JEE Mains</p>
+      <p class="text-sm opacity-80">Best of luck, Sujal from Nagpur! Keep revising mechanisms – they win marks in JEE.</p>
+    </div>
+  </footer>
+
+  <!-- JS for Toggle -->
+  <script>
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const details = btn.nextElementSibling;
+        details.classList.toggle('open');
+        btn.querySelector('i').classList.toggle('fa-chevron-down');
+        btn.querySelector('i').classList.toggle('fa-chevron-up');
+      });
+    });
+
+    // Scroll animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-12');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reaction-card, section').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
