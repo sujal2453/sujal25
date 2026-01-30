@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula Kinetic Overlord 🌌🌈</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #000; font-family: 'Segoe UI', sans-serif; color: white; }
+        #ui { position: absolute; top: 30px; left: 30px; pointer-events: none; z-index: 10; }
+        .panel { 
+            background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(25px); 
+            padding: 30px; border-radius: 30px; border: 1px solid rgba(0, 255, 136, 0.5);
+            box-shadow: 0 0 60px rgba(0, 255, 136, 0.15);
+        }
+        h1 { margin: 0 0 10px 0; font-size: 1.6rem; background: linear-gradient(45deg, #00ff88, #00d4ff, #ff00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: 4px; font-weight: 900; }
+        .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 15px; }
+        b { color: #00ff88; text-transform: uppercase; letter-spacing: 1px; }
+        #status { font-family: 'Courier New', monospace; font-size: 1rem; color: #ffca28; text-shadow: 0 0 10px rgba(255, 202, 40, 0.5); }
+        
+        .cam-box { position: absolute; bottom: 30px; right: 30px; width: 240px; height: 180px; border-radius: 25px; overflow: hidden; border: 2px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.8); transition: border 0.3s; }
+        #output_canvas { transform: scaleX(-1); width: 100%; height: 100%; filter: saturate(1.5) contrast(1.2); }
+    </style>
+</head>
+<body>
+
+    <div id="ui">
+        <div class="panel">
+            <h1>Nebula Engine 🌌</h1>
+            <div class="legend">
+                <div>
+                    <b>Sculpt ☝️</b><br>
+                    Index: Heart ❤️<br>
+                    Palm: Saturn 🪐<br>
+                    Fist: Sphere 📦
+                </div>
+                <div>
+                    <b>Pilot 🚀</b><br>
+                    Move: Kinetic 🌀<br>
+                    Open: Zoom In 🔍<br>
+                    Fist: Zoom Out 🔭
+                </div>
+            </div>
+            <div id="status">SENSORS: STANDBY...</div>
+        </div>
+    </div>
+    
+    <div class="cam-box" id="camBox">
+        <video id="input_video" style="display:none"></video>
+        <canvas id="output_canvas"></canvas>
+    </div>
+    <div id="render_target"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script type="importmap">
+        { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        // --- ⚙️ State ---
+        const PARTICLE_COUNT = 45000; // Increased density for better visuals
+        let currentMode = "CHAOS", targetPos = { x: 0, y: 0 }, rotVel = 0.005, zoomLevel = 0, lastLeftX = 0;
+
+        // --- 🎨 Cinematic Scene Setup ---
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 80;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('render_target').appendChild(renderer.domElement);
+
+        // --- ⚡ GLSL Shader with Bloom & Glow Logic ---
+        const vertexShader = `
+            uniform float uTime;
+            uniform float uMorphAlpha;
+            uniform float uChaos;
+            attribute vec3 targetPos;
+            attribute vec3 colorAttr;
+            varying vec3 vColor;
+            varying float vGlow;
+            void main() {
+                vec3 pos = mix(position, targetPos, uMorphAlpha);
+                // Nebula Drift Math
+                float drift = sin(uTime * 0.3 + position.x * 0.05) * 12.0 * uChaos;
+                pos.x += drift; pos.y += cos(uTime * 0.2 + position.y * 0.05) * 12.0 * uChaos;
+                
+                vec4 mvPos = modelViewMatrix * vec4(pos, 1.0);
+                // Dynamic Sizing based on distance and chaos
+                gl_PointSize = (2.8 + 2.0 * sin(uTime + position.y)) * (60.0 / -mvPos.z);
+                gl_Position = projectionMatrix * mvPos;
+                vColor = colorAttr;
+                vGlow = 1.0 / (-mvPos.z * 0.02); // Distance-based brightness
+            }
+        `;
+        const fragmentShader = `
+            varying vec3 vColor;
+            varying float vGlow;
+            void main() {
+                float dist = distance(gl_PointCoord, vec2(0.5));
+                if (dist > 0.5) discard;
+                // Soft radial glow for bloom effect
+                float alpha = smoothstep(0.5, 0.1, dist);
+                gl_FragColor = vec4(vColor * vGlow, alpha * 0.9);
+            }
+        `;
+
+        const geometry = new THREE.BufferGeometry();
+        const posArr = new Float32Array(PARTICLE_COUNT * 3);
+        const colArr = new Float32Array(PARTICLE_COUNT * 3);
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            posArr[i*3] = (Math.random() - 0.5) * 150;
+            posArr[i*3+1] = (Math.random() - 0.5) * 150;
+            posArr[i*3+2] = (Math.random() - 0.5) * 150;
+            const c = new THREE.Color().setHSL(i / PARTICLE_COUNT, 0.9, 0.6);
+            colArr[i*3] = c.r; colArr[i*3+1] = c.g; colArr[i*3+2] = c.b;
+        }
+        geometry.setAttribute('position', new THREE.BufferAttribute(posArr, 3));
+        geometry.setAttribute('targetPos', new THREE.BufferAttribute(new Float32Array(posArr), 3));
+        geometry.setAttribute('colorAttr', new THREE.BufferAttribute(colArr, 3));
+
+        const material = new THREE.ShaderMaterial({
+            uniforms: { uTime: { value: 0 }, uMorphAlpha: { value: 0 }, uChaos: { value: 1.0 } },
+            vertexShader, fragmentShader, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
+        });
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
+
+        // --- 📐 Advanced Shape Math ---
+        function getShape(mode) {
+            const data = new Float32Array(PARTICLE_COUNT * 3);
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                let x, y, z;
+                if (mode === "HEART") {
+                    const t = Math.random() * Math.PI * 2;
+                    x = 16 * Math.pow(Math.sin(t), 3);
+                    y = (13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+                    z = (Math.random() - 0.5) * 8;
+                } else if (mode === "SATURN") {
+                    if (i < PARTICLE_COUNT * 0.5) {
+                        const phi = Math.acos(-1 + (2 * i) / (PARTICLE_COUNT * 0.5));
+                        const theta = Math.sqrt(PARTICLE_COUNT * 0.5 * Math.PI) * phi;
+                        x = 9 * Math.cos(theta) * Math.sin(phi); y = 9 * Math.sin(theta) * Math.sin(phi); z = 9 * Math.cos(phi);
+                    } else {
+                        const r = 16 + Math.random() * 10; const a = Math.random() * Math.PI * 2;
+                        x = r * Math.cos(a); y = (Math.random() - 0.5) * 3; z = r * Math.sin(a);
+                    }
+                } else if (mode === "SPHERE") {
+                    const phi = Math.acos(-1 + (2 * i) / PARTICLE_COUNT);
+                    const theta = Math.sqrt(PARTICLE_COUNT * Math.PI) * phi;
+                    x = 13 * Math.cos(theta) * Math.sin(phi); y = 13 * Math.sin(theta) * Math.sin(phi); z = 13 * Math.cos(phi);
+                } else {
+                    x = (Math.random() - 0.5) * 140; y = (Math.random() - 0.5) * 140; z = (Math.random() - 0.5) * 140;
+                }
+                data[i*3] = x; data[i*3+1] = y; data[i*3+2] = z;
+            }
+            return data;
+        }
+
+        // --- 👋 Hand Intelligence ---
+        const video = document.getElementById('input_video'), canvas = document.getElementById('output_canvas'), ctx = canvas.getContext('2d');
+        const hands = new Hands({locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`});
+        hands.setOptions({ maxNumHands: 2, modelComplexity: 1, minDetectionConfidence: 0.8 });
+
+        hands.onResults((res) => {
+            ctx.save(); ctx.clearRect(0,0, canvas.width, canvas.height);
+            ctx.drawImage(res.image, 0,0, canvas.width, canvas.height);
+            if(res.multiHandLandmarks) {
+                res.multiHandLandmarks.forEach((lm) => {
+                    drawConnectors(ctx, lm, HAND_CONNECTIONS, {color: '#00ff88', lineWidth: 5});
+                    drawLandmarks(ctx, lm, {color: '#ff00ff', lineWidth: 2, radius: 4});
+                });
+            }
+            ctx.restore();
+
+            let detectedMode = "CHAOS";
+            if (res.multiHandLandmarks && res.multiHandLandmarks.length > 0) {
+                res.multiHandLandmarks.forEach((lm, idx) => {
+                    const side = res.multiHandedness[idx].label;
+                    const up = (t, k) => lm[t].y < lm[k].y;
+                    const isFist = !up(8,6) && !up(12,10) && !up(16,14);
+                    const isPalm = up(8,6) && up(12,10) && up(16,14) && up(20,18);
+                    const isIndex = up(8,6) && !up(12,10) && !up(16,14);
+
+                    if (side === "Right") {
+                        if (isPalm) detectedMode = "SATURN";
+                        else if (isFist) detectedMode = "SPHERE";
+                        else if (isIndex) detectedMode = "HEART";
+                    } else {
+                        const curX = (0.5 - lm[9].x) * 95;
+                        rotVel = (curX - lastLeftX) * 0.7; // Kinetic boost
+                        lastLeftX = curX;
+                        targetPos.x = curX; targetPos.y = (0.5 - lm[9].y) * 95;
+                        if (isPalm) zoomLevel = THREE.MathUtils.lerp(zoomLevel, 50, 0.15);
+                        else if (isFist) zoomLevel = THREE.MathUtils.lerp(zoomLevel, -60, 0.15);
+                    }
+                });
+                document.getElementById('camBox').style.borderColor = "#00ff88";
+            } else {
+                document.getElementById('camBox').style.borderColor = "#333";
+            }
+
+            if (currentMode !== detectedMode) {
+                const snap = new Float32Array(PARTICLE_COUNT * 3);
+                const s = geometry.attributes.position.array, t = geometry.attributes.targetPos.array;
+                const a = material.uniforms.uMorphAlpha.value;
+                for(let i=0; i<PARTICLE_COUNT*3; i++) snap[i] = THREE.MathUtils.lerp(s[i], t[i], a);
+                geometry.setAttribute('position', new THREE.BufferAttribute(snap, 3));
+                geometry.setAttribute('targetPos', new THREE.BufferAttribute(getShape(detectedMode), 3));
+                material.uniforms.uMorphAlpha.value = 0; currentMode = detectedMode;
+            }
+            document.getElementById('status').innerText = `STREAMS: ${currentMode} 🌈`;
+        });
+
+        const cam = new Camera(video, { onFrame: async () => { canvas.width = video.videoWidth; canvas.height = video.videoHeight; await hands.send({image: video}); } });
+        cam.start();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            material.uniforms.uTime.value = performance.now() * 0.001;
+            
+            points.position.x = THREE.MathUtils.lerp(points.position.x, targetPos.x, 0.1);
+            points.position.y = THREE.MathUtils.lerp(points.position.y, targetPos.y, 0.1);
+            points.position.z = THREE.MathUtils.lerp(points.position.z, zoomLevel, 0.1);
+            
+            points.rotation.y += rotVel;
+            rotVel = THREE.MathUtils.lerp(rotVel, 0.005, 0.05);
+
+            material.uniforms.uMorphAlpha.value = THREE.MathUtils.lerp(material.uniforms.uMorphAlpha.value, 1.0, 0.06);
+            material.uniforms.uChaos.value = THREE.MathUtils.lerp(material.uniforms.uChaos.value, (currentMode === "CHAOS" ? 1.4 : 0.02), 0.05);
+            
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
