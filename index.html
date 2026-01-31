@@ -589,8 +589,24 @@
             <button class="btn-primary" aria-label="Close success message">Close</button>
         </div>
     </div>
+    <!-- ===== LIVE VISITOR ANALYTICS ===== -->
 
-    <footer id="footer" class="glass-effect py-12" role="contentinfo">
+<section class="glass-effect py-20 sm:py-32 bg-transparent" style="text-align:center">
+
+    <h2 class="text-4xl sm:text-5xl font-bold mb-12 text-white">
+        📊 Live Website Stats
+    </h2>
+
+    <h3>👥 Live Visitors: <span id="liveCount">0</span></h3>
+    <h3>📊 Today Visits: <span id="todayCount">0</span></h3>
+    <h3>🔥 Peak Online: <span id="peakCount">0</span></h3>
+
+    <div style="max-width:800px;margin:40px auto">
+        <canvas id="liveChart" height="200"></canvas>
+    </div>
+
+</section>
+   <footer id="footer" class="glass-effect py-12" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
                 <div>
@@ -974,5 +990,55 @@
             document.querySelectorAll('img[loading="lazy"]').forEach(img => imageObserver.observe(img));
         }
     </script>
+    <script src="/socket.io/socket.io.js"></script>
+
+<script>
+const socket = io();
+
+let labels = [];
+let dataPoints = [];
+
+const ctx = document.getElementById("liveChart").getContext("2d");
+
+const liveChart = new Chart(ctx,{
+    type:"line",
+    data:{
+        labels:labels,
+        datasets:[{
+            label:"Live Users",
+            data:dataPoints,
+            tension:.3,
+            borderWidth:2,
+            fill:false
+        }]
+    },
+    options:{
+        responsive:true,
+        animation:false,
+        scales:{
+            y:{ beginAtZero:true }
+        }
+    }
+});
+
+socket.on("stats",stats=>{
+
+    document.getElementById("liveCount").innerText = stats.live;
+    document.getElementById("todayCount").innerText = stats.today;
+    document.getElementById("peakCount").innerText = stats.peak;
+
+    const time = new Date().toLocaleTimeString();
+
+    labels.push(time);
+    dataPoints.push(stats.live);
+
+    if(labels.length > 20){
+        labels.shift();
+        dataPoints.shift();
+    }
+
+    liveChart.update();
+});
+</script>
 </body>
 </html>
