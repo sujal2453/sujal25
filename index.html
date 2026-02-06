@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="
+default-src 'self';
+script-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net;
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+img-src 'self' https://i.postimg.cc https://img.freepik.com https://www.brainfacts.org data:;
+font-src 'self' https://fonts.gstatic.com;
+connect-src 'self';
+frame-ancestors 'none';
+">
+
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -149,12 +164,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        :root {
-            --primary: #4f46e5;
-            --secondary: #a5b4fc;
-            --accent: #22c55e;
-            --background: #0f172a;
-            --card-bg: rgba(31, 41, 55, 0.8);
+:root {
+  --background: #0b1020;
+  --background-light: #111827;
+  --card-bg: rgba(17, 24, 39, 0.75);
+
+  --primary: #6366f1;
+  --secondary: #a5b4fc;
+  --accent: #22c55e;
+
+  --text-main: #f1f5f9;
+  --text-soft: #9ca3af;
+}
+
+body {
+  background: linear-gradient(135deg, #0b1020 0%, #111827 100%);
+}
+
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -168,7 +194,7 @@
         }
         .glass-effect {
             background: var(--card-bg);
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
@@ -216,7 +242,7 @@
             background: var(--background);
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--primary);
+            background:#6366f1;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
@@ -378,7 +404,7 @@
                            PASSIONATE IN AI , WEB DEVELOPMENT AND AERONAUICS
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" target="_blank" rel="noopener" class="btn-primary text-base sm:text-lg" aria-label="Start a collaboration with Sujal via email">JOIN US </a>
+                <a href="mailto:sujalwagholikar25@gmail.com" target="_blank" rel="noopener" class="btn-primary text-base sm:text-lg" aria-label="Start a collaboration with Sujal via email">JOIN US </a>
                 <a href="#projects" class="btn-primary bg-transparent border-2 border-indigo-500 text-white hover:bg-indigo-500/20 text-base sm:text-lg" aria-label="Explore Sujal's projects">Explore My Work</a>
             </div>
             <div class="social-links flex justify-center gap-6">
@@ -436,7 +462,7 @@
                             <span class="tech-badge bg-gray-700/50 px-3 py-1 rounded-full text-xs">Chart.js</span>
                             <span class="tech-badge bg-gray-700/50 px-3 py-1 rounded-full text-xs">Responsive Design</span>
                         </div>
-                        <a href="adv.html" class="btn-primary text-sm" aria-label="View General Knowledge Quiz project">Explore Project</a>
+                        <a href="codexmock.html" class="btn-primary text-sm" aria-label="View General Knowledge Quiz project">Test</a>
                     </div>
                 </div>
 
