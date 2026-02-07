@@ -8,7 +8,8 @@
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 
- <script type="application/ld+json">
+
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -354,8 +355,7 @@ body {
             color: var(--secondary);
         }
     </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-   <!-- Hitsteps Live Analytics -->
+    <!-- Hitsteps Live Analytics -->
 <script type="text/javascript">
 (function() {
     var hstc = document.createElement("script");
@@ -366,61 +366,37 @@ body {
 </script>
 </head>
 <body class="smooth-scroll">
-   <nav id="nav" class="glass-effect fixed w-full z-50" role="banner" aria-label="Main navigation">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
+    <nav id="nav" class="glass-effect fixed w-full z-50" role="banner" aria-label="Main navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="#home" aria-label="Home">
+                        <img src="https://i.postimg.cc/KjP9yvZz/Screenshot-2025-10-18-173415.png" alt="Sujal Wagholikar Logo" class="h-12 w-auto object-contain transition-transform duration-300 hover:scale-110" loading="lazy">
+                    </a>
+                <div class="flex items-center gap-4">
 
-      <!-- LOGO -->
-      <div class="flex items-center">
-        <a href="#home" aria-label="Home">
-          <img 
-            src="https://i.postimg.cc/KjP9yvZz/Screenshot-2025-10-18-173415.png" 
-            alt="Sujal Wagholikar Logo"
-            class="h-12 w-auto object-contain transition-transform duration-300 hover:scale-110"
-            loading="lazy">
-        </a>
-      </div>
-
-      <!-- RIGHT SIDE -->
-      <div class="flex items-center gap-4">
-
-        <!-- 🔐 AUTH BUTTONS (DESKTOP ONLY) -->
-        <div class="hidden md:flex items-center gap-3">
-          <button 
-        <button onclick="openAuth('login')">Login</button>
-
-        <button 
-        <button onclick="openAuth('signup')">Sign Up</button>
-        </div>
-
-        <!-- ☰ HAMBURGER -->
-        <div class="hamburger" id="hamburger" role="button" tabindex="0"
-             aria-label="Toggle navigation menu" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <!-- MOBILE NAV MENU -->
-        <div class="nav-menu" id="nav-menu" role="navigation" aria-hidden="true">
-          <i class="fas fa-times modal-close" id="close-menu" tabindex="0" aria-label="Close menu"></i>
-
-          <a href="#home" tabindex="-1">Home</a>
-          <a href="#about" tabindex="-1">About</a>
-          <a href="#projects" tabindex="-1">Projects</a>
-          <a href="#skills" tabindex="-1">Skills</a>
-          <a href="#support" tabindex="-1">Support</a>
-          <a href="#contact" tabindex="-1">Connect</a>
-
-          <a href="test.html" class="btn-primary text-sm" tabindex="-1">TEST M&C</a>
-        </div>
-
-      </div>
+    <!-- Hamburger menu (keep this part exactly as it was) -->
+    <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
-  </div>
-</nav>
 
-   <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-900" role="main" aria-label="Hero section">
+    <div class="nav-menu" id="nav-menu" role="navigation" aria-hidden="true">
+        <i class="fas fa-times modal-close" id="close-menu" tabindex="0" aria-label="Close menu"></i>
+        <a href="#home" tabindex="-1">Home</a>
+        <a href="#about" tabindex="-1">About</a>
+        <a href="#projects" tabindex="-1">Projects</a>
+        <a href="#skills" tabindex="-1">Skills</a>
+        <a href="#support" tabindex="-1">Support</a>
+        <a href="#contact" tabindex="-1">Connect</a>
+        <a href="test.html" class="btn-primary text-sm" tabindex="-1">TEST M&C</a>
+    </div>
+</div>
+           
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-900" role="main" aria-label="Hero section">
         <div id="hero-particles"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -618,70 +594,106 @@ body {
                             <a href="tel:+917499970152" class="text-indigo-300 hover:text-indigo-400 transition footer-link" aria-label="Call Sujal">+91 7499970152</a>
                         </p>
                     </div>
-                    <form 
+<form 
   action="https://api.web3forms.com/submit" 
   method="POST"
+  id="contact-form"
   class="space-y-6"
 >
 
-  <!-- REQUIRED ACCESS KEY -->
-  <input type="hidden" name="access_key" value="685ee64f-a06c-4281-b613-88bfea84144c">
+  <!-- 🔐 Web3Forms Configuration -->
+  <input type="hidden" name="access_key" value="24240680-e918-4701-b2bb-fb158c19f361">
+  <input type="hidden" name="subject" value="New Message from Sujal Portfolio">
+  <input type="hidden" name="from_name" value="Sujal Portfolio Website">
+  <input type="hidden" name="redirect" value="https://sujalwagholikar.online/#contact">
 
-  <!-- OPTIONAL SECURITY -->
-  <input type="hidden" name="subject" value="New Message from Portfolio Website">
-  <input type="hidden" name="from_name" value="Sujal Portfolio Contact">
-  <input type="checkbox" name="botcheck" class="hidden">
+  <!-- 🛡️ Spam Protection -->
+  <input type="checkbox" name="botcheck" style="display:none;">
 
-  <!-- NAME -->
+  <!-- 👤 Full Name -->
   <div>
-    <label class="block text-sm font-medium text-gray-300">Full Name *</label>
+    <label for="name" class="block text-sm font-medium text-gray-300">
+      Full Name <span class="text-red-400">*</span>
+    </label>
     <input 
-      type="text" 
-      name="name" 
+      type="text"
+      id="name"
+      name="name"
       required
-      class="mt-1 block w-full rounded-md bg-gray-800/50 text-gray-200 p-3"
-      placeholder="Your full name">
+      placeholder="Your full name"
+      class="mt-1 block w-full rounded-md bg-gray-800/50 text-gray-200 p-3 shadow-sm focus:ring-indigo-400 focus:outline-none"
+    >
   </div>
 
-  <!-- EMAIL -->
+  <!-- 📧 Email -->
   <div>
-    <label class="block text-sm font-medium text-gray-300">Email *</label>
+    <label for="email" class="block text-sm font-medium text-gray-300">
+      Email Address <span class="text-red-400">*</span>
+    </label>
     <input 
-      type="email" 
-      name="email" 
+      type="email"
+      id="email"
+      name="email"
       required
-      class="mt-1 block w-full rounded-md bg-gray-800/50 text-gray-200 p-3"
-      placeholder="your@email.com">
+      placeholder="your@email.com"
+      class="mt-1 block w-full rounded-md bg-gray-800/50 text-gray-200 p-3 shadow-sm focus:ring-indigo-400 focus:outline-none"
+    >
   </div>
 
-  <!-- MESSAGE -->
+  <!-- 💬 Message -->
   <div>
-    <label class="block text-sm font-medium text-gray-300">Message *</label>
+    <label for="message" class="block text-sm font-medium text-gray-300">
+      Message <span class="text-red-400">*</span>
+    </label>
     <textarea 
-      name="message" 
-      rows="5" 
+      id="message"
+      name="message"
+      rows="5"
       required
-      class="mt-1 block w-full rounded-md bg-gray-800/50 text-gray-200 p-3"
-      placeholder="Write your message here..."></textarea>
+      placeholder="Share your project or collaboration idea..."
+      class="mt-1 block w-full rounded-md bg-gray-800/50 text-gray-200 p-3 shadow-sm focus:ring-indigo-400 focus:outline-none"
+    ></textarea>
   </div>
 
-  <!-- SUBMIT -->
-  <button type="submit" class="btn-primary w-full">
-    Send Message
-  </button>
+  <!-- 🚀 Submit -->
+  <div>
+    <button 
+      type="submit"
+      class="btn-primary w-full"
+      aria-label="Submit contact form"
+    >
+      Send Message
+    </button>
+  </div>
 
-                    </form>
+</form>
+
+                   
                 </div>
             </div>
         </div>
                             
     </section>
 
+
+    <div id="success-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[1000] hidden" role="dialog" aria-modal="true" aria-labelledby="success-title" aria-hidden="true">
+        <div class="glass-effect rounded-2xl p-8 max-w-md w-full text-center">
+            <i class="fas fa-times absolute top-4 right-4 text-gray-300 cursor-pointer hover:text-indigo-400 transition transform hover:rotate-90 duration-300" id="modal-close" tabindex="0" aria-label="Close success message"></i>
+            <i class="fas fa-check-circle text-5xl text-green-500 mb-4" aria-hidden="true"></i>
+            <h2 id="success-title" class="text-2xl font-bold text-white mb-4">Message Sent!</h2>
+            <p class="text-gray-300 mb-6">Thank you for reaching out. I'll respond within 24-48 hours.</p>
+            <button class="btn-primary" aria-label="Close success message">Close</button>
+        </div>
+    </div>
+    </h2>
+
+
     <div style="max-width:800px;margin:40px auto">
         <canvas id="liveChart" height="200"></canvas>
     </div>
 
-</section>
+
+
    <footer id="footer" class="glass-effect py-12" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
@@ -785,80 +797,435 @@ body {
 
 
 </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        // --- Initialize Particles.js for Hero Section with enhanced config ---
+        particlesJS('hero-particles', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ['#4f46e5', '#a5b4fc', '#22c55e', '#ec4899'] },
+                shape: { type: 'circle', stroke: { width: 0 } },
+                opacity: { value: 0.5, random: true },
+                size: { value: 5, random: true },
+                line_linked: { enable: true, distance: 120, color: '#a5b4fc', opacity: 0.3, width: 1.5 },
+                move: { enable: true, speed: 2, direction: 'none', random: true, out_mode: 'bounce' }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+                modes: { repulse: { distance: 150, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+        // --- Enhanced GSAP Animations for Hero Section ---
+        gsap.from("#nav", {
+            y: -100,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power2.out"
+        });
+        gsap.from(".hero-content h1", {
+            y: 80,
+            opacity: 0,
+            duration: 1.5,
+            ease: "back.out(1.7)",
+            delay: 0.3
+        });
+        gsap.from(".hero-content p", {
+            y: 60,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power2.out",
+            delay: 0.6
+        });
+        gsap.from(".hero-content .btn-primary", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "back.out(1.7)",
+            stagger: 0.2,
+            delay: 0.9
+        });
+        gsap.from(".social-links a", {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.15,
+            delay: 1.2
+        });
+        // Parallax effect for hero overlay
+        gsap.to(".hero-overlay", {
+            yPercent: -20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#home",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+        // --- Enhanced Section Animations ---
+        gsap.utils.toArray("h2").forEach(heading => {
+            gsap.from(heading, {
+                y: 50,
+                opacity: 0,
+                duration: 1.2,
+                ease: "power2.out",
+                scrollTrigger: { trigger: heading, start: "top 85%" }
+            });
+        });
+        gsap.from(".about-media-anim", {
+            x: -150,
+            opacity: 0,
+            rotation: -5,
+            duration: 1.8,
+            ease: "back.out(1.7)",
+            scrollTrigger: { trigger: "#about", start: "top 75%" }
+        });
+        gsap.from(".about-text-anim", {
+            x: 150,
+            opacity: 0,
+            rotation: 5,
+            duration: 1.8,
+            ease: "back.out(1.7)",
+            scrollTrigger: { trigger: "#about", start: "top 75%" }
+        });
+        gsap.from(".project-card", {
+            y: 60,
+            opacity: 0,
+            scale: 0.95,
+            duration: 1.2,
+            ease: "power2.out",
+            stagger: 0.3,
+            scrollTrigger: { trigger: ".project-grid", start: "top 75%" }
+        });
+        gsap.from(".skill-item", {
+            y: 50,
+            opacity: 0,
+            scale: 0.9,
+            duration: 1.2,
+            ease: "back.out(1.7)",
+            stagger: 0.2,
+            scrollTrigger: { trigger: "#skills", start: "top 75%" }
+        });
+        gsap.from(".support-content-anim", {
+            y: 60,
+            opacity: 0,
+            scale: 0.95,
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: { trigger: "#support", start: "top 75%" }
+        });
+        gsap.from(".contact-form-anim", {
+            y: 60,
+            opacity: 0,
+            scale: 0.95,
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: { trigger: "#contact", start: "top 75%" }
+        });
+        // Footer animations
+        gsap.from("#footer > div > div", {
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out",
+            stagger: 0.2,
+            scrollTrigger: { trigger: "#footer", start: "top 80%" }
+        });
+        // --- Navigation Menu with smoother toggle ---
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        let isMenuOpen = false;
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isMenuOpen);
+            navMenu.setAttribute('aria-hidden', !isMenuOpen);
+            gsap.to(navMenu, {
+                right: isMenuOpen ? 0 : '-100%',
+                duration: 0.5,
+                ease: "power2.out"
+            });
+            gsap.fromTo(
+                ".nav-menu a",
+                { x: isMenuOpen ? 50 : 0, opacity: isMenuOpen ? 0 : 1 },
+                { x: isMenuOpen ? 0 : 50, opacity: isMenuOpen ? 1 : 0, stagger: 0.15, duration: 0.6, ease: "back.out(1.7)" }
+            );
+            if (isMenuOpen) closeMenuBtn.focus();
+        }
+        hamburger.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        hamburger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                toggleMenu();
+            }
+        });
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) toggleMenu();
+            });
+        });
+        // --- Enhanced Typing Effect ---
+        function startTypingEffect() {
+            const textElement = document.getElementById('typing-text-target');
+            const texts = ["Full-Stack Developer & AI Innovator", "Pioneering Web Solutions", "Exploring Aeronautics & AI"];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            function type() {
+                const currentText = texts[textIndex];
+                textElement.innerHTML = currentText.substring(0, charIndex);
+                textElement.classList.add('typing-text');
+                if (!isDeleting && charIndex < currentText.length) {
+                    charIndex++;
+                    setTimeout(type, 100);
+                } else if (isDeleting && charIndex > 0) {
+                    charIndex--;
+                    setTimeout(type, 50);
+                } else {
+                    isDeleting = !isDeleting;
+                    if (!isDeleting) {
+                        textIndex = (textIndex + 1) % texts.length;
+                    }
+                    textElement.classList.toggle('typing-text', isDeleting);
+                    setTimeout(type, isDeleting ? 1500 : 300);
+                }
+            }
+            type();
+        }
+        setTimeout(startTypingEffect, 1000);
+        // --- Form Validation ---
+        const contactForm = document.getElementById('contact-form');
+        const inputs = {
+            name: document.getElementById('name'),
+            email: document.getElementById('email'),
+            message: document.getElementById('message')
+        };
+        const errors = {
+            name: document.getElementById('name-error'),
+            email: document.getElementById('email-error'),
+            message: document.getElementById('message-error')
+        };
+        function validateForm() {
+            let isValid = true;
+            Object.keys(inputs).forEach(key => {
+                const input = inputs[key];
+                const error = errors[key];
+                input.classList.remove('border-red-400');
+                error.textContent = '';
+                if (!input.value.trim()) {
+                    error.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)} is required.`;
+                    input.classList.add('border-red-400');
+                    isValid = false;
+                } else if (key === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+                    error.textContent = 'Please enter a valid email address.';
+                    input.classList.add('border-red-400');
+                    isValid = false;
+                }
+            });
+            return isValid;
+        }
+contactForm.addEventListener('submit', () => {
+    // DO NOT prevent default
+    // Web3Forms will submit normally
+});
+
+        Object.values(inputs).forEach(input => {
+            input.addEventListener('input', () => {
+                const key = input.id;
+                const error = errors[key];
+                input.classList.remove('border-red-400');
+                error.textContent = '';
+            });
+        });
+        // --- Enhanced Modal Handling ---
+        const modal = document.getElementById('success-modal');
+        const modalClose = document.getElementById('modal-close');
+        const modalButton = modal.querySelector('button');
+        function showModal() {
+            modal.classList.remove('hidden');
+            modal.setAttribute('aria-hidden', 'false');
+            gsap.fromTo('.glass-effect',
+                { scale: 0.5, opacity: 0, rotation: -10 },
+                { scale: 1, opacity: 1, rotation: 0, duration: 0.6, ease: 'back.out(1.7)' }
+            );
+            modalButton.focus();
+        }
+        function hideModal() {
+            gsap.to('.glass-effect', {
+                scale: 0.5,
+                opacity: 0,
+                rotation: 10,
+                duration: 0.5,
+                ease: 'power2.in',
+                onComplete: () => {
+                    modal.classList.add('hidden');
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            });
+        }
+        modalClose.addEventListener('click', hideModal);
+        modalButton.addEventListener('click', hideModal);
+        modal.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') hideModal();
+        });
+        // --- Lazy Loading ---
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => imageObserver.observe(img));
+        }
+    </script>
+<!-- 1️⃣ Supabase library -->
+<!-- Supabase Client -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-function openAuth(mode) {
-  alert("openAuth works: " + mode);
+// ────────────────────────────────────────────────
+//  Supabase Configuration
+// ────────────────────────────────────────────────
+const SUPABASE_URL = "https://wlwssmmbyczvzfrrkq.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indsd3NzbW1ieWN6dnpmaXJya3JxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA0NDk4NjQsImV4cCI6MjA4NjAyNTg2NH0.8M65tRTqqaINEWy4uZ3Ff3c5qKrsFd4T3L1mMMO20So";
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ────────────────────────────────────────────────
+//  DOM Elements we will use
+// ────────────────────────────────────────────────
+const modalLogin       = document.getElementById("modal-login");
+const modalSignup      = document.getElementById("modal-signup");
+const formLogin        = document.getElementById("form-login");
+const formSignup       = document.getElementById("form-signup");
+
+const btnOpenLogin     = document.getElementById("btn-open-login");
+const btnOpenSignup    = document.getElementById("btn-open-signup");
+const btnCloseLogin    = document.getElementById("close-login-modal");
+const btnCloseSignup   = document.getElementById("close-signup-modal");
+const linkToSignup     = document.getElementById("go-to-signup");
+const linkToLogin      = document.getElementById("go-to-login");
+const btnLogout        = document.getElementById("btn-logout");
+
+// ────────────────────────────────────────────────
+//  Modal open / close functions
+// ────────────────────────────────────────────────
+function openLoginModal() {
+    modalLogin?.classList.remove("hidden");
+    modalSignup?.classList.add("hidden");
 }
-</script>
 
-    <!-- AUTH MODAL -->
-<div id="authModal" class="fixed inset-0 bg-black/70 hidden z-[9999] 
-     flex items-center justify-center">
-
-  <div class="glass-effect w-full max-w-md rounded-2xl p-8 relative">
-
-    <button onclick="openAuth('login'
-  class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">login
-    </button>
-
-    <h2 id="authTitle" 
-      class="text-2xl font-bold text-center mb-6">
-      Login
-    </h2>
-
-    <form class="space-y-5">
-      <input id="authName" type="text" placeholder="Full Name"
-        class="hidden w-full p-3 rounded-md bg-gray-800/60 text-white">
-
-      <input type="email" placeholder="Email"
-        class="w-full p-3 rounded-md bg-gray-800/60 text-white" required>
-
-      <input type="password" placeholder="Password"
-        class="w-full p-3 rounded-md bg-gray-800/60 text-white" required>
-<button
-  type="button"
-  onclick="handleAuth()"
- console.log("MODE USED:", authMode);
- class="btn-primary w-full">
-  Continue
-</button>
- </form>
-
-    <p class="text-center text-sm text-gray-400 mt-4">
-      <span id="authSwitchText">New here?</span>
-      <button onclick="toggleAuth()" 
-        class="text-indigo-400 hover:underline ml-1">
-        Create account
-      </button>
-    </p>
-
-  </div>
-</div> 
- <script>
-/* 🔐 GLOBAL AUTH STATE */
-let authMode 
-
-/* 🔐 AUTH UI FUNCTIONS — MUST BE GLOBAL */
-function openAuth(mode) {
-  authMode = mode; // 👈 THIS LINE IS CRITICAL
-
-  document.getElementById("authModal").classList.remove("hidden");
-
-  const title = document.getElementById("authTitle");
-  const name = document.getElementById("authName");
-  const switchText = document.getElementById("authSwitchText");
-
-  if (mode === "signup") {
-    title.textContent = "Create Account";
-    name.classList.remove("hidden");
-    switchText.textContent = "Already have an account?";
-  } else {
-    title.textContent = "Login";
-    name.classList.add("hidden");
-    switchText.textContent = "New here?";
-  }
+function openSignupModal() {
+    modalSignup?.classList.remove("hidden");
+    modalLogin?.classList.add("hidden");
 }
+
+function closeAllModals() {
+    modalLogin?.classList.add("hidden");
+    modalSignup?.classList.add("hidden");
+}
+
+btnOpenLogin?.addEventListener("click", openLoginModal);
+btnOpenSignup?.addEventListener("click", openSignupModal);
+btnCloseLogin?.addEventListener("click", closeAllModals);
+btnCloseSignup?.addEventListener("click", closeAllModals);
+linkToSignup?.addEventListener("click", openSignupModal);
+linkToLogin?.addEventListener("click", openLoginModal);
+
+// ────────────────────────────────────────────────
+//  Listen to auth state changes (login / logout)
+// ────────────────────────────────────────────────
+supabase.auth.onAuthStateChange((event, session) => {
+    const notLogged = document.getElementById("auth-not-logged");
+    const isLogged  = document.getElementById("auth-logged-in");
+    const userName  = document.getElementById("current-user-name");
+
+    if (session?.user) {
+        // User is logged in
+        notLogged?.classList.add("hidden");
+        isLogged?.classList.remove("hidden");
+        userName.textContent = session.user.email.split("@")[0];
+        closeAllModals();
+    } else {
+        // No user logged in
+        notLogged?.classList.remove("hidden");
+        isLogged?.classList.add("hidden");
+    }
+});
+
+// ────────────────────────────────────────────────
+//  Handle Login form submit
+// ────────────────────────────────────────────────
+formLogin?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("login-email-input").value.trim();
+    const password = document.getElementById("login-password-input").value;
+
+    const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+    });
+
+    if (error) {
+        alert("Login failed:\n" + error.message);
+    }
+    // If success → onAuthStateChange will update UI
+});
+
+// ────────────────────────────────────────────────
+//  Handle Signup form submit
+// ────────────────────────────────────────────────
+formSignup?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("signup-email-input").value.trim();
+    const password = document.getElementById("signup-password-input").value;
+
+    const { error } = await supabase.auth.signUp({
+        email,
+        password
+    });
+
+    if (error) {
+        alert("Sign up failed:\n" + error.message);
+    } else {
+        alert("Account created!\nPlease check your email to confirm your account.");
+        openLoginModal();
+    }
+});
+
+// ────────────────────────────────────────────────
+//  Logout button
+// ────────────────────────────────────────────────
+btnLogout?.addEventListener("click", async () => {
+    await supabase.auth.signOut();
+    // onAuthStateChange will update UI
+});
+
+// Check if user is already logged in when page loads
+supabase.auth.getSession().then(({ data: { session } }) => {
+    if (session?.user) {
+        document.getElementById("auth-not-logged")?.classList.add("hidden");
+        document.getElementById("auth-logged-in")?.classList.remove("hidden");
+        document.getElementById("current-user-name").textContent = session.user.email.split("@")[0];
+    }
+});
 </script>
+    </div>
+</div>
+
 
 </body>
-</html> 
+</html>
