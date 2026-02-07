@@ -818,7 +818,8 @@ function openAuth(mode) {
 <button
   type="button"
   onclick="handleAuth()"
-  class="btn-primary w-full">
+ console.log("MODE USED:", authMode);
+ class="btn-primary w-full">
   Continue
 </button>
  </form>
@@ -835,20 +836,27 @@ function openAuth(mode) {
 </div> 
  <script>
 /* 🔐 GLOBAL AUTH STATE */
-let authMode = "login";
+let authMode 
 
 /* 🔐 AUTH UI FUNCTIONS — MUST BE GLOBAL */
 function openAuth(mode) {
-  authMode = mode;
+  authMode = mode; // 👈 THIS LINE IS CRITICAL
+
   document.getElementById("authModal").classList.remove("hidden");
-}
 
-function closeAuth() {
-  document.getElementById("authModal").classList.add("hidden");
-}
+  const title = document.getElementById("authTitle");
+  const name = document.getElementById("authName");
+  const switchText = document.getElementById("authSwitchText");
 
-function toggleAuth() {
-  openAuth(authMode === "login" ? "signup" : "login");
+  if (mode === "signup") {
+    title.textContent = "Create Account";
+    name.classList.remove("hidden");
+    switchText.textContent = "Already have an account?";
+  } else {
+    title.textContent = "Login";
+    name.classList.add("hidden");
+    switchText.textContent = "New here?";
+  }
 }
 </script>
 
