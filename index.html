@@ -387,19 +387,10 @@ body {
         <!-- 🔐 AUTH BUTTONS (DESKTOP ONLY) -->
         <div class="hidden md:flex items-center gap-3">
           <button 
-            onclick="openAuth('login')" 
-            class="px-5 py-2 rounded-full text-sm font-semibold 
-                   text-indigo-300 border border-indigo-400/40
-                   hover:bg-indigo-500/10 transition">
-            Login
-          </button>
+        <button onclick="openAuth('login')">Login</button>
 
-          <button 
-            onclick="openAuth('signup')" 
-            class="px-5 py-2 rounded-full text-sm font-semibold 
-                   bg-indigo-600 hover:bg-indigo-700 transition text-white">
-            Sign Up
-          </button>
+        <button 
+        <button onclick="openAuth('signup')">Sign Up</button>
         </div>
 
         <!-- ☰ HAMBURGER -->
@@ -795,201 +786,9 @@ body {
 
 </footer>
 <script>
-/* 🔐 AUTH STATE — MUST BE FIRST */
-let authMode = "login";
-
-/* ✅ SUPABASE INIT — ONLY ONCE */
-const SUPABASE_URL = "https://wlwssmmbyczvzfirrkrq.supabase.co";
-const SUPABASE_ANON_KEY =
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indsd3NzbW1ieWN6dnpmaXJya3JxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA0NDk4NjQsImV4cCI6MjA4NjAyNTg2NH0.8M65tRTqqaINEWy4uZ3Ff3c5qKrsFd4T3L1mMMO20So";
-
-const supabase = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
-
-/* =========================
-   AUTH UI FUNCTIONS
-   ========================= */
 function openAuth(mode) {
-  authMode = mode;
-  document.getElementById("authModal").classList.remove("hidden");
-
-  const title = document.getElementById("authTitle");
-  const name = document.getElementById("authName");
-  const switchText = document.getElementById("authSwitchText");
-
-  if (mode === "signup") {
-    title.textContent = "Create Account";
-    name.classList.remove("hidden");
-    switchText.textContent = "Already have an account?";
-  } else {
-    title.textContent = "Login";
-    name.classList.add("hidden");
-    switchText.textContent = "New here?";
-  }
+  alert("openAuth works: " + mode);
 }
-
-function closeAuth() {
-  document.getElementById("authModal").classList.add("hidden");
-}
-
-function toggleAuth() {
-  openAuth(authMode === "login" ? "signup" : "login");
-}
-
-/* =========================
-   REAL SUPABASE AUTH LOGIC
-   ========================= */
-async function handleAuth() {
-  console.log("Auth clicked:", authMode);
-
-  const email = document.querySelector('#authModal input[type="email"]').value;
-  const password = document.querySelector('#authModal input[type="password"]').value;
-  const nameField = document.getElementById("authName");
-
-  if (!email || !password) {
-    alert("Email and password required");
-    return;
-  }
-
-  let result;
-
-  if (authMode === "signup") {
-    result = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { full_name: nameField.value || "" }
-      }
-    });
-  } else {
-    result = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
-  }
-
-  if (result.error) {
-    alert(result.error.message);
-    return;
-  }
-
-  closeAuth();
-  alert("Authentication successful ✅");
-}
-    gsap.registerPlugin(ScrollTrigger);
-    // --- Initialize Particles.js for Hero Section with enhanced config ---
-    particlesJS('hero-particles', {
-        particles: {
-            number: { value: 80, density: { enable: true, value_area: 800 } },
-            color: { value: ['#4f46e5', '#a5b4fc', '#22c55e', '#ec4899'] },
-            shape: { type: 'circle', stroke: { width: 0 } },
-            opacity: { value: 0.5, random: true },
-            size: { value: 5, random: true },
-            line_linked: { enable: true, distance: 120, color: '#a5b4fc', opacity: 0.3, width: 1.5 },
-            move: { enable: true, speed: 2, direction: 'none', random: true, out_mode: 'bounce' }
-        },
-        interactivity: {
-            detect_on: 'canvas',
-            events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
-            modes: { repulse: { distance: 150, duration: 0.4 }, push: { particles_nb: 4 } }
-        },
-        retina_detect: true
-    });
-
-    // --- GSAP Animations ---
-    gsap.from("#nav", { y: -100, opacity: 0, duration: 1.2, ease: "power2.out" });
-    gsap.from(".hero-content h1", { y: 80, opacity: 0, duration: 1.5, ease: "back.out(1.7)", delay: 0.3 });
-    gsap.from(".hero-content p", { y: 60, opacity: 0, duration: 1.2, ease: "power2.out", delay: 0.6 });
-    gsap.from(".hero-content .btn-primary", { y: 50, opacity: 0, duration: 1, ease: "back.out(1.7)", stagger: 0.2, delay: 0.9 });
-    gsap.from(".social-links a", { y: 30, opacity: 0, duration: 0.8, ease: "power2.out", stagger: 0.15, delay: 1.2 });
-
-    gsap.utils.toArray("h2").forEach(heading => {
-        gsap.from(heading, {
-            y: 50,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power2.out",
-            scrollTrigger: { trigger: heading, start: "top 85%" }
-        });
-    });
-
-    // --- Navigation Menu ---
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    const closeMenuBtn = document.getElementById('close-menu');
-    let isMenuOpen = false;
-
-    function toggleMenu() {
-        isMenuOpen = !isMenuOpen;
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        hamburger.setAttribute('aria-expanded', isMenuOpen);
-        navMenu.setAttribute('aria-hidden', !isMenuOpen);
-    }
-
-    hamburger.addEventListener('click', toggleMenu);
-    closeMenuBtn.addEventListener('click', toggleMenu);
-
-    // --- Typing Effect ---
-    function startTypingEffect() {
-        const textElement = document.getElementById('typing-text-target');
-        const texts = [
-            "Full-Stack Developer & AI Innovator",
-            "Pioneering Web Solutions",
-            "Exploring Aeronautics & AI"
-        ];
-        let textIndex = 0, charIndex = 0, isDeleting = false;
-
-        function type() {
-            const currentText = texts[textIndex];
-            textElement.textContent = currentText.substring(0, charIndex);
-
-            if (!isDeleting && charIndex < currentText.length) {
-                charIndex++;
-            } else if (isDeleting && charIndex > 0) {
-                charIndex--;
-            } else {
-                isDeleting = !isDeleting;
-                if (!isDeleting) textIndex = (textIndex + 1) % texts.length;
-            }
-            setTimeout(type, isDeleting ? 60 : 100);
-        }
-        type();
-    }
-    setTimeout(startTypingEffect, 1000);
-
-    /* ==================================================
-       🔐 STEP-3 AUTH LOGIC (PASTE HERE — CORRECT PLACE)
-       ================================================== */
-
-    function openAuth(mode) {
-        authMode = mode;
-        document.getElementById("authModal").classList.remove("hidden");
-
-        const title = document.getElementById("authTitle");
-        const name = document.getElementById("authName");
-        const switchText = document.getElementById("authSwitchText");
-
-        if (mode === "signup") {
-            title.textContent = "Create Account";
-            name.classList.remove("hidden");
-            switchText.textContent = "Already have an account?";
-        } else {
-            title.textContent = "Login";
-            name.classList.add("hidden");
-            switchText.textContent = "New here?";
-        }
-    }
-
-    function closeAuth() {
-        document.getElementById("authModal").classList.add("hidden");
-    }
-
-    function toggleAuth() {
-        openAuth(authMode === "login" ? "signup" : "login");
-    }
 </script>
 
     <!-- AUTH MODAL -->
@@ -998,9 +797,8 @@ async function handleAuth() {
 
   <div class="glass-effect w-full max-w-md rounded-2xl p-8 relative">
 
-    <button onclick="closeAuth()" 
-      class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
-      ✕
+    <button onclick="openAuth('login'
+  class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">login
     </button>
 
     <h2 id="authTitle" 
@@ -1034,6 +832,25 @@ async function handleAuth() {
     </p>
 
   </div>
-</div>    
+</div> 
+ <script>
+/* 🔐 GLOBAL AUTH STATE */
+let authMode = "login";
+
+/* 🔐 AUTH UI FUNCTIONS — MUST BE GLOBAL */
+function openAuth(mode) {
+  authMode = mode;
+  document.getElementById("authModal").classList.remove("hidden");
+}
+
+function closeAuth() {
+  document.getElementById("authModal").classList.add("hidden");
+}
+
+function toggleAuth() {
+  openAuth(authMode === "login" ? "signup" : "login");
+}
+</script>
+
 </body>
 </html> 
