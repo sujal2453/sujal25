@@ -8,13 +8,16 @@
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 
-<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'
-https://cdnjs.cloudflare.com
-https://cdn.tailwindcss.com
-https://cdn.jsdelivr.net
-https://cdn.hitsteps.com;">
-
-    <script type="application/ld+json">
+<meta http-equiv="Content-Security-Policy"
+content="
+default-src 'self';
+script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://cdn.hitsteps.com;
+connect-src 'self' https://wlwssmmbyczvzfirrkrq.supabase.co;
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+font-src https://fonts.gstatic.com;
+img-src 'self' data: https:;
+">
+ <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -360,7 +363,8 @@ body {
             color: var(--secondary);
         }
     </style>
-    <!-- Hitsteps Live Analytics -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+   <!-- Hitsteps Live Analytics -->
 <script type="text/javascript">
 (function() {
     var hstc = document.createElement("script");
@@ -371,36 +375,70 @@ body {
 </script>
 </head>
 <body class="smooth-scroll">
-    <nav id="nav" class="glass-effect fixed w-full z-50" role="banner" aria-label="Main navigation">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <a href="#home" aria-label="Home">
-                        <img src="https://i.postimg.cc/KjP9yvZz/Screenshot-2025-10-18-173415.png" alt="Sujal Wagholikar Logo" class="h-12 w-auto object-contain transition-transform duration-300 hover:scale-110" loading="lazy">
-                    </a>
-                </div>
-                <div class="flex items-center">
-                    <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <div class="nav-menu" id="nav-menu" role="navigation" aria-hidden="true">
-                        <i class="fas fa-times modal-close" id="close-menu" tabindex="0" aria-label="Close menu"></i>
-                        <a href="#home" tabindex="-1">Home</a>
-                        <a href="#about" tabindex="-1">About</a>
-                        <a href="#projects" tabindex="-1">Projects</a>
-                        <a href="#skills" tabindex="-1">Skills</a>
-                        <a href="#support" tabindex="-1">Support</a>
-                        <a href="#contact" tabindex="-1">Connect</a>
-                        <a href="test.html" class="btn-primary text-sm" tabindex="-1">TEST M&C</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+   <nav id="nav" class="glass-effect fixed w-full z-50" role="banner" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
 
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-900" role="main" aria-label="Hero section">
+      <!-- LOGO -->
+      <div class="flex items-center">
+        <a href="#home" aria-label="Home">
+          <img 
+            src="https://i.postimg.cc/KjP9yvZz/Screenshot-2025-10-18-173415.png" 
+            alt="Sujal Wagholikar Logo"
+            class="h-12 w-auto object-contain transition-transform duration-300 hover:scale-110"
+            loading="lazy">
+        </a>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="flex items-center gap-4">
+
+        <!-- 🔐 AUTH BUTTONS (DESKTOP ONLY) -->
+        <div class="hidden md:flex items-center gap-3">
+          <button 
+            onclick="openAuth('login')" 
+            class="px-5 py-2 rounded-full text-sm font-semibold 
+                   text-indigo-300 border border-indigo-400/40
+                   hover:bg-indigo-500/10 transition">
+            Login
+          </button>
+
+          <button 
+            onclick="openAuth('signup')" 
+            class="px-5 py-2 rounded-full text-sm font-semibold 
+                   bg-indigo-600 hover:bg-indigo-700 transition text-white">
+            Sign Up
+          </button>
+        </div>
+
+        <!-- ☰ HAMBURGER -->
+        <div class="hamburger" id="hamburger" role="button" tabindex="0"
+             aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- MOBILE NAV MENU -->
+        <div class="nav-menu" id="nav-menu" role="navigation" aria-hidden="true">
+          <i class="fas fa-times modal-close" id="close-menu" tabindex="0" aria-label="Close menu"></i>
+
+          <a href="#home" tabindex="-1">Home</a>
+          <a href="#about" tabindex="-1">About</a>
+          <a href="#projects" tabindex="-1">Projects</a>
+          <a href="#skills" tabindex="-1">Skills</a>
+          <a href="#support" tabindex="-1">Support</a>
+          <a href="#contact" tabindex="-1">Connect</a>
+
+          <a href="test.html" class="btn-primary text-sm" tabindex="-1">TEST M&C</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+   <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-900" role="main" aria-label="Hero section">
         <div id="hero-particles"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -765,293 +803,220 @@ body {
 
 
 </footer>
+<script>
+    /* =========================
+   ✅ STEP-2: SUPABASE INIT
+   (PASTE HERE — FIRST LINE)
+   ========================= */
 
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
-        // --- Initialize Particles.js for Hero Section with enhanced config ---
-        particlesJS('hero-particles', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: ['#4f46e5', '#a5b4fc', '#22c55e', '#ec4899'] },
-                shape: { type: 'circle', stroke: { width: 0 } },
-                opacity: { value: 0.5, random: true },
-                size: { value: 5, random: true },
-                line_linked: { enable: true, distance: 120, color: '#a5b4fc', opacity: 0.3, width: 1.5 },
-                move: { enable: true, speed: 2, direction: 'none', random: true, out_mode: 'bounce' }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
-                modes: { repulse: { distance: 150, duration: 0.4 }, push: { particles_nb: 4 } }
-            },
-            retina_detect: true
-        });
-        // --- Enhanced GSAP Animations for Hero Section ---
-        gsap.from("#nav", {
-            y: -100,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power2.out"
-        });
-        gsap.from(".hero-content h1", {
-            y: 80,
-            opacity: 0,
-            duration: 1.5,
-            ease: "back.out(1.7)",
-            delay: 0.3
-        });
-        gsap.from(".hero-content p", {
-            y: 60,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power2.out",
-            delay: 0.6
-        });
-        gsap.from(".hero-content .btn-primary", {
+const SUPABASE_URL = "https://wlwssmmbyczvzfirrkrq.supabase.co";
+
+const SUPABASE_ANON_KEY =
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indsd3NzbW1ieWN6dnpmaXJya3JxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA0NDk4NjQsImV4cCI6MjA4NjAyNTg2NH0.8M65tRTqqaINEWy4uZ3Ff3c5qKrsFd4T3L1mMMO20So";
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+    /* =========================
+   REAL SUPABASE AUTH LOGIC
+   ========================= */
+
+async function handleAuth() {
+  const email = document.querySelector('#authModal input[type="email"]').value;
+  const password = document.querySelector('#authModal input[type="password"]').value;
+  const nameField = document.getElementById("authName");
+
+  if (!email || !password) {
+    alert("Email and password required");
+    return;
+  }
+
+  let result;
+
+  if (authMode === "signup") {
+    result = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          full_name: nameField.value || ""
+        }
+      }
+    });
+  } else {
+    result = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+  }
+
+  if (result.error) {
+    alert(result.error.message);
+    return;
+  }
+
+  closeAuth();
+  alert("Authentication successful ✅");
+}
+    gsap.registerPlugin(ScrollTrigger);
+    // --- Initialize Particles.js for Hero Section with enhanced config ---
+    particlesJS('hero-particles', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: ['#4f46e5', '#a5b4fc', '#22c55e', '#ec4899'] },
+            shape: { type: 'circle', stroke: { width: 0 } },
+            opacity: { value: 0.5, random: true },
+            size: { value: 5, random: true },
+            line_linked: { enable: true, distance: 120, color: '#a5b4fc', opacity: 0.3, width: 1.5 },
+            move: { enable: true, speed: 2, direction: 'none', random: true, out_mode: 'bounce' }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+            modes: { repulse: { distance: 150, duration: 0.4 }, push: { particles_nb: 4 } }
+        },
+        retina_detect: true
+    });
+
+    // --- GSAP Animations ---
+    gsap.from("#nav", { y: -100, opacity: 0, duration: 1.2, ease: "power2.out" });
+    gsap.from(".hero-content h1", { y: 80, opacity: 0, duration: 1.5, ease: "back.out(1.7)", delay: 0.3 });
+    gsap.from(".hero-content p", { y: 60, opacity: 0, duration: 1.2, ease: "power2.out", delay: 0.6 });
+    gsap.from(".hero-content .btn-primary", { y: 50, opacity: 0, duration: 1, ease: "back.out(1.7)", stagger: 0.2, delay: 0.9 });
+    gsap.from(".social-links a", { y: 30, opacity: 0, duration: 0.8, ease: "power2.out", stagger: 0.15, delay: 1.2 });
+
+    gsap.utils.toArray("h2").forEach(heading => {
+        gsap.from(heading, {
             y: 50,
             opacity: 0,
-            duration: 1,
-            ease: "back.out(1.7)",
-            stagger: 0.2,
-            delay: 0.9
-        });
-        gsap.from(".social-links a", {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.15,
-            delay: 1.2
-        });
-        // Parallax effect for hero overlay
-        gsap.to(".hero-overlay", {
-            yPercent: -20,
-            ease: "none",
-            scrollTrigger: {
-                trigger: "#home",
-                start: "top top",
-                end: "bottom top",
-                scrub: true
-            }
-        });
-        // --- Enhanced Section Animations ---
-        gsap.utils.toArray("h2").forEach(heading => {
-            gsap.from(heading, {
-                y: 50,
-                opacity: 0,
-                duration: 1.2,
-                ease: "power2.out",
-                scrollTrigger: { trigger: heading, start: "top 85%" }
-            });
-        });
-        gsap.from(".about-media-anim", {
-            x: -150,
-            opacity: 0,
-            rotation: -5,
-            duration: 1.8,
-            ease: "back.out(1.7)",
-            scrollTrigger: { trigger: "#about", start: "top 75%" }
-        });
-        gsap.from(".about-text-anim", {
-            x: 150,
-            opacity: 0,
-            rotation: 5,
-            duration: 1.8,
-            ease: "back.out(1.7)",
-            scrollTrigger: { trigger: "#about", start: "top 75%" }
-        });
-        gsap.from(".project-card", {
-            y: 60,
-            opacity: 0,
-            scale: 0.95,
             duration: 1.2,
             ease: "power2.out",
-            stagger: 0.3,
-            scrollTrigger: { trigger: ".project-grid", start: "top 75%" }
+            scrollTrigger: { trigger: heading, start: "top 85%" }
         });
-        gsap.from(".skill-item", {
-            y: 50,
-            opacity: 0,
-            scale: 0.9,
-            duration: 1.2,
-            ease: "back.out(1.7)",
-            stagger: 0.2,
-            scrollTrigger: { trigger: "#skills", start: "top 75%" }
-        });
-        gsap.from(".support-content-anim", {
-            y: 60,
-            opacity: 0,
-            scale: 0.95,
-            duration: 1.5,
-            ease: "power2.out",
-            scrollTrigger: { trigger: "#support", start: "top 75%" }
-        });
-        gsap.from(".contact-form-anim", {
-            y: 60,
-            opacity: 0,
-            scale: 0.95,
-            duration: 1.5,
-            ease: "power2.out",
-            scrollTrigger: { trigger: "#contact", start: "top 75%" }
-        });
-        // Footer animations
-        gsap.from("#footer > div > div", {
-            y: 40,
-            opacity: 0,
-            duration: 1,
-            ease: "power2.out",
-            stagger: 0.2,
-            scrollTrigger: { trigger: "#footer", start: "top 80%" }
-        });
-        // --- Navigation Menu with smoother toggle ---
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        const closeMenuBtn = document.getElementById('close-menu');
-        let isMenuOpen = false;
-        function toggleMenu() {
-            isMenuOpen = !isMenuOpen;
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', isMenuOpen);
-            navMenu.setAttribute('aria-hidden', !isMenuOpen);
-            gsap.to(navMenu, {
-                right: isMenuOpen ? 0 : '-100%',
-                duration: 0.5,
-                ease: "power2.out"
-            });
-            gsap.fromTo(
-                ".nav-menu a",
-                { x: isMenuOpen ? 50 : 0, opacity: isMenuOpen ? 0 : 1 },
-                { x: isMenuOpen ? 0 : 50, opacity: isMenuOpen ? 1 : 0, stagger: 0.15, duration: 0.6, ease: "back.out(1.7)" }
-            );
-            if (isMenuOpen) closeMenuBtn.focus();
-        }
-        hamburger.addEventListener('click', toggleMenu);
-        closeMenuBtn.addEventListener('click', toggleMenu);
-        hamburger.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleMenu();
+    });
+
+    // --- Navigation Menu ---
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    const closeMenuBtn = document.getElementById('close-menu');
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isMenuOpen);
+        navMenu.setAttribute('aria-hidden', !isMenuOpen);
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    closeMenuBtn.addEventListener('click', toggleMenu);
+
+    // --- Typing Effect ---
+    function startTypingEffect() {
+        const textElement = document.getElementById('typing-text-target');
+        const texts = [
+            "Full-Stack Developer & AI Innovator",
+            "Pioneering Web Solutions",
+            "Exploring Aeronautics & AI"
+        ];
+        let textIndex = 0, charIndex = 0, isDeleting = false;
+
+        function type() {
+            const currentText = texts[textIndex];
+            textElement.textContent = currentText.substring(0, charIndex);
+
+            if (!isDeleting && charIndex < currentText.length) {
+                charIndex++;
+            } else if (isDeleting && charIndex > 0) {
+                charIndex--;
+            } else {
+                isDeleting = !isDeleting;
+                if (!isDeleting) textIndex = (textIndex + 1) % texts.length;
             }
-        });
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (isMenuOpen) toggleMenu();
-            });
-        });
-        // --- Enhanced Typing Effect ---
-        function startTypingEffect() {
-            const textElement = document.getElementById('typing-text-target');
-            const texts = ["Full-Stack Developer & AI Innovator", "Pioneering Web Solutions", "Exploring Aeronautics & AI"];
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            function type() {
-                const currentText = texts[textIndex];
-                textElement.innerHTML = currentText.substring(0, charIndex);
-                textElement.classList.add('typing-text');
-                if (!isDeleting && charIndex < currentText.length) {
-                    charIndex++;
-                    setTimeout(type, 100);
-                } else if (isDeleting && charIndex > 0) {
-                    charIndex--;
-                    setTimeout(type, 50);
-                } else {
-                    isDeleting = !isDeleting;
-                    if (!isDeleting) {
-                        textIndex = (textIndex + 1) % texts.length;
-                    }
-                    textElement.classList.toggle('typing-text', isDeleting);
-                    setTimeout(type, isDeleting ? 1500 : 300);
-                }
-            }
-            type();
+            setTimeout(type, isDeleting ? 60 : 100);
         }
-        setTimeout(startTypingEffect, 1000);
-        // --- Form Validation ---
-        const contactForm = document.getElementById('contact-form');
-        const inputs = {
-            name: document.getElementById('name'),
-            email: document.getElementById('email'),
-            message: document.getElementById('message')
-        };
-        const errors = {
-            name: document.getElementById('name-error'),
-            email: document.getElementById('email-error'),
-            message: document.getElementById('message-error')
-        };
-        function validateForm() {
-            let isValid = true;
-            Object.keys(inputs).forEach(key => {
-                const input = inputs[key];
-                const error = errors[key];
-                input.classList.remove('border-red-400');
-                error.textContent = '';
-                if (!input.value.trim()) {
-                    error.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)} is required.`;
-                    input.classList.add('border-red-400');
-                    isValid = false;
-                } else if (key === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
-                    error.textContent = 'Please enter a valid email address.';
-                    input.classList.add('border-red-400');
-                    isValid = false;
-                }
-            });
-            return isValid;
+        type();
+    }
+    setTimeout(startTypingEffect, 1000);
+
+    /* ==================================================
+       🔐 STEP-3 AUTH LOGIC (PASTE HERE — CORRECT PLACE)
+       ================================================== */
+
+    let authMode = "login";
+
+    function openAuth(mode) {
+        authMode = mode;
+        document.getElementById("authModal").classList.remove("hidden");
+
+        const title = document.getElementById("authTitle");
+        const name = document.getElementById("authName");
+        const switchText = document.getElementById("authSwitchText");
+
+        if (mode === "signup") {
+            title.textContent = "Create Account";
+            name.classList.remove("hidden");
+            switchText.textContent = "Already have an account?";
+        } else {
+            title.textContent = "Login";
+            name.classList.add("hidden");
+            switchText.textContent = "New here?";
         }
-        Object.values(inputs).forEach(input => {
-            input.addEventListener('input', () => {
-                const key = input.id;
-                const error = errors[key];
-                input.classList.remove('border-red-400');
-                error.textContent = '';
-            });
-        });
-        // --- Enhanced Modal Handling ---
-        const modal = document.getElementById('success-modal');
-        const modalClose = document.getElementById('modal-close');
-        const modalButton = modal.querySelector('button');
-        function showModal() {
-            modal.classList.remove('hidden');
-            modal.setAttribute('aria-hidden', 'false');
-            gsap.fromTo('.glass-effect',
-                { scale: 0.5, opacity: 0, rotation: -10 },
-                { scale: 1, opacity: 1, rotation: 0, duration: 0.6, ease: 'back.out(1.7)' }
-            );
-            modalButton.focus();
-        }
-        function hideModal() {
-            gsap.to('.glass-effect', {
-                scale: 0.5,
-                opacity: 0,
-                rotation: 10,
-                duration: 0.5,
-                ease: 'power2.in',
-                onComplete: () => {
-                    modal.classList.add('hidden');
-                    modal.setAttribute('aria-hidden', 'true');
-                }
-            });
-        }
-        modalClose.addEventListener('click', hideModal);
-        modalButton.addEventListener('click', hideModal);
-        modal.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') hideModal();
-        });
-        // --- Lazy Loading ---
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src || img.src;
-                        img.classList.add('loaded');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-            document.querySelectorAll('img[loading="lazy"]').forEach(img => imageObserver.observe(img));
-        }
-    </script>
+    }
+
+    function closeAuth() {
+        document.getElementById("authModal").classList.add("hidden");
+    }
+
+    function toggleAuth() {
+        openAuth(authMode === "login" ? "signup" : "login");
+    }
+</script>
+
+    <!-- AUTH MODAL -->
+<div id="authModal" class="fixed inset-0 bg-black/70 hidden z-[9999] 
+     flex items-center justify-center">
+
+  <div class="glass-effect w-full max-w-md rounded-2xl p-8 relative">
+
+    <button onclick="closeAuth()" 
+      class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+      ✕
+    </button>
+
+    <h2 id="authTitle" 
+      class="text-2xl font-bold text-center mb-6">
+      Login
+    </h2>
+
+    <form class="space-y-5">
+      <input id="authName" type="text" placeholder="Full Name"
+        class="hidden w-full p-3 rounded-md bg-gray-800/60 text-white">
+
+      <input type="email" placeholder="Email"
+        class="w-full p-3 rounded-md bg-gray-800/60 text-white" required>
+
+      <input type="password" placeholder="Password"
+        class="w-full p-3 rounded-md bg-gray-800/60 text-white" required>
+<button
+  type="button"
+  onclick="handleAuth()"
+  class="btn-primary w-full">
+  Continue
+</button>
+ </form>
+
+    <p class="text-center text-sm text-gray-400 mt-4">
+      <span id="authSwitchText">New here?</span>
+      <button onclick="toggleAuth()" 
+        class="text-indigo-400 hover:underline ml-1">
+        Create account
+      </button>
+    </p>
+
+  </div>
+</div>    
 </body>
 </html> 
