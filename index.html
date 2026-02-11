@@ -1,94 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy"
+content="
+default-src 'self';
+script-src 'self' https://cdn.jsdelivr.net https://www.gstatic.com https://www.googleapis.com https://www.google.com https://api.web3forms.com 'unsafe-inline';
+style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+font-src https://fonts.gstatic.com;
+img-src 'self' https://www.gstatic.com data:;
+connect-src 'self' https://www.googleapis.com https://securetoken.googleapis.com https://identitytoolkit.googleapis.com https://api.web3forms.com;
+frame-src https://accounts.google.com;
+object-src 'none';
+base-uri 'self';
+form-action 'self' https://api.web3forms.com;
+upgrade-insecure-requests;
+">
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Modern Entry</title>
+    <title>Sujal Portfolio | Professional Gateway</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
+        #particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind all content */
+  background: #0d0d0d;
+}
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
         :root {
             --bg-dark: #0d1117;
-            --text-main: #ffffff;
+            --card-bg: rgba(22, 27, 34, 0.9);
+            --text-main: #f0f6fc;
             --text-muted: #8b949e;
+            --accent-blue: #2f81f7;
             --btn-green: #238636;
             --btn-hover: #2ea043;
             --border-color: #30363d;
+            --font-family: 'Inter', sans-serif;
         }
 
         body {
             margin: 0;
-            font-family: -apple-system, sans-serif;
+            font-family: var(--font-family);
             background: var(--bg-dark);
             color: var(--text-main);
-            background: radial-gradient(circle at center bottom, #1d163a 0%, #0d1117 80%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
+            position: relative;
         }
 
-        .hero { text-align: center; padding: 20px; }
-        h1 { font-size: clamp(35px, 8vw, 70px); letter-spacing: -2px; margin-bottom: 15px; }
-        .hero-p { color: var(--text-muted); font-size: 20px; margin-bottom: 40px; max-width: 600px; }
+        /* --- BACKGROUND EFFECTS --- */
+        /* Blueprint Grid */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(var(--border-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black, transparent 80%);
+            opacity: 0.15;
+            z-index: 0;
+        }
 
-        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 14px 30px; border-radius: 6px; font-weight: 600; cursor: pointer; border: 1px solid var(--border-color); transition: 0.3s; font-size: 16px; }
-        .btn-green { background: var(--btn-green); color: white; border: none; }
-        .btn-green:hover { background: var(--btn-hover); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(35, 134, 54, 0.3); }
-        .btn-ghost { background: transparent; color: white; }
-        .btn-ghost:hover { background: rgba(255,255,255,0.05); }
+        /* Moving Particles */
+        .particles {
+            position: absolute;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
 
-        /* MODAL */
+        .particle {
+            position: absolute;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            opacity: 0.3;
+            filter: blur(2px);
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            from { transform: translateY(100vh) translateX(0); }
+            to { transform: translateY(-10vh) translateX(50px); }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero { 
+            text-align: center; 
+            padding: 20px; 
+            z-index: 2;
+            animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .badge {
+            background: rgba(47, 129, 247, 0.1);
+            color: var(--accent-blue);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(47, 129, 247, 0.3);
+            margin-bottom: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(4px);
+            transition: 0.3s;
+        }
+
+        .badge:hover { border-color: var(--accent-blue); background: rgba(47, 129, 247, 0.2); }
+
+        h1 { 
+            font-size: clamp(50px, 9vw, 95px); 
+            line-height: 0.95;
+            letter-spacing: -0.05em; 
+            margin: 0 0 24px 0;
+            font-weight: 800;
+            background: linear-gradient(180deg, #fff 50%, #8b949e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-p { 
+            color: var(--text-muted); 
+            font-size: clamp(18px, 2.5vw, 22px); 
+            margin: 0 auto 50px auto; 
+            max-width: 650px; 
+            line-height: 1.6;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        
+        .btn { 
+            padding: 14px 28px; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary { background: #f0f6fc; color: #0d1117; border: 1px solid #fff; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,255,255,0.15); background: #ffffff; }
+
+        .btn-outline { background: rgba(255,255,255,0.03); color: var(--text-main); border: 1px solid var(--border-color); backdrop-filter: blur(10px); }
+        .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: #8b949e; transform: translateY(-3px); }
+
+        /* --- MODALS --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            background: rgba(1, 4, 9, 0.85); 
+            backdrop-filter: blur(12px);
             display: none; justify-content: center; align-items: center; z-index: 1000;
         }
-        .modal-content {
-            background: #161b22; width: 90%; max-width: 380px; padding: 40px;
-            border-radius: 12px; border: 1px solid var(--border-color); text-align: center;
-            animation: slideUp 0.4s ease;
-        }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        input { width: 100%; padding: 12px; margin: 10px 0; background: #0d1117; border: 1px solid var(--border-color); color: white; border-radius: 6px; box-sizing: border-box; }
+        .modal-card {
+            background: var(--card-bg); 
+            width: 90%;
+            max-width: 420px; 
+            padding: 40px;
+            border-radius: 16px; 
+            border: 1px solid var(--border-color);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+            animation: modalEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        @keyframes modalEnter { 
+            from { transform: scale(0.95) translateY(20px); opacity: 0; } 
+            to { transform: scale(1) translateY(0); opacity: 1; } 
+        }
+
+        .tab-group { display: flex; background: #010409; padding: 4px; border-radius: 10px; margin-bottom: 28px; border: 1px solid var(--border-color); }
+        .tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; border-radius: 7px; font-size: 14px; color: var(--text-muted); font-weight: 500; transition: 0.3s; }
+        .tab.active { background: var(--border-color); color: #fff; }
+
+        input { 
+            width: 100%; padding: 12px 16px; 
+            background: #010409; border: 1px solid var(--border-color); 
+            color: white; border-radius: 8px; box-sizing: border-box;
+            margin-bottom: 20px; font-family: inherit; font-size: 15px;
+        }
+        input:focus { outline: none; border-color: var(--accent-blue); box-shadow: 0 0 0 4px rgba(47, 129, 247, 0.2); }
+
+        .auth-submit {
+            width: 100%; padding: 14px; background: var(--btn-green);
+            color: white; border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 16px;
+        }
+        .auth-submit:hover { background: var(--btn-hover); transform: translateY(-1px); }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
+    <div id="particles-js"></div>
+
+
+    <div class="particles" id="particleContainer"></div>
 
     <main class="hero">
-        <div style="font-size: 50px; margin-bottom: 20px;">🤖</div>
-        <h1>The future of building<br>happens together</h1>
-        <p class="hero-p">Sign in/Login in to sync your work or jump straight into Sujal Portfolio .</p>
-        
+        <div class="badge">
+            <span style="color: #238636; filter: drop-shadow(0 0 5px #238636);">●</span> System Status: Online
+        </div>
+       <h1 class="typing">
+  Welcome to the <br>Login Page.
+</h1>
+
+<p class="hero-p">
+  Designed by Sujal Wagholikar using HTML, CSS & JS with ❤️
+</p>
+
+
         <div class="btn-group">
-            <button class="btn btn-green" onclick="openModal()">Login / Sign Up</button>
-            <button class="btn btn-ghost" onclick="enterAsGuest()">Get Started without Login</button>
+            <button class="btn btn-primary" onclick="openModal(' Sign Up')">
+                Get Started
+            </button>
+            <button class="btn btn-outline" onclick="openGuestModal()">
+                Guest Access 
+            </button>
         </div>
     </main>
 
     <div class="modal-overlay" id="authModal">
-        <div class="modal-content">
-            <h2 style="margin-top:0">Welcome Back</h2>
-            <input type="email" id="email" placeholder="Email address">
+        <div class="modal-card">
+            <div class="tab-group">
+                <div class="tab" id="loginTab" onclick="switchTab('login')">Log In</div>
+                <div class="tab active" id="signupTab" onclick="switchTab('signup')">Sign Up</div>
+            </div>
+            <h2 id="modalTitle" style="margin:0 0 10px 0; font-size: 22px; font-weight: 700;">Secure Entry</h2>
+            <p id="modalSub" style="color: var(--text-muted); font-size: 15px; margin-bottom: 30px;">Sync your identity to continue.</p>
+            <input type="email" id="email" placeholder="Email Address">
             <input type="password" id="password" placeholder="Password">
-            <button class="btn btn-green" style="width:100%; margin-top:10px;" id="btnEmailAuth">Continue</button>
-            <div style="margin: 15px 0; font-size: 12px; color: var(--text-muted);">OR</div>
-            <button class="btn btn-ghost" style="width:100%; background: white; color: black;" id="btnGoogle">
-                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="16" style="vertical-align: middle; margin-right: 8px;"> Google Sign In
+            <button class="auth-submit" id="btnMainAuth">Create Account</button>
+            <div style="margin: 24px 0; display: flex; align-items: center; opacity: 0.5;">
+                <hr style="flex:1; border: 0; border-top: 1px solid var(--border-color);">
+                <span style="padding: 0 15px; font-size: 12px;">OR</span>
+                <hr style="flex:1; border: 0; border-top: 1px solid var(--border-color);">
+            </div>
+            <button class="btn btn-outline" style="width:100%; justify-content: center; font-size: 14px;" id="btnGoogle">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" style="margin-right: 10px;"> 
+                Sign in with Google
             </button>
-            <p style="margin-top: 25px; font-size: 13px; cursor: pointer; color: var(--text-muted);" onclick="closeModal()">Close</p>
+            <button onclick="closeModal()" style="background:none; border:none; color:var(--text-muted); margin-top:25px; cursor:pointer; width:100%; font-size: 13px;">Cancel</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="guestModal">
+        <div class="modal-card">
+            <h2 style="margin:0 0 10px 0; font-size: 22px; font-weight: 700;">Visitor Log</h2>
+            <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 30px;">Complete registration to proceed.</p>
+            <form id="web3form">
+                <input type="hidden" name="access_key" value="24240680-e918-4701-b2bb-fb158c19f361">
+                <label style="display:block; font-size:13px; margin-bottom:8px; font-weight:500;">Your Full Name</label>
+                <input type="text" name="name" placeholder="Name" required>
+                <label style="display:block; font-size:13px; margin-bottom:8px; font-weight:500;">Birth Date</label>
+                <input type="date" name="dob" required style="color-scheme: dark;">
+                <input type="hidden" name="email" value="guest_vistor@sujal.com">
+                <input type="hidden" name="message" value="Portfolio Guest Access Requested">
+                <button type="submit" class="auth-submit" id="guestSubmitBtn">Register</button>
+            </form>
+            <button onclick="closeGuestModal()" style="background:none; border:none; color:var(--text-muted); margin-top:20px; cursor:pointer; width:100%; font-size: 13px;">Go Back</button>
         </div>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-        import { 
-            getAuth, GoogleAuthProvider, signInWithPopup, 
-            createUserWithEmailAndPassword, signInWithEmailAndPassword, 
-            onAuthStateChanged 
-        } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, sendEmailVerification } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+        // Particle System Generation
+        const container = document.getElementById('particleContainer');
+        for (let i = 0; i < 20; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 4 + 2 + 'px';
+            p.style.width = size; p.style.height = size;
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDelay = Math.random() * 20 + 's';
+            p.style.opacity = Math.random() * 0.5;
+            container.appendChild(p);
+        }
 
         const firebaseConfig = {
             apiKey: "AIzaSyCIiqtdp-Kpcqk7L7kufTqY0f3Ybz7b4Yo",
@@ -101,62 +313,116 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        let currentMode = 'signup';
 
-        // --- NAVIGATION TO ARTI.HTML ---
-        const goToArtifacts = (message) => {
-            Swal.fire({
-                title: message,
-                text: 'Redirecting to your Sujal Portfolio...',
-                icon: 'success',
-                background: '#161b22', color: '#fff',
-                timer: 1500, showConfirmButton: false
-            }).then(() => {
-                window.location.href = 'sign.html';
-            });
+        const goToArtifacts = (m) => {
+            Swal.fire({ title: m, icon: 'success', background: '#161b22', color: '#fff', timer: 1500, showConfirmButton: false })
+            .then(() => window.location.href = 'sign.html');
         };
 
-        window.enterAsGuest = () => {
-            sessionStorage.setItem('guestMode', 'true');
-            goToArtifacts('Welcome Guest! 👋');
-        };
+        // GUEST FLOW
+        window.openGuestModal = () => document.getElementById('guestModal').style.display = 'flex';
+        window.closeGuestModal = () => document.getElementById('guestModal').style.display = 'none';
 
-        window.openModal = () => document.getElementById('authModal').style.display = 'flex';
+        document.getElementById('web3form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('guestSubmitBtn');
+            btn.disabled = true; btn.innerText = "Verifying...";
+            try {
+                const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: new FormData(this) });
+                if(res.ok) { sessionStorage.setItem('guestMode', 'true'); goToArtifacts('Verified 👋'); }
+            } catch { btn.disabled = false; btn.innerText = "Authorize Entry"; }
+        });
+
+        // AUTH FLOW
+        window.openModal = (m) => { document.getElementById('authModal').style.display = 'flex'; switchTab(m); };
         window.closeModal = () => document.getElementById('authModal').style.display = 'none';
+        window.switchTab = (m) => {
+            currentMode = m;
+            document.getElementById('loginTab').className = m === 'login' ? 'tab active' : 'tab';
+            document.getElementById('signupTab').className = m === 'signup' ? 'tab active' : 'tab';
+            document.getElementById('btnMainAuth').innerText = m === 'login' ? 'Sign In' : 'Create Account';
+        };
 
-        // --- AUTH ACTIONS ---
-        document.getElementById('btnEmailAuth').onclick = async () => {
-            const e = document.getElementById('email').value;
-            const p = document.getElementById('password').value;
-            try { 
-                await signInWithEmailAndPassword(auth, e, p);
-                goToArtifacts('Login Successful! ✨');
-            } catch { 
-                try { 
-                    await createUserWithEmailAndPassword(auth, e, p);
-                    goToArtifacts('Account Created! 🎉');
-                } catch(err) { Swal.fire('Error', err.message, 'error'); } 
-            }
+        document.getElementById('btnMainAuth').onclick = async () => {
+            const e = document.getElementById('email').value, p = document.getElementById('password').value;
+            try {
+                let res = currentMode === 'signup' ? await createUserWithEmailAndPassword(auth, e, p) : await signInWithEmailAndPassword(auth, e, p);
+                if (!res.user.emailVerified) {
+                    await sendEmailVerification(res.user);
+                    Swal.fire({ title: 'Verify Email', text: 'Sent to ' + e, icon: 'info', background: '#161b22', color: '#fff' });
+                } else goToArtifacts('Access Granted ✨');
+            } catch (err) { Swal.fire('Error', err.message, 'error'); }
         };
 
         document.getElementById('btnGoogle').onclick = async () => {
-            try { 
-                await signInWithPopup(auth, new GoogleAuthProvider()); 
-                goToArtifacts('Google Login Success! 🌐');
-            } catch(e) { Swal.fire('Error', e.message, 'error'); }
+            try { await signInWithPopup(auth, new GoogleAuthProvider()); goToArtifacts('Welcome ✨'); }
+            catch(e) { console.error(e); }
         };
 
-        // If user is already logged in, skip this page
         onAuthStateChanged(auth, (user) => {
-            if (user || sessionStorage.getItem('guestMode')) {
-                window.location.href = 'sign.html';
+            if ((user && user.emailVerified) || sessionStorage.getItem('guestMode')) {
+                if (!window.location.search.includes('logout')) window.location.href = 'sign.html';
             }
         });
-
-        // Show "Logged Out" popup if coming back from sign.html
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('logout') === 'true') {
-            Swal.fire({ title: 'Logged Out', text: 'See you again soon!', icon: 'info', background: '#161b22', color: '#fff' });
-        }
     </script>
+    <footer style=" color:grey; font-family:sans-serif; text-align:center">©2026  Sujal Wagholikar.All rights are Reserved </footer>
+    <script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 70,
+      "density": { "enable": true, "value_area": 800 }
+    },
+    "color": { "value": "#ffffff" },
+    "shape": {
+      "type": "circle",
+      "stroke": { "width": 0, "color": "#000000" }
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": true,
+      "anim": { "enable": false }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": { "enable": false }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#ffffff",
+      "opacity": 0.3,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 2,
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": { "enable": true, "mode": "grab" },
+      "onclick": { "enable": true, "mode": "push" }
+    },
+    "modes": {
+      "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } },
+      "bubble": { "distance": 250, "size": 10, "duration": 2 },
+      "repulse": { "distance": 100 },
+      "push": { "particles_nb": 4 },
+      "remove": { "particles_nb": 2 }
+    }
+  },
+  "retina_detect": true
+});
+</script>
+
 </body>
 </html>
