@@ -371,6 +371,18 @@ body {
     document.head.appendChild(hstc);
 })();
 </script>
+    <script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+  const supabase = createClient(https://ppbhckgibiwamftgnjgy.supabase.co, eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwYmhja2dpYml3YW1mdGduamd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxOTk1NzEsImV4cCI6MjA4Nzc3NTU3MX0.JPfCgg33dqvY9EswgSRVIBSl27n3j7BNXiGFGdxLlGk)
+
+  const { data, error } = await supabase
+    .from('todos')
+    .select()
+</script>
+    https://ppbhckgibiwamftgnjgy.supabase.co/rest/v1/todos?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwYmhja2dpYml3YW1mdGduamd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxOTk1NzEsImV4cCI6MjA4Nzc3NTU3MX0.JPfCgg33dqvY9EswgSRVIBSl27n3j7BNXiGFGdxLlGk
+    
+    
 </head>
 <body class="smooth-scroll">
     <nav id="nav" class="glass-effect fixed w-full z-50" role="banner" aria-label="Main navigation">
@@ -1711,3 +1723,4 @@ supabase.auth.getSession().then(({ data: { session } }) => {
 </body>
 
 </html>
+
