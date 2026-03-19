@@ -1,412 +1,610 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sujal Portfolio | Professional Gateway</title>
+    <title>Sujal Wagholikar — Enter</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        #particles-js {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Behind all content */
-  background: #0d0d0d;
-}
-
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg-dark: #0d1117;
-            --card-bg: rgba(22, 27, 34, 0.9);
-            --text-main: #f0f6fc;
-            --text-muted: #8b949e;
-            --accent-blue: #2f81f7;
-            --btn-green: #238636;
-            --btn-hover: #2ea043;
-            --border-color: #30363d;
-            --font-family: 'Inter', sans-serif;
+            --bg: #080c14;
+            --surface: rgba(255,255,255,0.04);
+            --border: rgba(255,255,255,0.08);
+            --border-hover: rgba(255,255,255,0.18);
+            --text: #f0ece4;
+            --text-muted: rgba(240,236,228,0.45);
+            --accent: #c8a96e;
+            --accent-dim: rgba(200,169,110,0.15);
+            --accent-glow: rgba(200,169,110,0.3);
+            --blue: #4a7cf7;
+            --green: #22c55e;
+            --red: #ef4444;
         }
 
-        body {
-            margin: 0;
-            font-family: var(--font-family);
-            background: var(--bg-dark);
-            color: var(--text-main);
-            min-height: 100vh;
+        html, body {
+            height: 100%;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        /* ── CANVAS BACKGROUND ── */
+        #bg-canvas {
+            position: fixed; inset: 0; z-index: 0;
+        }
+
+        /* ── LAYOUT ── */
+        .page {
+            position: relative; z-index: 1;
+            width: 100%; height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 480px;
+        }
+
+        /* ── LEFT PANEL ── */
+        .left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 48px 56px;
+            border-right: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 22px;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .logo-dot {
+            width: 8px; height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent-glow);
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.7; }
+        }
+
+        .hero-text {
+            max-width: 520px;
+        }
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--accent);
+            border: 1px solid rgba(200,169,110,0.3);
+            background: var(--accent-dim);
+            padding: 6px 14px; border-radius: 100px;
+            margin-bottom: 28px;
+        }
+        .hero-h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(42px, 5vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+        .hero-h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+        .hero-p {
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--text-muted);
+            max-width: 420px;
+        }
+
+        .left-footer {
+            display: flex; align-items: center; gap: 20px;
+        }
+        .stat {
+            display: flex; flex-direction: column; gap: 2px;
+        }
+        .stat-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 28px; letter-spacing: -0.04em;
+            color: var(--text);
+        }
+        .stat-label {
+            font-size: 11px; color: var(--text-muted);
+            letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .stat-divider {
+            width: 1px; height: 40px;
+            background: var(--border);
+        }
+
+        /* ── RIGHT PANEL ── */
+        .right {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
+            padding: 48px 40px;
+            background: rgba(255,255,255,0.015);
         }
 
-        /* --- BACKGROUND EFFECTS --- */
-        /* Blueprint Grid */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(var(--border-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
-            background-size: 40px 40px;
-            mask-image: radial-gradient(circle at center, black, transparent 80%);
-            opacity: 0.15;
-            z-index: 0;
+        .auth-header { margin-bottom: 36px; }
+        .auth-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 30px; letter-spacing: -0.02em;
+            color: var(--text); margin-bottom: 8px;
+        }
+        .auth-sub {
+            font-size: 14px; color: var(--text-muted);
         }
 
-        /* Moving Particles */
-        .particles {
-            position: absolute;
-            width: 100%; height: 100%;
-            top: 0; left: 0;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--accent-blue);
-            border-radius: 50%;
-            opacity: 0.3;
-            filter: blur(2px);
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            from { transform: translateY(100vh) translateX(0); }
-            to { transform: translateY(-10vh) translateX(50px); }
-        }
-
-        /* --- HERO SECTION --- */
-        .hero { 
-            text-align: center; 
-            padding: 20px; 
-            z-index: 2;
-            animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .badge {
-            background: rgba(47, 129, 247, 0.1);
-            color: var(--accent-blue);
-            padding: 6px 14px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 500;
-            border: 1px solid rgba(47, 129, 247, 0.3);
-            margin-bottom: 30px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            backdrop-filter: blur(4px);
-            transition: 0.3s;
-        }
-
-        .badge:hover { border-color: var(--accent-blue); background: rgba(47, 129, 247, 0.2); }
-
-        h1 { 
-            font-size: clamp(50px, 9vw, 95px); 
-            line-height: 0.95;
-            letter-spacing: -0.05em; 
-            margin: 0 0 24px 0;
-            font-weight: 800;
-            background: linear-gradient(180deg, #fff 50%, #8b949e 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-p { 
-            color: var(--text-muted); 
-            font-size: clamp(18px, 2.5vw, 22px); 
-            margin: 0 auto 50px auto; 
-            max-width: 650px; 
-            line-height: 1.6;
-        }
-
-        /* --- BUTTONS --- */
-        .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        
-        .btn { 
-            padding: 14px 28px; 
-            border-radius: 8px; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
-            font-size: 16px;
+        /* Tabs */
+        .tabs {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px; padding: 4px;
+            margin-bottom: 28px;
+        }
+        .tab {
+            flex: 1; padding: 10px;
+            text-align: center; cursor: pointer;
+            border-radius: 7px;
+            font-size: 13px; font-weight: 500;
+            color: var(--text-muted);
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
+        }
+        .tab.active {
+            background: var(--surface);
+            color: var(--text);
+            border-color: var(--border);
         }
 
-        .btn-primary { background: #f0f6fc; color: #0d1117; border: 1px solid #fff; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,255,255,0.15); background: #ffffff; }
+        /* Inputs */
+        .field { margin-bottom: 16px; }
+        .field label {
+            display: block;
+            font-size: 12px; font-weight: 500;
+            letter-spacing: 0.04em; text-transform: uppercase;
+            color: var(--text-muted); margin-bottom: 8px;
+        }
+        .field input {
+            width: 100%; padding: 13px 16px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            color: var(--text); border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px; transition: all 0.2s ease;
+        }
+        .field input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(200,169,110,0.06);
+            box-shadow: 0 0 0 4px rgba(200,169,110,0.1);
+        }
+        .field input::placeholder { color: rgba(240,236,228,0.25); }
 
-        .btn-outline { background: rgba(255,255,255,0.03); color: var(--text-main); border: 1px solid var(--border-color); backdrop-filter: blur(10px); }
-        .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: #8b949e; transform: translateY(-3px); }
+        /* Buttons */
+        .btn-main {
+            width: 100%; padding: 14px;
+            background: var(--accent);
+            color: #080c14;
+            border: none; border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px; font-weight: 600;
+            cursor: pointer; transition: all 0.2s ease;
+            letter-spacing: 0.02em;
+            margin-bottom: 16px;
+        }
+        .btn-main:hover {
+            background: #d4b47a;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px var(--accent-glow);
+        }
+        .btn-main:active { transform: translateY(0); }
 
-        /* --- MODALS --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(1, 4, 9, 0.85); 
-            backdrop-filter: blur(12px);
-            display: none; justify-content: center; align-items: center; z-index: 1000;
+        .divider {
+            display: flex; align-items: center; gap: 12px;
+            margin: 16px 0;
+        }
+        .divider hr {
+            flex: 1; border: none;
+            border-top: 1px solid var(--border);
+        }
+        .divider span {
+            font-size: 11px; color: var(--text-muted);
+            letter-spacing: 0.06em; text-transform: uppercase;
         }
 
-        .modal-card {
-            background: var(--card-bg); 
-            width: 90%;
-            max-width: 420px; 
+        .btn-google {
+            width: 100%; padding: 13px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: var(--text); border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s ease;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-bottom: 24px;
+        }
+        .btn-google:hover {
+            background: rgba(255,255,255,0.09);
+            border-color: var(--border-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Guest section */
+        .guest-link {
+            text-align: center;
+        }
+        .guest-link button {
+            background: none; border: none;
+            color: var(--text-muted); font-family: 'DM Sans', sans-serif;
+            font-size: 13px; cursor: pointer;
+            transition: color 0.2s;
+        }
+        .guest-link button span {
+            color: var(--accent); border-bottom: 1px solid rgba(200,169,110,0.4);
+        }
+        .guest-link button:hover { color: var(--text); }
+
+        /* ── GUEST MODAL ── */
+        .overlay {
+            position: fixed; inset: 0; z-index: 100;
+            background: rgba(8,12,20,0.8);
+            backdrop-filter: blur(16px);
+            display: none; align-items: center; justify-content: center;
+        }
+        .overlay.open { display: flex; }
+        .modal {
+            background: #0f1520;
+            border: 1px solid var(--border-hover);
+            border-radius: 16px;
+            width: 90%; max-width: 400px;
             padding: 40px;
-            border-radius: 16px; 
-            border: 1px solid var(--border-color);
-            box-shadow: 0 24px 60px rgba(0,0,0,0.7);
-            animation: modalEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-sizing: border-box;
-            position: relative;
+            animation: modalIn 0.35s cubic-bezier(0.16,1,0.3,1);
+        }
+        @keyframes modalIn {
+            from { transform: scale(0.95) translateY(16px); opacity: 0; }
+            to   { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        .modal h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 24px; letter-spacing: -0.02em;
+            color: var(--text); margin-bottom: 8px;
+        }
+        .modal p {
+            font-size: 13px; color: var(--text-muted);
+            margin-bottom: 28px; line-height: 1.6;
+        }
+        .btn-cancel {
+            width: 100%; padding: 12px;
+            background: none; border: 1px solid var(--border);
+            color: var(--text-muted); border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px; cursor: pointer;
+            transition: all 0.2s; margin-top: 12px;
+        }
+        .btn-cancel:hover {
+            border-color: var(--border-hover);
+            color: var(--text);
         }
 
-        @keyframes modalEnter { 
-            from { transform: scale(0.95) translateY(20px); opacity: 0; } 
-            to { transform: scale(1) translateY(0); opacity: 1; } 
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            body { overflow: auto; }
+            .page { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+            .left {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 32px 24px;
+            }
+            .hero-text { max-width: 100%; }
+            .hero-h1 { font-size: 36px; }
+            .left-footer { display: none; }
+            .right { padding: 36px 24px; }
         }
 
-        .tab-group { display: flex; background: #010409; padding: 4px; border-radius: 10px; margin-bottom: 28px; border: 1px solid var(--border-color); }
-        .tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; border-radius: 7px; font-size: 14px; color: var(--text-muted); font-weight: 500; transition: 0.3s; }
-        .tab.active { background: var(--border-color); color: #fff; }
-
-        input { 
-            width: 100%; padding: 12px 16px; 
-            background: #010409; border: 1px solid var(--border-color); 
-            color: white; border-radius: 8px; box-sizing: border-box;
-            margin-bottom: 20px; font-family: inherit; font-size: 15px;
+        /* ── STATUS DOT ── */
+        .status {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 11px; color: var(--green);
+            letter-spacing: 0.04em;
         }
-        input:focus { outline: none; border-color: var(--accent-blue); box-shadow: 0 0 0 4px rgba(47, 129, 247, 0.2); }
-
-        .auth-submit {
-            width: 100%; padding: 14px; background: var(--btn-green);
-            color: white; border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 16px;
+        .status-dot {
+            width: 6px; height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
         }
-        .auth-submit:hover { background: var(--btn-hover); transform: translateY(-1px); }
-
-        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
 
+<canvas id="bg-canvas"></canvas>
 
-    <div class="particles" id="particleContainer"></div>
-
-    <main class="hero">
-        <div class="badge">
-            <span style="color: #238636; filter: drop-shadow(0 0 5px #238636);">●</span> System Status: Online
+<div class="page">
+    <!-- LEFT -->
+    <div class="left">
+        <div class="logo">
+            <div class="logo-dot"></div>
+            Sujal.dev
         </div>
-       <h1 class="typing">
-  Welcome to the <br>Login Page.
-</h1>
 
-<p class="hero-p">
-  Designed by Sujal Wagholikar using HTML, CSS & JS with ❤️
-</p>
-
-
-        <div class="btn-group">
-            <button class="btn btn-primary" onclick="openModal(' Sign Up')">
-                Get Started
-            </button>
-            <button class="btn btn-outline" onclick="openGuestModal()">
-                Guest Access 
-            </button>
+        <div class="hero-text">
+            <div class="hero-tag">✦ Portfolio Gateway</div>
+            <h1 class="hero-h1">
+                Code. Research.<br><em>Innovate.</em>
+            </h1>
+            <p class="hero-p">
+                Full-Stack Developer · AI Enthusiast · Class 12 @ RCSSV Sagroli.
+                Building real-world web applications and exploring frontiers of
+                aeronautics and intelligent systems.
+            </p>
         </div>
-    </main>
 
-    <div class="modal-overlay" id="authModal">
-        <div class="modal-card">
-            <div class="tab-group">
-                <div class="tab" id="loginTab" onclick="switchTab('login')">Log In</div>
-                <div class="tab active" id="signupTab" onclick="switchTab('signup')">Sign Up</div>
+        <div class="left-footer">
+            <div class="stat">
+                <div class="stat-num">12+</div>
+                <div class="stat-label">Projects</div>
             </div>
-            <h2 id="modalTitle" style="margin:0 0 10px 0; font-size: 22px; font-weight: 700;">Secure Entry</h2>
-            <p id="modalSub" style="color: var(--text-muted); font-size: 15px; margin-bottom: 30px;">Sync your identity to continue.</p>
-            <input type="email" id="email" placeholder="Email Address">
-            <input type="password" id="password" placeholder="Password">
-            <button class="auth-submit" id="btnMainAuth">Create Account</button>
-            <div style="margin: 24px 0; display: flex; align-items: center; opacity: 0.5;">
-                <hr style="flex:1; border: 0; border-top: 1px solid var(--border-color);">
-                <span style="padding: 0 15px; font-size: 12px;">OR</span>
-                <hr style="flex:1; border: 0; border-top: 1px solid var(--border-color);">
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="stat-num">5</div>
+                <div class="stat-label">Collaborators</div>
             </div>
-            <button class="btn btn-outline" style="width:100%; justify-content: center; font-size: 14px;" id="btnGoogle">
-                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" style="margin-right: 10px;"> 
-                Sign in with Google
-            </button>
-            <button onclick="closeModal()" style="background:none; border:none; color:var(--text-muted); margin-top:25px; cursor:pointer; width:100%; font-size: 13px;">Cancel</button>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="status">
+                    <div class="status-dot"></div>
+                    Online
+                </div>
+                <div class="stat-label">Live · 2026</div>
+            </div>
         </div>
     </div>
 
-    <div class="modal-overlay" id="guestModal">
-        <div class="modal-card">
-            <h2 style="margin:0 0 10px 0; font-size: 22px; font-weight: 700;">Visitor Log</h2>
-            <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 30px;">Complete registration to proceed.</p>
-            <form id="web3form">
-                <input type="hidden" name="access_key" value="24240680-e918-4701-b2bb-fb158c19f361">
-                <label style="display:block; font-size:13px; margin-bottom:8px; font-weight:500;">Your Full Name</label>
-                <input type="text" name="name" placeholder="Name" required>
-                <label style="display:block; font-size:13px; margin-bottom:8px; font-weight:500;">Birth Date</label>
-                <input type="date" name="dob" required style="color-scheme: dark;">
-                <input type="hidden" name="email" value="guest_vistor@sujal.com">
-                <input type="hidden" name="message" value="Portfolio Guest Access Requested">
-                <button type="submit" class="auth-submit" id="guestSubmitBtn">Register</button>
-            </form>
-            <button onclick="closeGuestModal()" style="background:none; border:none; color:var(--text-muted); margin-top:20px; cursor:pointer; width:100%; font-size: 13px;">Go Back</button>
+    <!-- RIGHT -->
+    <div class="right">
+        <div class="auth-header">
+            <div class="auth-title" id="authTitle">Create Account</div>
+            <div class="auth-sub" id="authSub">Join to access the full portfolio.</div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab" id="tabLogin" onclick="switchTab('login')">Sign In</div>
+            <div class="tab active" id="tabSignup" onclick="switchTab('signup')">Sign Up</div>
+        </div>
+
+        <div class="field">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="you@example.com">
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="••••••••">
+        </div>
+
+        <button class="btn-main" id="btnAuth">Create Account</button>
+
+        <div class="divider">
+            <hr><span>or</span><hr>
+        </div>
+
+        <button class="btn-google" id="btnGoogle">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" alt="G">
+            Continue with Google
+        </button>
+
+        <div class="guest-link">
+            <button onclick="document.getElementById('guestOverlay').classList.add('open')">
+                No account? <span>Enter as Guest →</span>
+            </button>
         </div>
     </div>
+</div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-        import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, sendEmailVerification } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+<!-- GUEST MODAL -->
+<div class="overlay" id="guestOverlay">
+    <div class="modal">
+        <h3>Visitor Log</h3>
+        <p>Register your visit. Quick & no account needed.</p>
+        <form id="web3form">
+            <input type="hidden" name="access_key" value="24240680-e918-4701-b2bb-fb158c19f361">
+            <input type="hidden" name="email" value="guest_visitor@sujal.com">
+            <input type="hidden" name="message" value="Portfolio Guest Access Requested">
+            <div class="field">
+                <label>Your Name</label>
+                <input type="text" name="name" placeholder="Full name" required>
+            </div>
+            <div class="field">
+                <label>Date of Birth</label>
+                <input type="date" name="dob" required style="color-scheme:dark">
+            </div>
+            <button type="submit" class="btn-main" id="guestBtn">Register & Enter →</button>
+            <button type="button" class="btn-cancel" onclick="document.getElementById('guestOverlay').classList.remove('open')">Go Back</button>
+        </form>
+    </div>
+</div>
 
-        // Particle System Generation
-        const container = document.getElementById('particleContainer');
-        for (let i = 0; i < 20; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            const size = Math.random() * 4 + 2 + 'px';
-            p.style.width = size; p.style.height = size;
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDelay = Math.random() * 20 + 's';
-            p.style.opacity = Math.random() * 0.5;
-            container.appendChild(p);
+<!-- CANVAS ANIMATION -->
+<script>
+(function() {
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+    }
+
+    function Particle() {
+        this.x = Math.random() * W;
+        this.y = Math.random() * H;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.r = Math.random() * 1.5 + 0.5;
+        this.alpha = Math.random() * 0.4 + 0.1;
+        this.color = Math.random() > 0.7 ? '#c8a96e' : '#4a7cf7';
+    }
+
+    function init() {
+        particles = [];
+        for (let i = 0; i < 80; i++) particles.push(new Particle());
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, W, H);
+
+        // gradient bg
+        const grad = ctx.createRadialGradient(W * 0.7, H * 0.3, 0, W * 0.7, H * 0.3, W * 0.7);
+        grad.addColorStop(0, 'rgba(74,124,247,0.06)');
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, W, H);
+
+        const grad2 = ctx.createRadialGradient(W * 0.15, H * 0.8, 0, W * 0.15, H * 0.8, W * 0.5);
+        grad2.addColorStop(0, 'rgba(200,169,110,0.06)');
+        grad2.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad2;
+        ctx.fillRect(0, 0, W, H);
+
+        // lines between close particles
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 130) {
+                    ctx.strokeStyle = `rgba(200,169,110,${0.06 * (1 - dist / 130)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
         }
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyCIiqtdp-Kpcqk7L7kufTqY0f3Ybz7b4Yo",
-            authDomain: "sujal-3553f.firebaseapp.com",
-            projectId: "sujal-3553f",
-            storageBucket: "sujal-3553f.firebasestorage.app",
-            messagingSenderId: "549563706064",
-            appId: "1:549563706064:web:2ce70664602f0295270cd5"
-        };
+        // dots
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.color.replace(')', `,${p.alpha})`).replace('rgb', 'rgba').replace('#c8a96e', `rgba(200,169,110,${p.alpha})`).replace('#4a7cf7', `rgba(74,124,247,${p.alpha})`);
+            // simpler:
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.alpha;
+            ctx.fill();
+            ctx.globalAlpha = 1;
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        let currentMode = 'signup';
-
-        const goToArtifacts = (m) => {
-            Swal.fire({ title: m, icon: 'success', background: '#161b22', color: '#fff', timer: 1500, showConfirmButton: false })
-            .then(() => window.location.href = 'sign.html');
-        };
-
-        // GUEST FLOW
-        window.openGuestModal = () => document.getElementById('guestModal').style.display = 'flex';
-        window.closeGuestModal = () => document.getElementById('guestModal').style.display = 'none';
-
-        document.getElementById('web3form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('guestSubmitBtn');
-            btn.disabled = true; btn.innerText = "Verifying...";
-            try {
-                const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: new FormData(this) });
-                if(res.ok) { sessionStorage.setItem('guestMode', 'true'); goToArtifacts('Verified 👋'); }
-            } catch { btn.disabled = false; btn.innerText = "Authorize Entry"; }
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0) p.x = W;
+            if (p.x > W) p.x = 0;
+            if (p.y < 0) p.y = H;
+            if (p.y > H) p.y = 0;
         });
 
-        // AUTH FLOW
-        window.openModal = (m) => { document.getElementById('authModal').style.display = 'flex'; switchTab(m); };
-        window.closeModal = () => document.getElementById('authModal').style.display = 'none';
-        window.switchTab = (m) => {
-            currentMode = m;
-            document.getElementById('loginTab').className = m === 'login' ? 'tab active' : 'tab';
-            document.getElementById('signupTab').className = m === 'signup' ? 'tab active' : 'tab';
-            document.getElementById('btnMainAuth').innerText = m === 'login' ? 'Sign In' : 'Create Account';
-        };
+        requestAnimationFrame(draw);
+    }
 
-        document.getElementById('btnMainAuth').onclick = async () => {
-            const e = document.getElementById('email').value, p = document.getElementById('password').value;
-            try {
-                let res = currentMode === 'signup' ? await createUserWithEmailAndPassword(auth, e, p) : await signInWithEmailAndPassword(auth, e, p);
+    window.addEventListener('resize', () => { resize(); init(); });
+    resize(); init(); draw();
+})();
+</script>
+
+<!-- FIREBASE AUTH -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, sendEmailVerification } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCIiqtdp-Kpcqk7L7kufTqY0f3Ybz7b4Yo",
+        authDomain: "sujal-3553f.firebaseapp.com",
+        projectId: "sujal-3553f",
+        storageBucket: "sujal-3553f.firebasestorage.app",
+        messagingSenderId: "549563706064",
+        appId: "1:549563706064:web:2ce70664602f0295270cd5"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    let mode = 'signup';
+
+    const navigate = (msg) => {
+        Swal.fire({
+            title: msg,
+            icon: 'success',
+            background: '#0f1520',
+            color: '#f0ece4',
+            timer: 1400,
+            showConfirmButton: false
+        }).then(() => window.location.href = 'sign.html');
+    };
+
+    // Tab switching — FIXED (was broken with space + capital)
+    window.switchTab = (m) => {
+        mode = m;
+        document.getElementById('tabLogin').className = m === 'login' ? 'tab active' : 'tab';
+        document.getElementById('tabSignup').className = m === 'signup' ? 'tab active' : 'tab';
+        document.getElementById('btnAuth').textContent = m === 'login' ? 'Sign In' : 'Create Account';
+        document.getElementById('authTitle').textContent = m === 'login' ? 'Welcome Back' : 'Create Account';
+        document.getElementById('authSub').textContent = m === 'login' ? 'Sign in to access the portfolio.' : 'Join to access the full portfolio.';
+    };
+
+    // Email/Password Auth
+    document.getElementById('btnAuth').onclick = async () => {
+        const e = document.getElementById('email').value.trim();
+        const p = document.getElementById('password').value;
+        if (!e || !p) { Swal.fire({ title: 'Missing Fields', text: 'Please fill in both fields.', icon: 'warning', background: '#0f1520', color: '#f0ece4' }); return; }
+        try {
+            if (mode === 'signup') {
+                const res = await createUserWithEmailAndPassword(auth, e, p);
                 if (!res.user.emailVerified) {
                     await sendEmailVerification(res.user);
-                    Swal.fire({ title: 'Verify Email', text: 'Sent to ' + e, icon: 'info', background: '#161b22', color: '#fff' });
-                } else goToArtifacts('Access Granted ✨');
-            } catch (err) { Swal.fire('Error', err.message, 'error'); }
-        };
-
-        document.getElementById('btnGoogle').onclick = async () => {
-            try { await signInWithPopup(auth, new GoogleAuthProvider()); goToArtifacts('Welcome ✨'); }
-            catch(e) { console.error(e); }
-        };
-
-        onAuthStateChanged(auth, (user) => {
-            if ((user && user.emailVerified) || sessionStorage.getItem('guestMode')) {
-                if (!window.location.search.includes('logout')) window.location.href = 'sign.html';
+                    Swal.fire({ title: 'Verify Email', text: `Verification sent to ${e}`, icon: 'info', background: '#0f1520', color: '#f0ece4' });
+                } else navigate('Account Created ✨');
+            } else {
+                await signInWithEmailAndPassword(auth, e, p);
+                navigate('Welcome Back ✨');
             }
-        });
-    </script>
-    <footer style=" color:grey; font-family:sans-serif; text-align:center">©2026  Sujal Wagholikar.All rights are Reserved </footer>
-    <script>
-particlesJS("particles-js", {
-  "particles": {
-    "number": {
-      "value": 70,
-      "density": { "enable": true, "value_area": 800 }
-    },
-    "color": { "value": "#ffffff" },
-    "shape": {
-      "type": "circle",
-      "stroke": { "width": 0, "color": "#000000" }
-    },
-    "opacity": {
-      "value": 0.5,
-      "random": true,
-      "anim": { "enable": false }
-    },
-    "size": {
-      "value": 3,
-      "random": true,
-      "anim": { "enable": false }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.3,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 2,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": { "enable": true, "mode": "grab" },
-      "onclick": { "enable": true, "mode": "push" }
-    },
-    "modes": {
-      "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } },
-      "bubble": { "distance": 250, "size": 10, "duration": 2 },
-      "repulse": { "distance": 100 },
-      "push": { "particles_nb": 4 },
-      "remove": { "particles_nb": 2 }
-    }
-  },
-  "retina_detect": true
-});
+        } catch (err) {
+            Swal.fire({ title: 'Error', text: err.message, icon: 'error', background: '#0f1520', color: '#f0ece4' });
+        }
+    };
+
+    // Google Auth
+    document.getElementById('btnGoogle').onclick = async () => {
+        try {
+            await signInWithPopup(auth, new GoogleAuthProvider());
+            navigate('Welcome ✨');
+        } catch (e) { console.error(e); }
+    };
+
+    // Auto-redirect if already logged in
+    onAuthStateChanged(auth, (user) => {
+        if ((user && user.emailVerified) || sessionStorage.getItem('guestMode')) {
+            if (!window.location.search.includes('logout')) window.location.href = 'sign.html';
+        }
+    });
+
+    // Guest Form
+    document.getElementById('web3form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('guestBtn');
+        btn.disabled = true; btn.textContent = 'Verifying...';
+        try {
+            const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: new FormData(this) });
+            if (res.ok) { sessionStorage.setItem('guestMode', 'true'); navigate('Welcome, Guest 👋'); }
+            else { btn.disabled = false; btn.textContent = 'Register & Enter →'; }
+        } catch { btn.disabled = false; btn.textContent = 'Register & Enter →'; }
+    });
 </script>
 
 </body>
