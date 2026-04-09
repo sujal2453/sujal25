@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujal Wagholikar — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import {
+      getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+      GoogleAuthProvider, signInWithPopup, onAuthStateChanged, updateProfile
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCIiqtdp-Kpcqk7L7kufTqY0f3Ybz7b4Yo",
+      authDomain: "sujal-3553f.firebaseapp.com",
+      projectId: "sujal-3553f",
+      storageBucket: "sujal-3553f.firebasestorage.app",
+      messagingSenderId: "549563706064",
+      appId: "1:549563706064:web:2ce70664602f0295270cd5"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) window.location.href = "sign.html";
+    });
+
+    function saveUserLocally(user) {
+      localStorage.setItem("sw_user", JSON.stringify({
+        uid: user.uid,
+        name: user.displayName || "User",
+        email: user.email,
+        photo: user.photoURL || null,
+        lastLogin: new Date().toISOString()
+      }));
+    }
+
+    function showError(msg) {
+      const el = document.getElementById("error-msg");
+      el.textContent = msg;
+      el.style.opacity = "1";
+      setTimeout(() => el.style.opacity = "0", 4000);
+    }
+
+    function setLoading(btn, loading) {
+      btn.disabled = loading;
+      btn.dataset.original = btn.dataset.original || btn.innerHTML;
+      btn.innerHTML = loading ? `<span class="spinner"></span>` : btn.dataset.original;
+    }
+
+    window.__auth = {
+      async signIn() {
+        const email = document.getElementById("email").value.trim();
+        const pass = document.getElementById("password").value;
+        const btn = document.getElementById("btn-signin");
+        if (!email || !pass) return showError("Fill in all fields.");
+        setLoading(btn, true);
+        try {
+          const cred = await signInWithEmailAndPassword(auth, email, pass);
+          saveUserLocally(cred.user);
+          window.location.href = "sign.html";
+        } catch (e) {
+          showError(friendlyError(e.code));
+          setLoading(btn, false);
+        }
+      },
+      async signUp() {
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email-su").value.trim();
+        const pass = document.getElementById("password-su").value;
+        const btn = document.getElementById("btn-signup");
+        if (!name || !email || !pass) return showError("Fill in all fields.");
+        if (pass.length < 6) return showError("Password must be 6+ characters.");
+        setLoading(btn, true);
+        try {
+          const cred = await createUserWithEmailAndPassword(auth, email, pass);
+          await updateProfile(cred.user, { displayName: name });
+          saveUserLocally(cred.user);
+          window.location.href = "sign.html";
+        } catch (e) {
+          showError(friendlyError(e.code));
+          setLoading(btn, false);
+        }
+      },
+      async googleSignIn() {
+        document.querySelectorAll(".btn-google").forEach(b => b.disabled = true);
+        try {
+          const cred = await signInWithPopup(auth, provider);
+          saveUserLocally(cred.user);
+          window.location.href = "sign.html";
+        } catch (e) {
+          showError(friendlyError(e.code));
+          document.querySelectorAll(".btn-google").forEach(b => b.disabled = false);
+        }
+      },
+      guestAccess() {
+        localStorage.setItem("sw_user", JSON.stringify({
+          uid: "guest", name: "Guest", email: null, photo: null,
+          lastLogin: new Date().toISOString()
+        }));
+        window.location.href = "sign.html";
+      }
+    };
+
+    function friendlyError(code) {
+      return ({
+        "auth/user-not-found": "No account found with this email.",
+        "auth/wrong-password": "Incorrect password.",
+        "auth/email-already-in-use": "Email already registered.",
+        "auth/invalid-email": "Invalid email address.",
+        "auth/weak-password": "Password too weak.",
+        "auth/popup-closed-by-user": "Google sign-in cancelled.",
+        "auth/network-request-failed": "Network error.",
+        "auth/invalid-credential": "Invalid credentials.",
+      })[code] || "Something went wrong.";
+    }
+  </script>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --g50: #fafafa;
+      --g100: #f4f4f5;
+      --g200: #e4e4e7;
+      --g400: #a1a1aa;
+      --g500: #71717a;
+      --g700: #3f3f46;
+      --g900: #18181b;
+      --error: #ef4444;
+      --r: 9px;
+      --t: 0.18s ease;
+    }
+
+    html,
+    body {
+      height: 100%;
+      font-family: 'Instrument Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      min-height: 100vh;
+    }
+
+    /* ═══════════════ LEFT ═══════════════ */
+    .left {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 48px;
+    }
+
+    .left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      pointer-events: none;
+    }
+
+    .left::after {
+      content: '';
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.055) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .left-brand {
+      position: absolute;
+      top: 40px;
+      left: 48px;
+      z-index: 10;
+    }
+
+    .left-brand .mono {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .left-brand .name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 19px;
+      color: var(--white);
+      margin-top: 3px;
+      letter-spacing: -0.3px;
+    }
+
+    /* Floating cards stage */
+    .cs {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .fc {
+      position: absolute;
+      background: #111111;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 11px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      animation: float var(--dur, 9s) ease-in-out infinite var(--del, 0s);
+    }
+
+    @keyframes float {
+      0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+      }
+
+      12% {
+        opacity: 1;
+      }
+
+      82% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.005);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-24px) scale(0.98);
+      }
+    }
+
+    /* Card A — Stat */
+    .fc-a {
+      width: 250px;
+      top: 10%;
+      left: 6%;
+      padding: 16px;
+      --dur: 11s;
+      --del: 0s;
+    }
+
+    .fc-a .lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .28);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .fc-a .bdg {
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 9px;
+      color: rgba(255, 255, 255, .4);
+    }
+
+    .fc-a .num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 38px;
+      color: #fff;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .fc-a .sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: rgba(255, 255, 255, .22);
+      margin-bottom: 12px;
+    }
+
+    .bars {
+      display: flex;
+      gap: 3px;
+      align-items: flex-end;
+      height: 30px;
+    }
+
+    .bar {
+      flex: 1;
+      background: rgba(255, 255, 255, .1);
+      border-radius: 2px;
+    }
+
+    .bar.h {
+      background: rgba(255, 255, 255, .65);
+    }
+
+    .bar.m {
+      background: rgba(255, 255, 255, .3);
+    }
+
+    /* Card B — Code */
+    .fc-b {
+      width: 295px;
+      top: 25%;
+      right: 3%;
+      padding: 14px 16px;
+      --dur: 13s;
+      --del: 2.8s;
+    }
+
+    .dots {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .13);
+    }
+
+    code {
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, .45);
+      display: block;
+    }
+
+    .kw {
+      color: rgba(255, 255, 255, .88);
+    }
+
+    .str {
+      color: rgba(255, 255, 255, .42);
+    }
+
+    .fn {
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .cm {
+      color: rgba(255, 255, 255, .22);
+    }
+
+    /* Card C — Project */
+    .fc-c {
+      width: 215px;
+      bottom: 20%;
+      left: 4%;
+      --dur: 10s;
+      --del: 4.5s;
+    }
+
+    .fc-c .thumb {
+      height: 76px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fc-c .grd {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+      background-size: 15px 15px;
+    }
+
+    .fc-c .ico {
+      position: relative;
+      z-index: 1;
+      width: 28px;
+      height: 28px;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+    }
+
+    .fc-c .bd {
+      padding: 12px 13px;
+    }
+
+    .fc-c .ttl {
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+
+    .fc-c .dsc {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: rgba(255, 255, 255, .28);
+    }
+
+    .tgs {
+      display: flex;
+      gap: 4px;
+      margin-top: 9px;
+    }
+
+    .tg {
+      padding: 2px 7px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 3px;
+      font-size: 8.5px;
+      font-family: 'DM Mono', monospace;
+      color: rgba(255, 255, 255, .32);
+    }
+
+    /* Card D — Activity */
+    .fc-d {
+      width: 228px;
+      top: 53%;
+      right: 5%;
+      padding: 14px 16px;
+      --dur: 12s;
+      --del: 1.4s;
+    }
+
+    .fc-d .lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .22);
+      margin-bottom: 12px;
+    }
+
+    .ar {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 8px;
+    }
+
+    .ar:last-child {
+      margin-bottom: 0;
+    }
+
+    .ad {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .55);
+      flex-shrink: 0;
+    }
+
+    .ad.dim {
+      background: rgba(255, 255, 255, .14);
+    }
+
+    .at {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .58);
+      flex: 1;
+    }
+
+    .atm {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: rgba(255, 255, 255, .2);
+    }
+
+    /* Card E — Skills */
+    .fc-e {
+      width: 195px;
+      top: 7%;
+      right: 10%;
+      padding: 14px;
+      --dur: 9s;
+      --del: 6s;
+    }
+
+    .fc-e .lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .22);
+      margin-bottom: 12px;
+    }
+
+    .sr {
+      margin-bottom: 8px;
+    }
+
+    .sr:last-child {
+      margin-bottom: 0;
+    }
+
+    .st {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .sn {
+      font-size: 10px;
+      color: rgba(255, 255, 255, .62);
+    }
+
+    .sp {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: rgba(255, 255, 255, .28);
+    }
+
+    .strk {
+      height: 3px;
+      background: rgba(255, 255, 255, .08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .sf {
+      height: 100%;
+      background: rgba(255, 255, 255, .52);
+      border-radius: 2px;
+    }
+
+    /* Left tagline */
+    .left-bot {
+      position: relative;
+      z-index: 10;
+    }
+
+    .tagline {
+      font-family: 'DM Serif Display', serif;
+      font-size: 38px;
+      color: #fff;
+      line-height: 1.12;
+      letter-spacing: -.8px;
+      margin-bottom: 10px;
+    }
+
+    .tagline em {
+      font-style: italic;
+      color: rgba(255, 255, 255, .38);
+    }
+
+    .leftsub {
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, .3);
+      letter-spacing: .03em;
+    }
+
+    /* ═══════════════ RIGHT ═══════════════ */
+    .right {
+      background: var(--white);
+      border-left: 1px solid var(--g200);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 52px 44px;
+      position: relative;
+    }
+
+    .right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+      background-size: 200px;
+      pointer-events: none;
+    }
+
+    .fh {
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--g400);
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 14px;
+      height: 1px;
+      background: var(--g400);
+    }
+
+    .ftitle {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      letter-spacing: -.4px;
+      color: var(--black);
+      line-height: 1.15;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--g200);
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tab {
+      padding: 8px 0;
+      margin-right: 22px;
+      font-size: 13px;
+      color: var(--g400);
+      cursor: pointer;
+      border-bottom: 1.5px solid transparent;
+      margin-bottom: -1px;
+      transition: color var(--t), border-color var(--t);
+    }
+
+    .tab.active {
+      color: var(--black);
+      border-bottom-color: var(--black);
+      font-weight: 500;
+    }
+
+    .tab:hover:not(.active) {
+      color: var(--g700);
+    }
+
+    #error-msg {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--error);
+      min-height: 15px;
+      margin-bottom: 12px;
+      opacity: 0;
+      transition: opacity .25s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-panel {
+      display: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-panel.active {
+      display: block;
+    }
+
+    .field {
+      margin-bottom: 13px;
+    }
+
+    .field label {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 5px;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--g50);
+      border: 1px solid var(--g200);
+      border-radius: var(--r);
+      font-size: 13.5px;
+      font-family: 'Instrument Sans', sans-serif;
+      color: var(--black);
+      outline: none;
+      transition: border-color var(--t), background var(--t), box-shadow var(--t);
+    }
+
+    .field input::placeholder {
+      color: var(--g400);
+    }
+
+    .field input:focus {
+      border-color: var(--black);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 11px;
+      background: var(--black);
+      color: #fff;
+      border: none;
+      border-radius: var(--r);
+      font-size: 13.5px;
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background var(--t), opacity var(--t), transform .1s;
+      letter-spacing: .01em;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--g900);
+    }
+
+    .btn-primary:active:not(:disabled) {
+      transform: scale(0.99);
+    }
+
+    .btn-primary:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 15px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--g200);
+    }
+
+    .divider span {
+      font-family: 'DM Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--g400);
+    }
+
+    .btn-google {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--white);
+      border: 1px solid var(--g200);
+      border-radius: var(--r);
+      font-size: 13.5px;
+      font-family: 'Instrument Sans', sans-serif;
+      color: var(--g700);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      transition: background var(--t), border-color var(--t);
+    }
+
+    .btn-google:hover:not(:disabled) {
+      background: var(--g50);
+      border-color: var(--g400);
+    }
+
+    .btn-google:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+    }
+
+    .gi {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+
+    .guest-row {
+      text-align: center;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--g100);
+    }
+
+    .guest-row p {
+      font-size: 11.5px;
+      color: var(--g400);
+      margin-bottom: 4px;
+    }
+
+    .btn-guest {
+      background: none;
+      border: none;
+      font-size: 12px;
+      color: var(--g500);
+      cursor: pointer;
+      font-family: 'Instrument Sans', sans-serif;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--g200);
+      transition: color var(--t);
+      padding: 0;
+    }
+
+    .btn-guest:hover {
+      color: var(--black);
+    }
+
+    .rfooter {
+      position: absolute;
+      bottom: 24px;
+      left: 44px;
+      right: 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .rfooter p {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--g400);
+    }
+
+    .live {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--g400);
+    }
+
+    .live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pdot 2s ease-in-out infinite;
+    }
+
+    @keyframes pdot {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(.8);
+      }
+    }
+
+    .spinner {
+      width: 13px;
+      height: 13px;
+      border: 2px solid rgba(255, 255, 255, .3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media(max-width:860px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+
+      .left {
+        display: none;
+      }
+
+      .right {
+        border-left: none;
+        padding: 44px 28px;
+        min-height: 100vh;
+      }
+
+      .rfooter {
+        left: 28px;
+        right: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- LEFT -->
+    <div class="left">
+      <div class="left-brand">
+        <div class="mono">portfolio · 2025</div>
+        <div class="name">Sujal Wagholikar</div>
+      </div>
+
+      <div class="cs">
+        <!-- A: Stats -->
+        <div class="fc fc-a">
+          <div class="lbl">Projects Shipped <span class="bdg">Class XII</span></div>
+          <div class="num">12+</div>
+          <div class="sub">Full-stack · Hardware · SaaS</div>
+          <div class="bars">
+            <div class="bar" style="height:38%"></div>
+            <div class="bar m" style="height:55%"></div>
+            <div class="bar h" style="height:88%"></div>
+            <div class="bar m" style="height:68%"></div>
+            <div class="bar" style="height:48%"></div>
+            <div class="bar h" style="height:100%"></div>
+            <div class="bar m" style="height:72%"></div>
+            <div class="bar" style="height:42%"></div>
+          </div>
+        </div>
+
+        <!-- B: Code -->
+        <div class="fc fc-b">
+          <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <code><span class="cm">// GraphOS — aurora nebula renderer</span></code>
+          <code><span class="kw">const</span> <span class="fn">graph</span> = <span class="kw">new</span> <span class="fn">GraphEngine</span>({</code>
+          <code>&nbsp;&nbsp;theme: <span class="str">'aurora-nebula'</span>,</code>
+          <code>&nbsp;&nbsp;layers: [<span class="str">'grid'</span>, <span class="str">'axes'</span>, <span class="str">'plot'</span>],</code>
+          <code>&nbsp;&nbsp;multiLayer: <span class="kw">true</span></code>
+          <code>});</code>
+          <code>&nbsp;</code>
+          <code><span class="fn">graph</span>.<span class="fn">render</span>(<span class="str">'sin(x) * e^(-x/4)'</span>);</code>
+        </div>
+
+        <!-- C: Project -->
+        <div class="fc fc-c">
+          <div class="thumb">
+            <div class="grd"></div>
+            <div class="ico">⚡</div>
+          </div>
+          <div class="bd">
+            <div class="ttl">MOCKERS — Test Portal</div>
+            <div class="dsc">Supabase · jsPDF · Analytics</div>
+            <div class="tgs">
+              <span class="tg">React</span>
+              <span class="tg">Firebase</span>
+              <span class="tg">Live</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- D: Activity -->
+        <div class="fc fc-d">
+          <div class="lbl">Recent Activity</div>
+          <div class="ar">
+            <div class="ad"></div>
+            <div class="at">Mock Test </div>
+            <div class="atm">2h</div>
+          </div>
+          <div class="ar">
+            <div class="ad dim"></div>
+            <div class="at"> Particle Simulator</div>
+            <div class="atm">1d</div>
+          </div>
+          <div class="ar">
+            <div class="ad dim"></div>
+            <div class="at">Jee Notes</div>
+            <div class="atm">3d</div>
+          </div>
+          <div class="ar">
+            <div class="ad dim"></div>
+            <div class="at">M & C Tester </div>
+            <div class="atm">1w</div>
+          </div>
+        </div>
+
+        <!-- E: Skills -->
+        <div class="fc fc-e">
+          <div class="lbl">Stack Depth</div>
+          <div class="sr">
+            <div class="st"><span class="sn">React / Node</span><span class="sp">94%</span></div>
+            <div class="strk">
+              <div class="sf" style="width:94%"></div>
+            </div>
+          </div>
+          <div class="sr">
+            <div class="st"><span class="sn">Firebase / Supabase</span><span class="sp">90%</span></div>
+            <div class="strk">
+              <div class="sf" style="width:90%"></div>
+            </div>
+          </div>
+          <div class="sr">
+            <div class="st"><span class="sn">C++ / Arduino</span><span class="sp">78%</span></div>
+            <div class="strk">
+              <div class="sf" style="width:78%"></div>
+            </div>
+          </div>
+          <div class="sr">
+            <div class="st"><span class="sn">Canvas / WebGL</span><span class="sp">72%</span></div>
+            <div class="strk">
+              <div class="sf" style="width:72%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="left-bot">
+        <div class="tagline">Build That <br>Sees <em>&amp; Glows.</em></div>
+        <div class="leftsub">class xii · sagroli, maharashtra · jee 2025</div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <div class="fh">
+        <div class="eyebrow">SUJAL WAGHOLIKAR </div>
+        <h1 class="ftitle">Welcome back</h1>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab('signin')">Sign In</div>
+        <div class="tab" onclick="switchTab('signup')">Create Account</div>
+      </div>
+
+      <div id="error-msg"></div>
+
+      <!-- Sign In -->
+      <div class="form-panel active" id="panel-signin">
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+        <button class="btn-primary" id="btn-signin" onclick="window.__auth.signIn()">Sign In →</button>
+        <div class="divider"><span>or</span></div>
+        <button class="btn-google" onclick="window.__auth.googleSignIn()">
+          <svg class="gi" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              fill="#4285F4" />
+            <path
+              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              fill="#34A853" />
+            <path
+              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              fill="#FBBC05" />
+            <path
+              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              fill="#EA4335" />
+          </svg>
+          Continue with Google
+        </button>
+        <div class="guest-row">
+          <p>No account?</p>
+          <button class="btn-guest" onclick="window.__auth.guestAccess()">Browse as guest →</button>
+        </div>
+      </div>
+
+      <!-- Sign Up -->
+      <div class="form-panel" id="panel-signup">
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" id="name" placeholder="Your name" autocomplete="name" />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="email-su" placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="password-su" placeholder="min. 6 characters" autocomplete="new-password" />
+        </div>
+        <button class="btn-primary" id="btn-signup" onclick="window.__auth.signUp()">Create Account →</button>
+        <div class="divider"><span>or</span></div>
+        <button class="btn-google" onclick="window.__auth.googleSignIn()">
+          <svg class="gi" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              fill="#4285F4" />
+            <path
+              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              fill="#34A853" />
+            <path
+              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              fill="#FBBC05" />
+            <path
+              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              fill="#EA4335" />
+          </svg>
+          Continue with Google
+        </button>
+        <div class="guest-row">
+          <p>Just exploring?</p>
+          <button class="btn-guest" onclick="window.__auth.guestAccess()">Browse as guest →</button>
+        </div>
+      </div>
+
+      <div class="rfooter">
+        <p>© 2025 Sujal Wagholikar</p>
+        <span class="live"> </span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+      if (tab === 'signin') {
+        document.querySelectorAll('.tab')[0].classList.add('active');
+        document.getElementById('panel-signin').classList.add('active');
+      } else {
+        document.querySelectorAll('.tab')[1].classList.add('active');
+        document.getElementById('panel-signup').classList.add('active');
+      }
+      document.getElementById('error-msg').style.opacity = '0';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
+      if (document.getElementById('panel-signin').classList.contains('active'))
+        window.__auth.signIn();
+      else
+        window.__auth.signUp();
+    });
+  </script>
+</body>
+
+</html>
